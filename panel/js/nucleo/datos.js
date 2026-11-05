@@ -1,9 +1,8 @@
-/* Almacén único de datos: se arma con los valores de data/ y se guarda en el navegador */
+/* Almacén único de datos en memoria: se llena desde Supabase (nube.js) */
 /* ==========================================================
    ALMACÉN ÚNICO DE DATOS (todas las pantallas leen y escriben aquí)
-   Se guarda solo en este navegador (localStorage).
+   Se sincroniza con Supabase (ver nube.js).
    ========================================================== */
-const KEY="sushipuuk-panel-v3";
 
 
 
@@ -30,14 +29,10 @@ const normalizar=d=>{
   d.neg=d.neg||{};Object.keys(NEGOCIO_INICIAL).forEach(k=>{if(d.neg[k]===undefined||d.neg[k]==="")d.neg[k]=NEGOCIO_INICIAL[k];});
   (d.ordenes||[]).forEach(o=>{o.ts=o.ts||new Date(o.fecha+"T"+(o.hora||"00:00")+":00").getTime();});
   return d;};
-let D=null;
-try{D=JSON.parse(localStorage.getItem(KEY));}catch(e){}
-if(D&&D.ordenes){ORDENES.splice(0,ORDENES.length,...D.ordenes);}else{D=DEF();}
-D.ordenes=ORDENES;
+// Los datos vienen de la base de datos (nube.js). Aquí solo se arranca con los valores de ejemplo.
+let D=DEF();
+ORDENES.splice(0,ORDENES.length);D.ordenes=ORDENES;
 normalizar(D);
-let ultimoGuardado=null;
-try{ultimoGuardado=localStorage.getItem(KEY);}catch(e){}
-const guardar=()=>{try{D.ordenes=ORDENES;ultimoGuardado=JSON.stringify(D);localStorage.setItem(KEY,ultimoGuardado);}catch(e){if(!guardar.av){guardar.av=1;try{toast("⚠ No se pudo guardar (espacio lleno o navegador bloqueado). Descarga un respaldo en Configuración.");}catch(x){}}}};
-
-// Antes de cada acción: si otra ventana guardó cambios, se toman primero para no pisarlos
-function sincronizar(){try{const v=localStorage.getItem(KEY);if(v&&v!==ultimoGuardado){D=normalizar(JSON.parse(v));ORDENES.splice(0,ORDENES.length,...D.ordenes);D.ordenes=ORDENES;ultimoGuardado=v;}}catch(e){}}
+// guardar() avisa a nube.js, que compara y manda a Supabase solo lo que cambió
+const guardar=()=>{try{Nube.pedirGuardado();}catch(e){}};
+function sincronizar(){}

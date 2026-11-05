@@ -10,8 +10,11 @@
 <link rel="stylesheet" href="css/componentes.css">
 <link rel="stylesheet" href="css/pantallas.css">
 <link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/acceso.css">
 </head>
-<body>
+<body class="sin-sesion">
+<div id="red" role="alert" hidden></div>
+<div id="login" hidden><form id="login-form"><h1>Sushi Pu'uk</h1><p>Inicia sesión para entrar al panel</p><input class="campo" id="login-email" type="email" placeholder="Correo" autocomplete="username" required><input class="campo" id="login-pass" type="password" placeholder="Contraseña" autocomplete="current-password" required><button class="btn-rojo" id="login-btn" type="submit">Entrar</button><p id="login-msg" role="alert"></p></form></div>
 <div class="app">
 
   <!-- ===== Menú lateral (se genera con JS desde la lista de abajo) ===== -->
@@ -67,6 +70,8 @@
 
 <!-- Los archivos se cargan en este orden: cada uno usa lo definido por los anteriores -->
 <div id="print-area"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/nucleo/config-nube.js"></script>
 <script src="data/clientes-iniciales.js"></script>
 <script src="data/modificadores-iniciales.js"></script>
 <script src="data/menu-inicial.js"></script>
@@ -78,6 +83,7 @@
 <script src="js/reportes/graficas.js"></script>
 <script src="js/reportes/panel.js"></script>
 <script src="js/nucleo/datos.js"></script>
+<script src="js/nucleo/nube.js"></script>
 <script src="js/nucleo/reglas.js"></script>
 <script src="js/nucleo/ui.js"></script>
 <script src="js/nucleo/chat.js"></script>
@@ -103,5 +109,6 @@
 <script src="js/app/acciones-dueno.js"></script>
 <script src="js/app/acciones-menucliente.js"></script>
 <script src="js/app/acciones-panel.js"></script>
+<script src="js/app/inicio.js"></script>
 </body>
 </html>

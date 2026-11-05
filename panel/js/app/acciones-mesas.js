@@ -14,7 +14,7 @@ Object.assign(A,{
    log(`Cancelado por ${quien()}: ${m}`);$("dlg-can").close();toast("Cancelado. Se avisó por el chat.");},
  /* ---- meseros ---- */
  "mz-entrar":()=>{const n=$("mz-nombre").value.trim();if(!n){toast("Escribe tu nombre.");return false;}lsSet("sushipuuk-mesero",n);},
- "mz-salir":()=>{lsSet("sushipuuk-mesero","");S.m.vista="home";},
+ "mz-salir":()=>{Nube.salir();return false;},
  "mz-home":()=>{S.m.vista="home";S.m.pick=false;},
  "mz-nueva":()=>{S.m.vista="nueva";},
  "mz-abrir-mesa":()=>{
@@ -47,8 +47,8 @@ Object.assign(A,{
    const c=cuenta(+b.dataset.id),met=$("cb-m-"+c.id).value,cv=$("cb-c-"+c.id).value,cl=D.clientes.find(x=>`${x.n} · ${x.t||x.e||"sin dato"}`===cv);
    const pend=D.comandas.filter(x=>x.cuenta===c.id&&["pending","confirmed","preparing","ready"].includes(x.estado)).length;
    if(pend&&!confirm(`Hay ${pend} ronda(s) que todavía no se entregan. ¿Cobrar de todos modos?`))return false;
-   const o=cobrarCuenta(c,met,cl&&cl.id);if(!o){toast("La mesa no tiene productos para cobrar.");return false;}
-   toast(`Mesa ${c.mesa} cobrada: ${moneda.format(o.total)} (pedido #${o.id})`);}
+   if(!itemsVivos(c).length){toast("La mesa no tiene productos para cobrar.");return false;}
+   cobrarCuenta(c,met,cl&&cl.id).then(o=>{if(o)toast(`Mesa ${c.mesa} cobrada: ${moneda.format(o.total)} (pedido #${o.id})`);render();guardar();});return false;}
 });
 // Notas del mesero y buscador de productos
 document.addEventListener("input",e=>{

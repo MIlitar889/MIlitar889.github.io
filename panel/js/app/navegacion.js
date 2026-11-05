@@ -8,7 +8,13 @@ const NAV=[["caja","Nueva venta"],["pedidos","Pedidos"],["cocina","Cocina"],["me
 const item=([k,t])=>`<button class="menu__item" data-k="${k}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONOS[k]}</svg>${t}<span class="bd" data-bd="${k}"></span></button>`;
 $("menu-lista").innerHTML=NAV.map(item).join("");$("menu-pie").innerHTML=[["config","Configuración"],["salir","Cerrar sesión"]].map(item).join("");
 
+// Qué pantallas puede ver cada rol (la seguridad real está en las reglas de la base de datos; esto solo ordena la interfaz)
+const INICIO={dueno:"pedidos",caja:"pedidos",cocina:"cocina",mesero:"meseros"};
+const vistaPermitida=k=>{const r=window.USUARIO&&USUARIO.rol;return r==="dueno"||(r==="caja"&&k!=="dueno")||(r==="cocina"&&k==="cocina")||(r==="mesero"&&k==="meseros");};
 function render(){
+  if(!window.USUARIO)return;
+  if(!vistaPermitida(location.hash.slice(1)||"pedidos")){location.hash=INICIO[USUARIO.rol];return;}
+  document.querySelectorAll(".menu__item").forEach(b=>{b.hidden=b.dataset.k!=="salir"&&!vistaPermitida(b.dataset.k);});
   const h=location.hash.slice(1),k=VISTAS.hasOwnProperty(h)?h:"pedidos",sec=$("v-"+k),keep={},fa=document.activeElement,fid=fa&&fa.id,fs=fa&&fa.selectionStart,fe=fa&&fa.selectionEnd;
   if(!sec.hidden)sec.querySelectorAll(".keep").forEach(e=>{keep[e.id]=e.type==="checkbox"?e.checked:e.value;});
   document.querySelectorAll("[data-vista]").forEach(s=>{s.hidden=s.id!=="v-"+k;});

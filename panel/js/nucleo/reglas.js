@@ -32,17 +32,22 @@ function completar(o){
   o.estado="delivered";o.te=o.te||{};o.te.delivered=Date.now();const c=cli(o.cliente),P=D.prog;
   if(c&&c.m&&!o.premio&&o.total>=P.minimo){const g=gana(o);c.bal=+(c.bal+g).toFixed(2);c.vis++;c.ult=o.fecha;c.tot=+((c.tot||0)+g).toFixed(2);D.emit=+(D.emit+g).toFixed(2);o.premio=g;log(`${c.n} ganó ${fmtU(g)} con el pedido #${o.id}`);}
 }
-function crear(ent){
+async function crear(ent){
   const K=S.caja;if(!K.items.length)return toast("Agrega al menos un producto.");
   if(K.tipo==="mesa"&&!K.mesa)return toast("Elige la mesa.");
-  let id=K.cli;const n=$("c-n").value.trim();
-  if(!id&&n){const t=$("c-t").value.trim();id=t||"c"+Date.now();if(!cli(id)){D.clientes.push({id,n,t,e:$("c-e").value.trim(),hp:0,ht:0,m:$("c-m").checked,bal:0,vis:0});log("Cliente nuevo: "+n);}}
-  const o={id:++D.seq,fecha:hoyT(),hora:horaT(),ts:Date.now(),items:K.items.map(i=>({n:i.n,c:i.c,q:i.q,nota:(i.nota||"").trim(),opc:i.opc||[]})),total:K.items.reduce((s,i)=>s+i.c*i.q,0),metodo:K.metodo,tipo:K.tipo,mesa:K.mesa,estado:"pending",cliente:id||"mostrador",origen:"caja",nota:$("c-nota").value.trim()};
+  if(S.creando)return;
+  const n=$("c-n").value.trim(),t=$("c-t").value.trim(),em=$("c-e").value.trim(),mi=$("c-m").checked,nota=$("c-nota").value.trim();
+  S.creando=true;let folio;
+  try{folio=await Nube.folio();}catch(e){S.creando=false;return toast("No se pudo registrar el pedido: sin conexión con la base de datos. Inténtalo de nuevo.");}
+  let id=K.cli;
+  if(!id&&n){id=t||"c"+Date.now();if(!cli(id)){D.clientes.push({id,n,t,e:em,hp:0,ht:0,m:mi,bal:0,vis:0});log("Cliente nuevo: "+n);}}
+  const o={id:folio,fecha:hoyT(),hora:horaT(),ts:Date.now(),items:K.items.map(i=>({n:i.n,c:i.c,q:i.q,nota:(i.nota||"").trim(),opc:i.opc||[]})),total:K.items.reduce((s,i)=>s+i.c*i.q,0),metodo:K.metodo,tipo:K.tipo,mesa:K.mesa,estado:"pending",cliente:id||"mostrador",origen:"caja",nota};
   ORDENES.push(o);if(ent)completar(o);
   D.cola.unshift({id:o.id,ref:{t:"o",id:o.id},f:horaT(),r:Object.fromEntries(Object.entries(ruta(o)).map(([k,v])=>[k,v.length]))});D.cola=D.cola.slice(0,20);
   log(`Pedido #${o.id} registrado por ${moneda.format(o.total)} (${nomCli(o.cliente)})`);
   S.caja.items=[];S.caja.cli="";S.caja.mesa="";["c-cli","c-n","c-t","c-e","c-nota"].forEach(i=>{$(i).value="";});$("c-m").checked=false;
   toast(`Pedido #${o.id} registrado: ${moneda.format(o.total)}`+(ent?" · entregado":""));
+  S.creando=false;
 }
 
 // ¿Puede este cliente canjear esta recompensa ahora?

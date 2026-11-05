@@ -1,7 +1,7 @@
 /* Cuentas de mesa de los meseros: rondas, comandas, quitar productos, cobro y comanda impresa.
    Una CUENTA es la mesa abierta. Cada vez que el mesero manda a cocina se crea una RONDA (comanda)
    que lleva SOLO los productos nuevos; lo que ya salió nunca se vuelve a mandar. */
-const uid=()=>++D.uid;
+const uid=()=>Nube.idUnico();
 const cuenta=id=>D.cuentas.find(c=>c.id===id);
 const cuentaDeMesa=n=>D.cuentas.find(c=>c.abierta&&+c.mesa===+n);
 const itemsVivos=c=>c.items.filter(i=>i.est!=="cancelado");
@@ -42,13 +42,16 @@ function quitarItem(c,iid){
     decir(quien(),`⚠ Mesa ${c.mesa} (${c.nombre}): quitaron ${i.q}× ${i.n} de la ronda ${cm.ronda} (estaba: ${RLBL[antes]})`,true);
   log(`Mesa ${c.mesa}: quitaron ${i.q}× ${i.n}`);
 }
-// Cobra la cuenta: genera UN pedido normal (con todo lo consumido) para reportes, clientes y lealtad
-function cobrarCuenta(c,metodo,cid){
+// Cobra la cuenta (el número de pedido lo da la base de datos): genera UN pedido normal (con todo lo consumido) para reportes, clientes y lealtad
+async function cobrarCuenta(c,metodo,cid){
   const V=itemsVivos(c);if(!V.length)return null;
+  S.cob=S.cob||{};if(S.cob[c.id])return null;S.cob[c.id]=1;
+  let folio;try{folio=await Nube.folio();}catch(e){delete S.cob[c.id];toast("No se pudo cobrar: sin conexión con la base de datos. Inténtalo de nuevo.");return null;}
   const agg={};V.forEach(i=>{const k=i.n+"|"+i.c+"|"+(i.nota||"")+"|"+(i.opc||[]).join(",");agg[k]=agg[k]||{n:i.n,c:i.c,q:0,nota:i.nota||"",opc:i.opc||[]};agg[k].q+=i.q;});
-  const o={id:++D.seq,fecha:hoyT(),hora:horaT(),ts:Date.now(),items:Object.values(agg),total:totalCuenta(c),metodo,tipo:"mesa",mesa:String(c.mesa),estado:"pending",cliente:cid||"mostrador",origen:"mesero",mesero:c.mesero,nombreMesa:c.nombre,nota:`Mesa ${c.mesa} · ${c.nombre}`,cuenta:c.id};
+  const o={id:folio,fecha:hoyT(),hora:horaT(),ts:Date.now(),items:Object.values(agg),total:totalCuenta(c),metodo,tipo:"mesa",mesa:String(c.mesa),estado:"pending",cliente:cid||"mostrador",origen:"mesero",mesero:c.mesero,nombreMesa:c.nombre,nota:`Mesa ${c.mesa} · ${c.nombre}`,cuenta:c.id};
   ORDENES.push(o);completar(o);c.abierta=false;c.cerrada=horaT();c.pedido=o.id;
   log(`Mesa ${c.mesa} cobrada: ${moneda.format(o.total)} (pedido #${o.id})`);
+  delete S.cob[c.id];
   return o;
 }
 // Comanda para imprimir: una hoja por estación, y en las rondas siguientes avisa que es SOLO lo nuevo

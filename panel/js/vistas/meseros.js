@@ -5,7 +5,7 @@ function vMeseros(){
   const nom=nombreMesero();
   if(!nom)return `<div class="mz"><div class="mz-top"><h1 style="font-size:1.5rem;margin:0">🍽 Meseros</h1></div><div class="tarjeta"><h2>¿Cómo te llamas?</h2><input class="campo keep" id="mz-nombre" placeholder="Tu nombre" maxlength="30" autocomplete="off"><button class="btn-rojo mz-btn" data-act="mz-entrar">Entrar</button></div></div>`;
   const M=S.m,c=cuenta(M.id),sl=sinLeer();
-  const top=`<div class="mz-top"><div><b style="font-size:1.2rem">🍽 ${esc(nom)}</b><br><small class="nota">${new Date().toLocaleDateString("es-MX",{weekday:"long",day:"numeric",month:"long"})}</small></div><div><button class="chip" data-act="co-chat">💬 Chat${!S.kchat&&sl?` (${sl})`:""}</button> <button class="chip" data-act="mz-salir">Cambiar</button></div></div>`;
+  const top=`<div class="mz-top"><div><b style="font-size:1.2rem">🍽 ${esc(nom)}</b><br><small class="nota">${new Date().toLocaleDateString("es-MX",{weekday:"long",day:"numeric",month:"long"})}</small></div><div><button class="chip" data-act="co-chat">💬 Chat${!S.kchat&&sl?` (${sl})`:""}</button> <button class="chip" data-act="mz-salir">Salir</button></div></div>`;
   const chat=S.kchat?`<div class="tarjeta" style="margin-bottom:12px">${chatHTML(30,S.pre)}</div>`:"";S.pre="";
   const cuerpo=M.vista==="mesa"&&c&&c.abierta?mzMesa(c):M.vista==="nueva"?mzNueva():mzHome();
   return `<div class="mz">${top}${chat}${cuerpo}</div>`;

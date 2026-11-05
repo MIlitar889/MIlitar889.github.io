@@ -10,8 +10,8 @@ const A={
  "caja-q":b=>{const it=S.caja.items[+b.dataset.i];it.q+=+b.dataset.d;if(it.q<1)S.caja.items.splice(+b.dataset.i,1);},
  "caja-tipo":b=>{S.caja.tipo=b.dataset.v;if(b.dataset.v!=="mesa")S.caja.mesa="";},
  "caja-met":b=>{S.caja.metodo=b.dataset.v;},
- "caja-ok":()=>{if(crear(false)!==undefined)return false;},
- "caja-ent":()=>{if(crear(true)!==undefined)return false;},
+ "caja-ok":()=>{crear(false).then(()=>{render();guardar();});return false;},
+ "caja-ent":()=>{crear(true).then(()=>{render();guardar();});return false;},
  "ped-f":b=>{S.ped=b.dataset.v;},
  "ped-sig":b=>{const o=ORDENES.find(o=>o.id==b.dataset.id),n=SIG[o.estado];if(n==="delivered")completar(o);else o.estado=n;log(`Pedido #${o.id}: ${ESTADOS[o.estado]}`);},
  "ped-can":b=>{const o=ORDENES.find(o=>o.id==b.dataset.id),m=prompt("Motivo de la cancelación (puedes dejarlo vacío):");if(m===null)return false;o.estado="cancelled";o.motivo=m.trim();o.por=quien();decir(quien(),`🚫 Pedido #${o.id} cancelado${o.motivo?": "+o.motivo:""}`,true);log(`Pedido #${o.id} cancelado`);},
@@ -59,12 +59,11 @@ const A={
  "menu-json":()=>{descargar("menu-sushi-puuk.json",JSON.stringify(D.menu,null,1),"application/json");return false;},
  "neg-save":()=>{D.neg={n:$("n-n").value,tel:$("n-tel").value,dir:$("n-dir").value,hor:$("n-hor").value};toast("Datos del negocio guardados");},
  "bk-dl":()=>{D.ordenes=ORDENES;descargar("respaldo-sushi-puuk-"+hoyT()+".json",JSON.stringify(D),"application/json");return false;},
- "bk-reset":()=>{if(confirm("Se borrarán TODOS los pedidos y cambios hechos en este navegador. ¿Continuar?")){try{localStorage.removeItem(KEY);}catch(e){}location.reload();}return false;}
 };
 document.addEventListener("click",e=>{
   sincronizar();if(location.hash==="#dueno"&&sesionActiva())iniciarSesion();   // actividad del dueño: renueva la sesión
   const nav=e.target.closest(".menu__item");
-  if(nav){if(nav.dataset.k==="salir"){cerrarSesiones();toast("Sesiones cerradas en este aparato (mesero y dueño).");}else if(["cocina","meseros","dueno"].includes(nav.dataset.k))window.open(location.href.split("#")[0]+"#"+nav.dataset.k,"puuk-"+nav.dataset.k);else ir(nav.dataset.k);return;}
+  if(nav){if(nav.dataset.k==="salir"){Nube.salir();}else if(["cocina","meseros","dueno"].includes(nav.dataset.k))window.open(location.href.split("#")[0]+"#"+nav.dataset.k,"puuk-"+nav.dataset.k);else ir(nav.dataset.k);return;}
   const b=e.target.closest("[data-act]");if(!b||!A[b.dataset.act])return;
   if(A[b.dataset.act](b)===false)return guardar();
   render();guardar();
@@ -89,7 +88,7 @@ document.addEventListener("change",e=>{
   else if(t.dataset.foto){const[c,p]=t.dataset.foto.split("-").map(Number);reducirImagen(t.files[0],420,u=>{const pr=D.menu[c].p[p];pr.img=u;pr.r="";render();guardar();toast("Foto guardada");});}
   else if(t.dataset.asig){const[c,p]=t.dataset.asig.split("-").map(Number);if(t.value){D.menu[c].p[p].m.push(t.value);render();guardar();}}
   else if(t.dataset.d){D.dis[t.dataset.d]=t.value;$("preview").innerHTML=prev();guardar();}
-  else if(t.id==="bk-up"&&t.files[0]){const r=new FileReader();r.onload=()=>{try{const n=JSON.parse(r.result);if(!n.ordenes||!n.clientes)throw 0;D=normalizar(n);ORDENES.splice(0,ORDENES.length,...D.ordenes);D.ordenes=ORDENES;guardar();render();toast("Respaldo restaurado");}catch(x){toast("Ese archivo no es un respaldo válido.");}};r.readAsText(t.files[0]);}
+  else if(t.id==="bk-up"&&t.files[0]){if(!confirm("Se cargará el respaldo en la base de datos y lo verán todos los aparatos. ¿Continuar?")){t.value="";return;}const r=new FileReader();r.onload=()=>{try{const n=JSON.parse(r.result);if(!n.ordenes||!n.clientes)throw 0;D=normalizar(n);ORDENES.splice(0,ORDENES.length,...D.ordenes);D.ordenes=ORDENES;render();Nube.restaurado();}catch(x){toast("Ese archivo no es un respaldo válido.");}};r.readAsText(t.files[0]);}
 });
 // Arrastrar un modificador sobre un producto para asignarlo
 document.addEventListener("dragstart",e=>{const m=e.target.closest&&e.target.closest("[data-mod]");if(m)e.dataTransfer.setData("text/plain",m.dataset.mod);});
@@ -99,22 +98,18 @@ document.addEventListener("drop",e=>{const p=e.target.closest&&e.target.closest(
 $("boton-menu").addEventListener("click",()=>$("menu").classList.toggle("abierto"));
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="chat-t"){e.preventDefault();if(A["chat-send"]()!==false){render();guardar();}}});
 window.addEventListener("hashchange",render);
-// Si se abre el panel en otra pestaña o ventana del mismo navegador, los cambios llegan solos
-// Recibe los cambios que otra ventana guardó. Llegan por el aviso instantáneo del navegador y, por si ese aviso no llega
-// (pasa, por ejemplo, al abrir el archivo directamente o con la ventana en segundo plano), también se revisa cada segundo.
-function recibirCambios(nuevo){
+// Los cambios de otros aparatos llegan desde nube.js (tiempo real); aquí se avisa de mensajes nuevos y rondas listas
+function recibirCambios(antes){
   try{
-    const antes=D.chat.length,antesC=Object.fromEntries(D.comandas.map(c=>[c.id,c.estado]));
-    D=normalizar(JSON.parse(nuevo));ultimoGuardado=nuevo;ORDENES.splice(0,ORDENES.length,...D.ordenes);D.ordenes=ORDENES;
-    const m=D.chat.slice(antes).filter(x=>x.de!==quien());
-    if(m.length){const u=m[m.length-1];toast(`💬 ${u.de}: ${u.t}`);beep();}
-    // al mesero le avisa cuando una de SUS rondas ya está lista
-    if(location.hash==="#meseros")D.comandas.filter(c=>c.estado==="ready"&&antesC[c.id]!=="ready"&&c.mesero===nombreMesero()).forEach(c=>{toast(`🍣 Mesa ${c.mesa}: ronda ${c.ronda} lista para llevar`);beep();});
+    if(antes){
+      const m=D.chat.filter(x=>!antes.chat.has(x.id)&&x.de!==quien());
+      if(m.length){const u=m[m.length-1];toast(`💬 ${u.de}: ${u.t}`);beep();}
+      // al mesero le avisa cuando una de SUS rondas ya está lista
+      if(location.hash==="#meseros")D.comandas.filter(c=>c.estado==="ready"&&antes.com[c.id]!=="ready"&&c.mesero===nombreMesero()).forEach(c=>{toast(`🍣 Mesa ${c.mesa}: ronda ${c.ronda} lista para llevar`);beep();});
+    }
     render();
   }catch(x){}
 }
-window.addEventListener("storage",e=>{if(e.key===KEY&&e.newValue&&e.newValue!==ultimoGuardado)recibirCambios(e.newValue);});
-setInterval(()=>{const v=lsGet(KEY);if(v&&v!==ultimoGuardado)recibirCambios(v);},1000);
 // La pantalla de cocina se refresca sola para actualizar los minutos de espera
 setInterval(()=>{if(["#cocina","#meseros","#dueno"].includes(location.hash))render();},30000);
 render();
