@@ -1,0 +1,139 @@
+{
+ "nota": "Solo la categoría Rollos de Lujo estaba desplegada en la captura; de las demás solo se conoce el número de productos.",
+ "categorias": [
+  {
+   "nombre": "Rollos de Lujo",
+   "productos_total": 6,
+   "modificadores_globales": 1,
+   "productos_capturados": [
+    {
+     "nombre": "Pepin Roll",
+     "desc": "Por fuera: queso Philadelphia, pepino y togarashi. Por dentro: camarón capeado y piel de salmón frito.",
+     "precio": "150",
+     "mods": [
+      "Complementos"
+     ]
+    },
+    {
+     "nombre": "Tarti Roll",
+     "desc": "Por fuera: alga nori, crema tártara y ajonjolí negro. Por dentro: philadelphia, aguacate, camarón curtido, salmón y surimi.",
+     "precio": "150",
+     "mods": [
+      "Complementos"
+     ]
+    },
+    {
+     "nombre": "Spicy Roll",
+     "desc": "Por fuera: queso manchego gratinado y pollo. Por dentro: philadelphia, aguacate, manzana capeada y salsa zake.",
+     "precio": "150",
+     "mods": [
+      "Complementos"
+     ]
+    },
+    {
+     "nombre": "Chispita Roll",
+     "desc": "Por fuera: chispas tempura, salmón, salsa spicy. Por dentro: philadelphia, aguacate y surimi capeado.",
+     "precio": "150",
+     "mods": [
+      "Complementos"
+     ]
+    },
+    {
+     "nombre": "Kaki Roll",
+     "desc": "Por fuera: hoja de soya amarilla, salsa lucky y kakiage. Por dentro: philadelphia, camarón capeado y surimi.",
+     "precio": "150",
+     "mods": [
+      "Complementos"
+     ]
+    },
+    {
+     "nombre": "Salmi Crunch Roll",
+     "desc": "Por fuera: queso philadelphia y salmón frito, salsa chipotle. Por dentro: queso gratinado, aguacate, kakiage.",
+     "precio": "150",
+     "mods": [
+      "Complementos"
+     ]
+    }
+   ]
+  },
+  {
+   "nombre": "Entradas",
+   "productos_total": 4,
+   "modificadores_globales": 0,
+   "productos_capturados": []
+  },
+  {
+   "nombre": "Rollos Clásicos",
+   "productos_total": 7,
+   "modificadores_globales": 1,
+   "productos_capturados": []
+  },
+  {
+   "nombre": "Especialidades",
+   "productos_total": 17,
+   "modificadores_globales": 1,
+   "productos_capturados": []
+  },
+  {
+   "nombre": "Platos Fuertes",
+   "productos_total": 11,
+   "modificadores_globales": 0,
+   "productos_capturados": []
+  },
+  {
+   "nombre": "Snacks",
+   "productos_total": 3,
+   "modificadores_globales": 0,
+   "productos_capturados": []
+  },
+  {
+   "nombre": "Tortas, Tacos y Hamburguesas",
+   "productos_total": 6,
+   "modificadores_globales": 0,
+   "productos_capturados": []
+  },
+  {
+   "nombre": "Bebidas",
+   "productos_total": 14,
+   "modificadores_globales": 0,
+   "productos_capturados": []
+  },
+  {
+   "nombre": "Extras",
+   "productos_total": 4,
+   "modificadores_globales": 0,
+   "productos_capturados": []
+  }
+ ],
+ "modificadores": [
+  "Tipo de Torta",
+  "Proteína a elegir",
+  "¿Mixto o sencillo?",
+  "Proteína",
+  "Proteínas",
+  "Presentación Agua Mineral",
+  "Tipo de Café",
+  "Sabor Jugo Bida 200ml",
+  "Sabor Jugo Natural",
+  "Tamaño Agua",
+  "Sabor Cristal 600ml",
+  "Sabor Cristal 300ml",
+  "Tamaño Jugo de Temporada",
+  "Sabor Jugo Natural Litro",
+  "Sabor Fuze Té",
+  "Presentación Refresco Embotellado",
+  "Presentación Agua Purificada",
+  "Tamaño Refresco",
+  "Sabor del Jugo",
+  "Tamaño Jugo Natural",
+  "Tipo de Hamburguesa",
+  "Proteína Gohan",
+  "Complementos",
+  "Proteína Kushiage",
+  "Proteína Takoyaki",
+  "Qué proteína quieres?",
+  "Sabor Jugo Natural (Naturales)",
+  "Presentación o tamaño",
+  "Tamaño Agua (Agua)"
+ ]
+}

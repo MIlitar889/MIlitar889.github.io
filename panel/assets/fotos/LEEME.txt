@@ -1,0 +1,10 @@
+Guarda aquí las fotos del menú con estos nombres exactos:
+
+pepin-roll.png         tarti-roll.png        spicy-roll.png
+chispita-roll.png      kaki-roll.png         salmi-crunch-roll.png
+logo.jpg   hero-1.png   hero-2.png   hero-3.png   icono-app.png
+
+Cómo funciona: el panel busca primero la foto en esta carpeta. Si no la encuentra, usa la copia de internet (YoMenu).
+Cuando estén las 11 fotos aquí, el panel ya no depende de esa página.
+Las direcciones de descarga están en data/referencia/sitio-extraido.json
+(o corre tools/descargar_fotos.py si tienes Python).

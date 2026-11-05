@@ -1,0 +1,56 @@
+/* Encabezados, filtros, indicadores (KPI) y gráficas */
+/* ==========================================================
+   4. ENCABEZADO Y FILTRO DE PERIODO
+   ========================================================== */
+.encabezado { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.encabezado h1 {
+  font-size: 1.9rem; font-weight: 800;
+  background: linear-gradient(90deg, var(--rojo), var(--dorado));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.encabezado p { color: var(--texto-suave); font-size: .9rem; }
+
+.boton-exportar {
+  background: #22C55E; color: #fff; font-weight: 700; font-size: .88rem;
+  padding: 10px 16px; border-radius: 10px;
+}
+.boton-exportar:hover { background: #16A34A; }
+.boton-exportar:disabled { opacity: .4; cursor: not-allowed; }
+
+.tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); box-shadow: var(--sombra); padding: 20px; }
+.tarjeta h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 14px; }
+.periodo { margin-bottom: 20px; }
+.periodo__titulo { font-weight: 700; }
+.periodo__ayuda { font-size: .78rem; color: var(--texto-suave); margin-bottom: 12px; }
+.periodo__botones { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 8px 16px; border-radius: 12px; font-weight: 700; font-size: .85rem;
+  border: 1px solid var(--borde); background: #fff; color: #374151;
+}
+.chip:hover { border-color: var(--rojo); }
+.chip[aria-pressed="true"] { background: var(--rojo); border-color: var(--rojo); color: #fff; }
+
+/* ==========================================================
+   5. INDICADORES (KPI)
+   ========================================================== */
+.indicadores { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.indicador__etiqueta { font-size: .78rem; color: var(--texto-suave); margin-bottom: 4px; }
+.indicador__valor { font-size: 1.9rem; font-weight: 800; }
+.indicador { border-top: 4px solid var(--color); }
+
+/* ==========================================================
+   6. GRÁFICAS
+   ========================================================== */
+.graficas { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; margin-bottom: 20px; }
+.grafica svg { width: 100%; height: auto; display: block; }
+.vacio { color: var(--texto-suave); font-size: .9rem; padding: 40px 0; text-align: center; }
+
+.leyenda { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; font-size: .88rem; }
+.leyenda li { display: flex; align-items: center; gap: 8px; }
+.leyenda i { width: 12px; height: 12px; border-radius: 4px; background: var(--color); flex-shrink: 0; }
+.leyenda b { margin-left: auto; }
+
+.barras { display: grid; gap: 12px; }
+.barra__fila { display: grid; grid-template-columns: 130px 1fr 40px; align-items: center; gap: 12px; font-size: .88rem; }
+.barra__pista { background: #F1F1EE; border-radius: 8px; height: 22px; overflow: hidden; }
+.barra__relleno { height: 100%; background: var(--rojo); border-radius: 8px; transition: width .3s; }

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel | Sushi Pu'uk</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="stylesheet" href="css/pantallas.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ===== Menú lateral (se genera con JS desde la lista de abajo) ===== -->
+  <aside class="menu" id="menu" aria-label="Navegación principal">
+    <div class="menu__marca">
+      <strong>Sushi Pu'uk</strong>
+      <span>Panel de administración</span>
+    </div>
+    <nav class="menu__lista" id="menu-lista"></nav>
+    <div class="menu__pie" id="menu-pie"></div>
+  </aside>
+  <button class="boton-menu" id="boton-menu" aria-label="Abrir menú">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+
+  <!-- ===== Contenido ===== -->
+  <main class="contenido"><div id="toast" role="status"></div><section id="v-reportes" data-vista hidden>
+
+    <header class="encabezado">
+      <div>
+        <h1>Reportes de ventas</h1>
+        <p>Análisis detallado de ventas</p>
+      </div>
+      <button class="boton-exportar" id="exportar">Exportar a CSV</button>
+    </header>
+
+    <section class="tarjeta periodo" aria-labelledby="periodo-titulo">
+      <p class="periodo__titulo" id="periodo-titulo">Período</p>
+      <p class="periodo__ayuda" id="periodo-rango">Selecciona el rango de fechas</p>
+      <div class="periodo__botones" id="periodo-botones"></div>
+    </section>
+
+    <section class="indicadores" id="indicadores" aria-label="Resumen"></section>
+
+    <section class="graficas">
+      <article class="tarjeta grafica">
+        <h2>Ventas por día</h2>
+        <div id="grafica-ventas"></div>
+      </article>
+      <article class="tarjeta grafica">
+        <h2>Métodos de pago</h2>
+        <div id="grafica-pagos"></div>
+      </article>
+    </section>
+
+    <article class="tarjeta">
+      <h2>Estado de las órdenes</h2>
+      <div id="grafica-estados"></div>
+    </article>
+
+  </section><section id="v-caja" data-vista hidden></section><section id="v-pedidos" data-vista hidden></section><section id="v-cocina" data-vista hidden></section><section id="v-chat" data-vista hidden></section><section id="v-meseros" data-vista hidden></section><section id="v-dueno" data-vista hidden></section><section id="v-clientes" data-vista hidden></section><section id="v-lealtad" data-vista hidden></section><section id="v-estadisticas" data-vista hidden></section><section id="v-impresora" data-vista hidden></section><section id="v-mesas" data-vista hidden></section><section id="v-promos" data-vista hidden></section><section id="v-menu" data-vista hidden></section><section id="v-config" data-vista hidden></section><dialog id="dlg"><pre id="dlg-t"></pre><button class="chip" onclick="this.closest('dialog').close()">Cerrar</button></dialog><dialog id="dlg-opc"><h2 id="opc-t"></h2><div id="opc-body"></div><div class="periodo__botones" style="margin-top:12px"><button class="btn-rojo" data-act="opc-ok">Agregar</button><button class="chip" data-act="opc-no">Cancelar</button></div></dialog><dialog id="dlg-plato"><h2>Agregar platillo</h2><label>Nombre</label><input class="campo" id="pl-n" maxlength="60"><label>Categoría</label><select class="campo" id="pl-cat"></select><label>Precio</label><input class="campo" id="pl-c" type="number" min="0" step="0.5"><label>Descripción</label><textarea class="campo" id="pl-d" rows="3" maxlength="300"></textarea><label>Foto</label><div class="fila" style="padding:0"><span id="pl-prev"></span><label class="btn-verde" style="margin:0;cursor:pointer">⬆ Elegir foto<input type="file" accept="image/*" hidden data-plimg="1"></label></div><label class="fila" style="padding:8px 0;gap:6px"><input type="checkbox" id="pl-promo"> Mostrar también en Promos</label><div class="periodo__botones" style="margin-top:12px"><button class="btn-rojo" data-act="plato-ok">Guardar platillo</button><button class="chip" data-act="plato-no">Cancelar</button></div></dialog><dialog id="dlg-can"><h2 id="can-t">Cancelar pedido</h2><label>Motivo (le avisa a la caja)</label><textarea class="campo" id="can-m" rows="3" placeholder="Ej. no hay camarón"></textarea><div class="periodo__botones"><button class="btn-rojo" data-act="can-ok">Cancelar pedido</button><button class="chip" data-act="can-cerrar">Volver</button></div></dialog></main>
+</div>
+
+<!-- Los archivos se cargan en este orden: cada uno usa lo definido por los anteriores -->
+<div id="print-area"></div>
+<script src="data/clientes-iniciales.js"></script>
+<script src="data/modificadores-iniciales.js"></script>
+<script src="data/menu-inicial.js"></script>
+<script src="data/config-inicial.js"></script>
+<script src="js/reportes/ordenes.js"></script>
+<script src="js/reportes/catalogos.js"></script>
+<script src="js/reportes/fechas.js"></script>
+<script src="js/reportes/calculos.js"></script>
+<script src="js/reportes/graficas.js"></script>
+<script src="js/reportes/panel.js"></script>
+<script src="js/nucleo/datos.js"></script>
+<script src="js/nucleo/reglas.js"></script>
+<script src="js/nucleo/ui.js"></script>
+<script src="js/nucleo/chat.js"></script>
+<script src="js/nucleo/acceso.js"></script>
+<script src="js/nucleo/mesas.js"></script>
+<script src="js/vistas/caja.js"></script>
+<script src="js/vistas/pedidos.js"></script>
+<script src="js/vistas/cocina.js"></script>
+<script src="js/vistas/chat.js"></script>
+<script src="js/vistas/meseros.js"></script>
+<script src="js/vistas/dueno.js"></script>
+<script src="js/vistas/clientes.js"></script>
+<script src="js/vistas/lealtad.js"></script>
+<script src="js/vistas/estadisticas.js"></script>
+<script src="js/vistas/impresora.js"></script>
+<script src="js/vistas/mesas.js"></script>
+<script src="js/vistas/promos.js"></script>
+<script src="js/vistas/menu.js"></script>
+<script src="js/vistas/config.js"></script>
+<script src="js/app/navegacion.js"></script>
+<script src="js/app/acciones.js"></script>
+<script src="js/app/acciones-mesas.js"></script>
+<script src="js/app/acciones-dueno.js"></script>
+<script src="js/app/acciones-menucliente.js"></script>
+<script src="js/app/acciones-panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+/* Valores iniciales: impresoras, programa de lealtad, diseño de la tarjeta y datos del negocio */
+const LOGO="https://media.base44.com/images/public/69fc8d7adf7a59448d6aa758/c18ef6a4c_IMG_1722.jpg";
+const IMPRESORAS_INICIALES = [{n:"Comedor 1",ip:"192.168.1.152:9100",on:true,cats:["Snacks","Tortas, Tacos y Hamburguesas"]},{n:"Sushi 1",ip:"192.168.1.150:9100",on:true,cats:["Rollos de Lujo","Rollos Clásicos","Platos Fuertes","Extras","Especialidades","Entradas"]}];
+const PROGRAMA_INICIAL = {tipo:"sellos",nombre:"Club Sushi Pu'uk",bienv:"¡Bienvenido al Club! Acumula y gana recompensas deliciosas.",porVisita:1,minimo:0,meta:8,pct:5,ppd:1,plata:10,oro:25};
+const DISENO_INICIAL = {logo:LOGO,titulo:"Club Sushi Pu'uk",lema:"Acumula sellos por tus visitas y gana recompensas.",fuente:"Georgia, serif",fondo:"#1F1F1F",acento:"#B8972A",texto:"#F5F0E8",bg:"",icono:"⭐",iconoImg:""};
+const NEGOCIO_INICIAL = {n:"Sushi Pu'uk",sucursal:"Ticul",lema:"Sabor que contagia",tel:"9979734867",dir:"C. 24 entre 25 y 25A, 97860 Ticul, Yuc.",hor:"",maps:"https://maps.app.goo.gl/riruB5NmgN89eDdF7",fb:"https://www.facebook.com/wrapisimo",ig:"https://www.instagram.com/wrapisimo",tt:"https://www.tiktok.com/@wrapisimo"};
