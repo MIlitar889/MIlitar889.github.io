@@ -93,6 +93,9 @@ fieldset{border:1px solid var(--borde);border-radius:14px;margin:12px 0;padding:
 /* Menú para clientes (archivo independiente). Inicio · Menú · Lealtad · Sucursales · Seguimiento del pedido.
    Lleva dentro una copia del menú que genera el panel. Si se abre junto al panel (mismo navegador y sitio) usa los datos
    en vivo: pedidos, cuentas del Club y seguimiento funcionan al instante. Si no, el pedido se manda por WhatsApp. */
+// Conexión con la base de datos (URL y llave publishable: públicas). Los pedidos se mandan con funciones seguras de Supabase.
+const NUBE={url:"https://xrrmszcamkgoxewugpzh.supabase.co",key:"sb_publishable_Ls-pMjp4EQ5huVPe7hNKGA_H6JZZt7D"};
+let SEGC=null,segBusy=false,segTick=0;
 let ultimoEstado=null;
 const SNAP=/*DATOS_MENU*/null;
 const C128=["11011001100", "11001101100", "11001100110", "10010011000", "10010001100", "10001001100", "10011001000", "10011000100", "10001100100", "11001001000", "11001000100", "11000100100", "10110011100", "10011011100", "10011001110", "10111001100", "10011101100", "10011100110", "11001110010", "11001011100", "11001001110", "11011100100", "11001110100", "11101101110", "11101001100", "11100101100", "11100100110", "11101100100", "11100110100", "11100110010", "11011011000", "11011000110", "11000110110", "10100011000", "10001011000", "10001000110", "10110001000", "10001101000", "10001100010", "11010001000", "11000101000", "11000100010", "10110111000", "10110001110", "10001101110", "10111011000", "10111000110", "10001110110", "11101110110", "11010001110", "11000101110", "11011101000", "11011100010", "11011101110", "11101011000", "11101000110", "11100010110", "11101101000", "11101100010", "11100011010", "11101111010", "11001000010", "11110001010", "10100110000", "10100001100", "10010110000", "10010000110", "10000101100", "10000100110", "10110010000", "10110000100", "10011010000", "10011000010", "10000110100", "10000110010", "11000010010", "11001010000", "11110111010", "11000010100", "10001111010", "10100111100", "10010111100", "10010011110", "10111100100", "10011110100", "10011110010", "11110100100", "11110010100", "11110010010", "11011011110", "11011110110", "11110110110", "10101111000", "10100011110", "10001011110", "10111101000", "10111100010", "11110101000", "11110100010", "10111011110", "10111101110", "11101011110", "11110101110", "11010000100", "11010010000", "11010011100"];
@@ -106,14 +109,14 @@ const mesa=(new URLSearchParams(location.search).get("n")||"").replace(/\D/g,"")
 
 /* ---------- datos ---------- */
 let rawCache=null,dCache=null;
-function panel(){const r=ls(KEY);if(r!==rawCache){rawCache=r;try{const d=JSON.parse(r);dCache=d&&d.menu&&d.ordenes?d:null;}catch(e){dCache=null;}}return dCache;}
+function panel(){if(NUBE)return null;const r=ls(KEY);if(r!==rawCache){rawCache=r;try{const d=JSON.parse(r);dCache=d&&d.menu&&d.ordenes?d:null;}catch(e){dCache=null;}}return dCache;}
 function conv(r,vivo,generado){
   const grp=n=>(r.mods||[]).find(g=>g.n===n);
   const cats=(r.menu||[]).map(c=>({e:c.e,n:c.n,p:c.p.filter(p=>p.on&&p.c>0).map(p=>({n:p.n,c:p.c,d:p.d||"",img:p.img||p.r||"",promo:!!p.promo,dest:!!p.dest,
     g:(p.m||[]).map(grp).filter(g=>g&&g.o&&g.o.length).map(g=>({n:g.n,req:!!g.req,o:g.o.map(o=>typeof o==="string"?{n:o,p:0}:{n:o.n,p:o.p||0})}))}))})).filter(c=>c.p.length);
   return{vivo,generado,neg:r.neg||{},cats,prog:r.prog||{},dis:r.dis||{},recomp:(r.recomp||[]).filter(x=>x.activa!==false)};
 }
-function datos(){const d=panel();if(d)return conv(d,true);return SNAP?conv(SNAP,false,SNAP.generado):null;}
+function datos(){const d=panel();if(d)return conv(d,true);if(!SNAP)return null;const x=conv(SNAP,false,SNAP.generado);if(NUBE){x.vivo=true;x.nube=true;}return x;}
 const S={tab:"inicio",cat:"todos",q:"",carro:[],prod:null,sel:{},qty:1,nota:"",f:{nombre:"",tel:"",email:"",dir:"",nota:"",tipo:mesa?"mesa":"recoger",cuenta:false},reg:{nombre:"",tel:"",email:""},ent:{tel:"",code:""},seg:null,segq:{id:"",tel:""},snd:false,msg:""};
 const cuenta=()=>{try{return JSON.parse(ls(K_CTA)||"null");}catch(e){return null;}};
 const total=()=>S.carro.reduce((s,i)=>s+i.c*i.q,0),piezas=()=>S.carro.reduce((s,i)=>s+i.q,0);
@@ -179,7 +182,7 @@ function vLealtad(D){
   }
   const rec=D.recomp.length?D.recomp.map(r=>`<div class="fila" style="padding:8px 0;align-items:center">${r.img?`<img class="foto" style="width:44px;height:44px" src="${esc(r.img)}" alt="">`:`<span style="font-size:1.6rem">🎁</span>`}<span style="flex:1"><b>${esc(r.n)}</b><br><span class="nota">${esc(r.desc||"")} · ${r.costo} sellos</span></span></div>`).join(""):`<p class="nota">Muy pronto: recompensas del Club.</p>`;
   return `<main class="w" style="padding-top:24px"><h1 style="font-size:1.8rem">⭐ ${nombre}</h1><p class="nota">${esc(P.bienv||"Acumula sellos con cada pedido y gana recompensas.")}</p><div class="caja"><h2>Qué ganas</h2><p class="nota" style="margin:0 0 6px">Cada pedido entregado suma ${P.porVisita||1} sello${(P.porVisita||1)>1?"s":""}${P.minimo?` (compras desde ${$m(P.minimo)})`:""}. Con ${P.meta||8} sellos completas tu tarjeta.</p>${rec}</div>`
-   +(D.vivo?`<div class="caja"><h2>Únete al Club</h2><label>Tu nombre *</label><input class="campo" data-r="nombre" value="${esc(S.reg.nombre)}" maxlength="40" autocomplete="name"><label>Teléfono *</label><input class="campo" data-r="tel" value="${esc(S.reg.tel)}" inputmode="tel" maxlength="15" autocomplete="tel"><label>Correo (opcional)</label><input class="campo" data-r="email" value="${esc(S.reg.email)}" type="email" autocomplete="email"><button class="grande" data-act="registrar">Crear mi cuenta y unirme</button>${S.msg?`<p class="nota" style="color:var(--rojo)">${esc(S.msg)}</p>`:""}</div>`
+   +(D.vivo&&!D.nube?`<div class="caja"><h2>Únete al Club</h2><label>Tu nombre *</label><input class="campo" data-r="nombre" value="${esc(S.reg.nombre)}" maxlength="40" autocomplete="name"><label>Teléfono *</label><input class="campo" data-r="tel" value="${esc(S.reg.tel)}" inputmode="tel" maxlength="15" autocomplete="tel"><label>Correo (opcional)</label><input class="campo" data-r="email" value="${esc(S.reg.email)}" type="email" autocomplete="email"><button class="grande" data-act="registrar">Crear mi cuenta y unirme</button>${S.msg?`<p class="nota" style="color:var(--rojo)">${esc(S.msg)}</p>`:""}</div>`
      +`<div class="caja"><h2>¿Ya tienes cuenta?</h2><label>Teléfono</label><input class="campo" data-e="tel" value="${esc(S.ent.tel)}" inputmode="tel" maxlength="15"><label>Tu código (PUUK-…)</label><input class="campo" data-e="code" value="${esc(S.ent.code)}" maxlength="14" autocapitalize="characters"><button class="grande" style="background:var(--negro)" data-act="entrar">Entrar</button></div>`
     :`<div class="caja"><h2>Crear cuenta</h2><p class="nota">El registro en línea se activa cuando el restaurante conecte su sistema. Mientras tanto, pide tu tarjeta del Club en tu próxima visita.</p></div>`)+`</main>${pie(D)}`;
 }
@@ -188,11 +191,12 @@ function vLealtad(D){
 const EST={pending:["Recibido","Recibimos tu pedido","#E0A526"],confirmed:["Confirmado","Tu pedido fue confirmado","#3B82F6"],preparing:["Preparando","Estamos preparando tu pedido","#F97316"],ready:["Listo","¡Tu pedido está listo!","#22C55E"],delivered:["Entregado","¡Entregado! Gracias por tu preferencia","#4CAF6A"],cancelled:["Cancelado","Tu pedido fue cancelado","#B91C1C"]};
 const hace=ms=>{const m=Math.max(0,Math.floor(ms/60000));return m>=60?`${Math.floor(m/60)}h ${m%60}m`:`${m} min`;};
 const misPedidos=()=>{try{return JSON.parse(ls(K_PED)||"[]");}catch(e){return[];}};
-function pedidoSeg(){const d=panel(),s=S.seg;if(!d||!s)return null;const o=d.ordenes.find(x=>x.id===s.id);return o&&(dig(o.tel)===dig(s.tel)||(d.clientes.find(c=>c.id===o.cliente)||{}).t===s.tel)?o:null;}
+function pedidoSeg(){if(NUBE){const s=S.seg;return s&&SEGC&&SEGC.id==s.id?SEGC:null;}const d=panel(),s=S.seg;if(!d||!s)return null;const o=d.ordenes.find(x=>x.id===s.id);return o&&(dig(o.tel)===dig(s.tel)||(d.clientes.find(c=>c.id===o.cliente)||{}).t===s.tel)?o:null;}
 function vSeg(D){
   const o=pedidoSeg(),N=D.neg,wa=dig(N.tel);
   const barra=`<div class="w" style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--borde)"><button class="atras" data-act="tab" data-v="inicio">← Regresar</button><b>Mi Pedido</b><button class="chip" data-act="compartir">Compartir</button></div>`;
   if(!D.vivo)return barra+`<main class="w"><div class="caja"><h2>Seguimiento</h2><p class="nota">El seguimiento en vivo se activa cuando el restaurante conecte su sistema. Mientras tanto escríbenos por WhatsApp para saber cómo va tu pedido.</p>${wa?`<a class="grande" style="text-decoration:none" href="https://wa.me/${wa.length===10?"52"+wa:wa}" target="_blank" rel="noopener">Escribir por WhatsApp</a>`:""}</div></main>`;
+  if(!o&&D.nube&&S.seg)return barra+`<main class="w"><div class="caja"><p class="nota">Buscando tu pedido…</p></div></main>`;
   if(!o){const mp=misPedidos();
     return barra+`<main class="w"><div class="caja"><h2>Buscar mi pedido</h2>${mp.length?`<p class="nota">En este teléfono:</p>${mp.map(p=>`<button class="fila" style="padding:10px 0;align-items:center" data-act="ver" data-id="${p.id}" data-tel="${esc(p.tel)}"><b style="flex:1">Pedido #${p.id}</b><span class="nota">${new Date(p.ts).toLocaleString("es-MX")}</span></button>`).join("")}`:""}<label>Código de pedido (#)</label><input class="campo" data-s="id" value="${esc(S.segq.id)}" inputmode="numeric"><label>Teléfono con el que pediste</label><input class="campo" data-s="tel" value="${esc(S.segq.tel)}" inputmode="tel"><button class="grande" data-act="buscar">Ver mi pedido</button>${S.msg?`<p class="nota" style="color:var(--rojo)">${esc(S.msg)}</p>`:""}</div></main>`;}
   const e=EST[o.estado],pasos=["Recibido","Confirmado","Preparando",o.tipo==="domicilio"?"Listo para entregar":"Listo para recoger",o.tipo==="domicilio"?"Entregado":"Recogido"],claves=["pending","confirmed","preparing","ready","delivered"],ix=claves.indexOf(o.estado);
@@ -211,7 +215,7 @@ function vCarro(D){
   return `<div class="w" style="padding-top:14px"><button class="atras" data-act="tab" data-v="menu">← Seguir pidiendo</button></div><main class="w">`
    +`<section class="caja"><h2>Tu pedido</h2>`+(S.carro.length?S.carro.map((i,x)=>`<div class="fila" style="flex-wrap:wrap;align-items:center;padding:10px 0;border-top:1px solid var(--borde)"><span style="flex:1"><b>${esc(i.n)}</b>${(i.opc||[]).length?`<br><span class="nota">${esc(i.opc.join(", "))}</span>`:""}<br><span class="nota">${$m(i.c)} c/u</span></span><span class="cant"><button data-act="cmenos" data-i="${x}" aria-label="Quitar uno">−</button><b>${i.q}</b><button data-act="cmas" data-i="${x}" aria-label="Agregar uno">+</button></span><input class="campo" data-ni="${x}" value="${esc(i.nota||"")}" placeholder="Nota para este producto (ej. con alga, empanizado…)" maxlength="80" style="margin-top:6px"></div>`).join("")+`<div class="fila" style="align-items:center"><b style="flex:1">Total</b><b class="precio" style="font-size:1.4rem">${$m(total())}</b></div>`:`<p class="nota">Tu pedido está vacío.</p>`)+`</section>`
    +`<section class="caja"><h2>Tus datos</h2>${cta?`<p class="nota">✅ Pedirás con tu cuenta del Club (${esc(cta.code)}): ganas sellos con este pedido.</p>`:""}<label>Tu nombre *</label><input class="campo" data-f="nombre" value="${esc(f.nombre)}" maxlength="40" autocomplete="name" required><label>Teléfono * (10 dígitos)</label><input class="campo" data-f="tel" value="${esc(f.tel)}" inputmode="tel" maxlength="15" autocomplete="tel" required>${tipos}${dom?`<label>Dirección de entrega *</label><textarea class="campo" data-f="dir" rows="2" maxlength="140">${esc(f.dir)}</textarea>`:""}<label>Algo más que debamos saber (opcional)</label><textarea class="campo" data-f="nota" rows="2" maxlength="140">${esc(f.nota)}</textarea>`
-   +(D.vivo&&!cta?`<label class="op" style="text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--negro)"><input type="checkbox" data-fc="1" ${f.cuenta?"checked":""}> Crear mi cuenta y unirme al Club (sumo sellos con cada pedido)</label>`:"")+`</section>`
+   +(D.vivo&&!D.nube&&!cta?`<label class="op" style="text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--negro)"><input type="checkbox" data-fc="1" ${f.cuenta?"checked":""}> Crear mi cuenta y unirme al Club (sumo sellos con cada pedido)</label>`:"")+`</section>`
    +`<p class="nota">${D.vivo?"Tu pedido llega directo a la cocina y podrás seguirlo en tiempo real.":"Se abrirá WhatsApp con tu pedido listo para enviar."} El pago se hace al recibir tu pedido.</p>${S.msg?`<p class="nota" style="color:var(--rojo);font-weight:700">${esc(S.msg)}</p>`:""}<button class="grande" data-act="enviar" ${S.carro.length?"":"disabled"}>${D.vivo?"Enviar pedido a la cocina":"Enviar pedido por WhatsApp"} · ${$m(total())}</button></main>`;
 }
 function hojaProducto(D){
@@ -230,6 +234,7 @@ function render(){
   if(id){const e=$(id)||document.querySelector("["+id+"]");if(e&&e.focus){e.focus();try{e.setSelectionRange(ss,ss);}catch(x){}}}
   // seguimiento: recuerda el estado que el cliente ya vio, para avisarle (y sonar) solo cuando cambie
   if(S.tab==="seg"){if(ultimoEstado===null){const o=pedidoSeg();if(o)ultimoEstado=o.estado+"|"+o.tiempoEst;}}else ultimoEstado=null;
+  if(NUBE&&S.tab==="seg"&&S.seg&&!SEGC&&!segBusy)refrescarSeg();
 }
 
 /* ---------- acciones ---------- */
@@ -248,9 +253,9 @@ const acc={
  cmenos:b=>{const i=+b.dataset.i;S.carro[i].q--;if(S.carro[i].q<1)S.carro.splice(i,1);if(!S.carro.length)S.tab="menu";},
  tipo:b=>{S.f.tipo=b.dataset.v;},
  descargar:(b,D)=>{$("impr").innerHTML=`<h1>${esc(D.neg.n||"Menú")}</h1>`+D.cats.map(c=>`<h2>${esc(c.e)} ${esc(c.n)}</h2>`+c.p.map(p=>`<p><span><b>${esc(p.n)}</b>${p.d?` — ${esc(p.d)}`:""}</span><b>${$m(p.c)}</b></p>`).join("")).join("");setTimeout(()=>window.print(),50);},
- seguir:()=>{const mp=misPedidos();S.tab="seg";S.msg="";S.seg=mp.length?{id:mp[0].id,tel:mp[0].tel}:null;window.scrollTo(0,0);},
- ver:b=>{const mp=misPedidos().find(p=>String(p.id)===b.dataset.id);S.seg={id:+b.dataset.id,tel:b.dataset.tel||(mp&&mp.tel)||(cliente()||{}).t||""};S.tab="seg";S.msg="";window.scrollTo(0,0);},
- buscar:()=>{ultimoEstado=null;const id=+S.segq.id;S.seg={id,tel:S.segq.tel};if(!pedidoSeg()){S.seg=null;S.msg="No encontramos ese pedido. Revisa el número y el teléfono.";}else S.msg="";},
+ seguir:()=>{const mp=misPedidos();SEGC=null;ultimoEstado=null;S.tab="seg";S.msg="";S.seg=mp.length?{id:mp[0].id,tel:mp[0].tel}:null;window.scrollTo(0,0);},
+ ver:b=>{const mp=misPedidos().find(p=>String(p.id)===b.dataset.id);S.seg={id:+b.dataset.id,tel:b.dataset.tel||(mp&&mp.tel)||(cliente()||{}).t||""};SEGC=null;ultimoEstado=null;S.tab="seg";S.msg="";window.scrollTo(0,0);},
+ buscar:()=>{ultimoEstado=null;SEGC=null;const id=+S.segq.id;S.seg={id,tel:S.segq.tel};if(NUBE){S.msg="";return;}if(!pedidoSeg()){S.seg=null;S.msg="No encontramos ese pedido. Revisa el número y el teléfono.";}else S.msg="";},
  snd:()=>{S.snd=!S.snd;if(S.snd)pitar();},
  compartir:()=>{const o=pedidoSeg(),t=o?`Mi pedido #${o.id} en ${(datos().neg||{}).n||"el restaurante"}`:"Mi pedido";if(navigator.share)navigator.share({title:t,text:t,url:location.href.split("?")[0]}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t+" — "+location.href.split("?")[0]);},
  registrar:()=>{
@@ -276,12 +281,38 @@ function registrarCuenta(f){
   d.act=d.act||[];d.act.unshift({f:h.toLocaleString("es-MX"),t:`${c.n} se unió al Club desde el menú de clientes`});d.act=d.act.slice(0,30);
   ls(KEY,JSON.stringify(d));return{c};
 }
+async function llamar(fn,args){
+  const r=await fetch(NUBE.url+"/rest/v1/rpc/"+fn,{method:"POST",headers:{"Content-Type":"application/json",apikey:NUBE.key,Authorization:"Bearer "+NUBE.key},body:JSON.stringify(args)});
+  const t=await r.text();let j=null;try{j=JSON.parse(t);}catch(e){}
+  if(!r.ok)throw new Error((j&&j.message)||"Error "+r.status);
+  return j;
+}
+async function refrescarSeg(){
+  if(segBusy||!S.seg)return;segBusy=true;
+  try{
+    const o=await llamar("ver_pedido_cliente",{p_id:+S.seg.id,p_tel:dig(S.seg.tel)});
+    if(!o){S.seg=null;SEGC=null;S.msg="No encontramos ese pedido. Revisa el número y el teléfono.";}
+    else{const k=o.estado+"|"+o.tiempoEst;SEGC=o;if(k!==ultimoEstado){if(ultimoEstado!==null&&S.snd)pitar();ultimoEstado=k;}}
+  }catch(e){if(!SEGC){S.seg=null;S.msg="No se pudo consultar el pedido. Revisa tu conexión.";}}
+  segBusy=false;render();
+}
+async function enviarNube(D,f,tel){
+  if(S.enviando)return;S.enviando=true;S.msg="";render();
+  try{
+    const r=await llamar("crear_pedido_cliente",{p:{nombre:f.nombre.trim(),tel,tipo:mesa?"mesa":f.tipo,mesa:mesa||"",dir:f.dir.trim(),nota:f.nota.trim(),
+      items:S.carro.map(i=>({n:i.n,q:i.q,nota:(i.nota||"").trim(),opc:i.opc||[]}))}});
+    const mp=misPedidos();mp.unshift({id:r.id,tel,ts:r.ts});ls(K_PED,JSON.stringify(mp.slice(0,20)));
+    S.carro=[];SEGC=null;ultimoEstado=null;S.seg={id:r.id,tel};S.tab="seg";window.scrollTo(0,0);
+  }catch(e){S.msg=e instanceof TypeError?"No se pudo enviar. Revisa tu conexión o escríbenos por WhatsApp.":(e.message||"No se pudo enviar el pedido.");}
+  S.enviando=false;render();
+}
 function enviar(D){
   const f=S.f,tel=dig(f.tel);S.msg="";
   if(!S.carro.length)return;
   if(!f.nombre.trim()){S.msg="Escribe tu nombre.";return;}
   if(tel.length<10){S.msg="Escribe tu teléfono de 10 dígitos.";return;}
   if(f.tipo==="domicilio"&&!f.dir.trim()){S.msg="Escribe la dirección de entrega.";return;}
+  if(NUBE){enviarNube(D,f,tel);return;}
   if(D.vivo){
     let d=panel(),cta=cliente();
     if(!cta&&f.cuenta){const r=registrarCuenta({nombre:f.nombre.trim(),tel,email:f.email||""});if(r.error){S.msg=r.error;return;}cta=r.c;ls(K_CTA,JSON.stringify({id:cta.id,code:cta.code}));d=panel();}
@@ -329,6 +360,7 @@ document.addEventListener("change",e=>{
 });
 // Tiempo real: revisa el panel cada 2 s y avisa si cambió el estado del pedido que sigues
 setInterval(()=>{
+  if(NUBE){if(S.tab==="seg"&&S.seg&&++segTick%2===0)refrescarSeg();return;}
   const antes=rawCache;panel();
   if(S.tab==="seg"){const o=pedidoSeg(),k=o?o.estado+"|"+o.tiempoEst:null;if(k!==ultimoEstado){if(ultimoEstado!==null&&S.snd)pitar();ultimoEstado=k;render();}else if(o)render();}
   else if(rawCache!==antes&&!S.prod&&S.tab!=="carro"&&!document.activeElement.matches("input,textarea"))render();
