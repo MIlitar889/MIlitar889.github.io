@@ -1,0 +1,16 @@
+-- =====================================================================
+-- Sushi Pu'uk · 03_pedidos_de_clientes_OPCIONAL.sql
+-- NO correr todavía. Permite que el menú para clientes mande pedidos directo a la cocina
+-- desde el teléfono de cualquier persona (sin iniciar sesión).
+-- Riesgo: cualquiera con la dirección podría mandar pedidos falsos. Se activa cuando
+-- ya esté todo probado y con un límite de pedidos por persona.
+-- =====================================================================
+-- create policy clientes_mandan_pedidos on public.registros for insert to anon
+--   with check (
+--     coleccion = 'ordenes'
+--     and datos->>'origen' = 'cliente'
+--     and datos->>'estado' = 'pending'
+--     and (datos->>'total')::numeric between 1 and 5000
+--   );
+-- create policy clientes_ven_menu on public.registros for select to anon
+--   using (coleccion = 'menu');

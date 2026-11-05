@@ -1,0 +1,531 @@
+{
+ "fuente": "https://yomenu.com.mx/sushi-puuk (leído el 17/10/2026)",
+ "nota": "precio null = el precio depende de una opción (proteína, sabor, tamaño) o no aparece; fotos solo se conocen las 6 de Rollos de Lujo.",
+ "slogan_yomenu": "¡Sabor que Contagia!",
+ "contacto_yomenu": {
+  "direccion": "México 188, Ticul, Yucatán",
+  "telefono": "(997) 972 1720"
+ },
+ "logo_yomenu": "https://yomenu.com.mx/api/assets?asset=uitiispw9jsl0g8h52ux.png",
+ "categorias": [
+  {
+   "emoji": "⭐",
+   "categoria": "Rollos de Lujo",
+   "productos_en_editor_original": 6,
+   "productos": [
+    {
+     "nombre": "Pepin Roll",
+     "descripcion": "Por fuera: queso Philadelphia, pepino y togarashi. Por dentro: camarón capeado y piel de salmón frito.",
+     "precio": 150,
+     "foto": "https://yomenu.com.mx/api/assets?asset=9q82wsklogmiosovnanr.png"
+    },
+    {
+     "nombre": "Tarti Roll",
+     "descripcion": "Por fuera: alga nori, crema tártara y ajonjolí negro. Por dentro: philadelphia, aguacate, camarón curtido, salmón y surimi.",
+     "precio": 150,
+     "foto": "https://yomenu.com.mx/api/assets?asset=f5u1le4t2zgvjjlx1b2l.png"
+    },
+    {
+     "nombre": "Spicy Roll",
+     "descripcion": "Por fuera: queso manchego gratinado y pollo. Por dentro: philadelphia, aguacate, manzana capeada y salsa zake.",
+     "precio": 150,
+     "foto": "https://yomenu.com.mx/api/assets?asset=42yhwdx5bc4j1ex4ul6t.png"
+    },
+    {
+     "nombre": "Chispita Roll",
+     "descripcion": "Por fuera: chispas tempura, salmón, salsa spicy. Por dentro: philadelphia, aguacate y surimi capeado.",
+     "precio": 150,
+     "foto": "https://yomenu.com.mx/api/assets?asset=2a636c7f0qnim8wfdebo.png"
+    },
+    {
+     "nombre": "Kaki Roll",
+     "descripcion": "Por fuera: hoja de soya amarilla, salsa lucky y kakiage. Por dentro: philadelphia, camarón capeado y surimi.",
+     "precio": 150,
+     "foto": "https://yomenu.com.mx/api/assets?asset=oj2n8i5lxnayc1nhyu1p.png"
+    },
+    {
+     "nombre": "Salmi Crunch Roll",
+     "descripcion": "Por fuera: queso philadelphia y salmón frito, salsa chipotle. Por dentro: queso gratinado, aguacate, kakiage.",
+     "precio": 150,
+     "foto": "https://yomenu.com.mx/api/assets?asset=3dcmorx9ul9wr1lqiybk.png"
+    }
+   ]
+  },
+  {
+   "emoji": "🥗",
+   "categoria": "Entradas",
+   "productos_en_editor_original": 4,
+   "productos": [
+    {
+     "nombre": "Takoyaki",
+     "descripcion": "Bolitas de masa dorada, rellenas con el sabor de tu elección: pollo, camarón, arrachera o surimi. Mayonesa, hojuelas de pescado y alga nori.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Edamame con Tajín",
+     "descripcion": "Tiernos ejotes de soya al vapor, cubiertas con un toque de tajín para un equilibrio perfecto entre frescura y un toque picante.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Onigiri",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Kushiage",
+     "descripcion": "Banderilla rellena de queso philadelphia y proteína a elección.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Sushi Hot Dog",
+     "descripcion": "",
+     "precio": 120,
+     "foto": null
+    }
+   ]
+  },
+  {
+   "emoji": "🥢",
+   "categoria": "Rollos Clásicos",
+   "productos_en_editor_original": 7,
+   "productos": [
+    {
+     "nombre": "Pu'uk Roll 🍤",
+     "descripcion": "Por fuera: Ajonjolí mixto. Por dentro: camarón, pepino, filadelfia y aguacate.",
+     "precio": 140,
+     "foto": null
+    },
+    {
+     "nombre": "Pu'uk Roll 🐔",
+     "descripcion": "Por fuera: Ajonjolí mixto. Por dentro: pollo, pepino, filadelfia y aguacate.",
+     "precio": 110,
+     "foto": null
+    },
+    {
+     "nombre": "Pu'uk Roll 🐄",
+     "descripcion": "Por fuera: Ajonjolí mixto. Por dentro: arrachera, pepino, filadelfia y aguacate.",
+     "precio": 120,
+     "foto": null
+    },
+    {
+     "nombre": "Pu'uk Roll Mar y Tierra",
+     "descripcion": "Por fuera: Ajonjolí mixto. Por dentro: arrachera, camarón empanizado, pepino, filadelfia y aguacate.",
+     "precio": 140,
+     "foto": null
+    }
+   ]
+  },
+  {
+   "emoji": "🍣",
+   "categoria": "Especialidades",
+   "productos_en_editor_original": 17,
+   "productos": [
+    {
+     "nombre": "Dorito Cheese Roll",
+     "descripcion": "Por fuera: arroz empanizado con queso manchego y tocino. Por dentro: arrachera, doritos, filadelfia y aguacate hass.",
+     "precio": 135,
+     "foto": null
+    },
+    {
+     "nombre": "Chikin Roll",
+     "descripcion": "Por fuera: rollo empanizado. Por dentro: pollo, aguacate, pepino, filadelfia.",
+     "precio": 115,
+     "foto": null
+    },
+    {
+     "nombre": "Barbi Roll",
+     "descripcion": "Por fuera: rollo empanizado y salsa barbecue (BBQ). Por dentro: tocino, aguacate y zanahoria al vapor, filadelfia.",
+     "precio": 135,
+     "foto": null
+    },
+    {
+     "nombre": "Sushi Bus Roll",
+     "descripcion": "Por fuera: alga nori, tampico y sriracha. Por dentro: camarón empanizado, filadelfia, aguacate y pepino.",
+     "precio": 130,
+     "foto": null
+    },
+    {
+     "nombre": "Ebi Crunch Roll",
+     "descripcion": "Por fuera: rollo empanizado, queso manchego gratinado. Por dentro: camarón empanizado, filadelfia y aguacate.",
+     "precio": 140,
+     "foto": null
+    },
+    {
+     "nombre": "Pipiris Roll",
+     "descripcion": "Por fuera: láminas de fresa caramelizadas. Por dentro: arrachera, tocino, philadelphia.",
+     "precio": 135,
+     "foto": null
+    },
+    {
+     "nombre": "Ataulfo Roll",
+     "descripcion": "Por fuera: láminas de mango con gotas de anguila. Por dentro: alga, tocino y philadelphia.",
+     "precio": 135,
+     "foto": null
+    },
+    {
+     "nombre": "Lori Roll",
+     "descripcion": "Por fuera: aguacate con gotas de chipotle, sriracha y ajonjolí mixto. Por dentro: camarón empanizado, philadelphia y tampico.",
+     "precio": 135,
+     "foto": null
+    },
+    {
+     "nombre": "Flamin Roll",
+     "descripcion": "Por fuera: filadelfia, cheetos flamin hot triturado. Por dentro: camarón empanizado, aguacate y tampico.",
+     "precio": 135,
+     "foto": null
+    },
+    {
+     "nombre": "Masago Roll",
+     "descripcion": "Por fuera: tampico, camarón empanizado, gotas de chipotle, cubiertos de masago. Por dentro: filadelfia, pepino y aguacate.",
+     "precio": 140,
+     "foto": null
+    },
+    {
+     "nombre": "Tampico Roll",
+     "descripcion": "Por fuera: tampico. Por dentro: camarón natural, filadelfia, pepino y aguacate.",
+     "precio": 135,
+     "foto": null
+    },
+    {
+     "nombre": "Monky Roll",
+     "descripcion": "Por fuera: láminas de plátano frito. Por dentro: aguacate, philadelphia y surimi.",
+     "precio": 120,
+     "foto": null
+    },
+    {
+     "nombre": "Salmi Roll",
+     "descripcion": "Por fuera: salmón fresco. Por dentro: philadelphia, aguacate y pepino.",
+     "precio": 150,
+     "foto": null
+    },
+    {
+     "nombre": "Tempura Roll",
+     "descripcion": "Por fuera: verduras tempura. Por dentro: filadelfia, pepino y aguacate.",
+     "precio": 120,
+     "foto": null
+    },
+    {
+     "nombre": "Togarashi Cheese Roll",
+     "descripcion": "Por fuera: queso manchego gratinado, togarashi. Por dentro: arrachera, filadelfia y aguacate.",
+     "precio": 140,
+     "foto": null
+    },
+    {
+     "nombre": "Crispy Chicken Roll",
+     "descripcion": "Por fuera: rollo capeado. Por dentro: pollo empanizado, filadelfia y aguacate.",
+     "precio": 125,
+     "foto": null
+    },
+    {
+     "nombre": "Cocoyol Roll",
+     "descripcion": "Por fuera: coco, crema de coco, gotas de salsa anguila. Por dentro: pollo empanizado, filadelfia y manzana.",
+     "precio": 125,
+     "foto": null
+    },
+    {
+     "nombre": "Pulpi Roll",
+     "descripcion": "Por fuera: pulpo. Por dentro: philadelphia, surimi, pepino.",
+     "precio": 150,
+     "foto": null
+    },
+    {
+     "nombre": "Akira Roll",
+     "descripcion": "Por fuera: alga. Por dentro: verduras tempura, aguacate y philadelphia.",
+     "precio": 115,
+     "foto": null
+    }
+   ]
+  },
+  {
+   "emoji": "🍜",
+   "categoria": "Platos Fuertes",
+   "productos_en_editor_original": 11,
+   "productos": [
+    {
+     "nombre": "Yakimeshi de Pollo",
+     "descripcion": "Arroz frito al estilo japonés, salteado con trozos de pollo jugoso, vegetales frescos como zanahoria, cebolla y chícharos, sazonado con salsa de soya y un toque de aceite de ajonjolí.",
+     "precio": 160,
+     "foto": null
+    },
+    {
+     "nombre": "Yakimeshi de Arrachera",
+     "descripcion": "Arroz frito al estilo japonés, salteado con trozos de arrachera, vegetales frescos como zanahoria, cebolla y chícharos, sazonado con salsa de soya y un toque de aceite de ajonjolí.",
+     "precio": 160,
+     "foto": null
+    },
+    {
+     "nombre": "Yakimeshi de Camarón",
+     "descripcion": "Arroz frito al estilo japonés, salteado con trozos de camarón, vegetales frescos como zanahoria, cebolla y chícharos, sazonado con salsa de soya y un toque de aceite de ajonjolí.",
+     "precio": 160,
+     "foto": null
+    },
+    {
+     "nombre": "Ramen de Pollo",
+     "descripcion": "Caldo suave y aromático de pollo, servido con fideos al dente, trozos de pechuga de pollo jugosa, cebollín fresco, huevo cocido y alga nori.",
+     "precio": 150,
+     "foto": null
+    },
+    {
+     "nombre": "Ramen de Camarón",
+     "descripcion": "Caldo transparente y sabroso de camarón, fideos al dente, camarones jugosos y frescos, cebolleta, huevo cocido y alga nori.",
+     "precio": 180,
+     "foto": null
+    },
+    {
+     "nombre": "Naruto Ramen",
+     "descripcion": "Caldo sabroso con un toque marino, fideos al dente, camarones y salmón fresco, acompañado de kamaboko, cebolleta, huevo cocido y alga nori.",
+     "precio": 185,
+     "foto": null
+    },
+    {
+     "nombre": "Gohan",
+     "descripcion": "Deliciosa base de arroz japonés, coronado con la proteína de tu elección. Lo acompañamos con aguacate, trozos de philadelphia, ajonjolí tostado, un toque de tampico y nuestras salsas especiales.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Tenpayaki",
+     "descripcion": "",
+     "precio": 270,
+     "foto": null
+    },
+    {
+     "nombre": "Sopa Miso",
+     "descripcion": "",
+     "precio": 270,
+     "foto": null
+    },
+    {
+     "nombre": "Yakisoba Ebi",
+     "descripcion": "",
+     "precio": 270,
+     "foto": null
+    },
+    {
+     "nombre": "Tepanyaki Mixto",
+     "descripcion": "",
+     "precio": 270,
+     "foto": null
+    },
+    {
+     "nombre": "Yakisoba Tepan",
+     "descripcion": "",
+     "precio": 270,
+     "foto": null
+    }
+   ]
+  },
+  {
+   "emoji": "🍟",
+   "categoria": "Snacks",
+   "productos_en_editor_original": 3,
+   "productos": [
+    {
+     "nombre": "Orden de Papas",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Dedos de Queso",
+     "descripcion": "Orden de 5 dedos de queso.",
+     "precio": 85,
+     "foto": null
+    }
+   ]
+  },
+  {
+   "emoji": "🌮",
+   "categoria": "Tortas, Tacos y Hamburguesas",
+   "productos_en_editor_original": 6,
+   "productos": [
+    {
+     "nombre": "Tacos de Asado (1 pieza)",
+     "descripcion": "Jugosa carne asada, cocida a la perfección, acompañados de cebolla, cilantro y deliciosas salsas al gusto.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Tortas de Asado",
+     "descripcion": "Torta con jugosa carne de cerdo asada a la plancha, acompañada de crujiente repollo, aguacate cremoso y cebolla.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Hamburguesa",
+     "descripcion": "Incluye papas. Elige sirloin (puerco) o arrachera (res).",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Burrita",
+     "descripcion": "",
+     "precio": 25,
+     "foto": null
+    }
+   ]
+  },
+  {
+   "emoji": "🥤",
+   "categoria": "Bebidas",
+   "productos_en_editor_original": 14,
+   "productos": [
+    {
+     "nombre": "Iced Lattes",
+     "descripcion": "",
+     "precio": 68,
+     "foto": null
+    },
+    {
+     "nombre": "Cafés Nescafé (frío y caliente)",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Cantabile Coreano",
+     "descripcion": "",
+     "precio": 45,
+     "foto": null
+    },
+    {
+     "nombre": "Icee",
+     "descripcion": "Elige entre mora o cereza.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Refrescos Embotellados",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Coca sin azúcar 600 ml",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Coca (varios sabores)",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Cristal Sabores 300 ml",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Cristal Sabores 600 ml",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Jugos Naturales",
+     "descripcion": "Jamaica, cebada, horchata, tamarindo.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Jugos Naturales Litro",
+     "descripcion": "Jamaica, cebada, horchata, tamarindo.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Jugos de Temporada",
+     "descripcion": "Pregunta al mesero por nuestros jugos de temporada.",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Agua Purificada",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Fuze Té 600 ml",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Agua",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Agua Mineral",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Jugos Bida",
+     "descripcion": "",
+     "precio": null,
+     "foto": null
+    },
+    {
+     "nombre": "Jugo del Valle Naranja",
+     "descripcion": "600 ml.",
+     "precio": 20,
+     "foto": null
+    },
+    {
+     "nombre": "Arizona",
+     "descripcion": "",
+     "precio": 25,
+     "foto": null
+    },
+    {
+     "nombre": "Frapé Kit Kat / Frapé Capuccino",
+     "descripcion": "Deliciosa bebida helada y cremosa sabor Kit Kat elaborada con café de grano.",
+     "precio": 65,
+     "foto": null
+    }
+   ]
+  },
+  {
+   "emoji": "➕",
+   "categoria": "Extras",
+   "productos_en_editor_original": 4,
+   "productos": [
+    {
+     "nombre": "Queso",
+     "descripcion": "Queso manchego.",
+     "precio": 15,
+     "foto": null
+    },
+    {
+     "nombre": "Empanizado",
+     "descripcion": "",
+     "precio": 15,
+     "foto": null
+    },
+    {
+     "nombre": "Tampico",
+     "descripcion": "",
+     "precio": 15,
+     "foto": null
+    },
+    {
+     "nombre": "Sriracha",
+     "descripcion": "",
+     "precio": 15,
+     "foto": null
+    }
+   ]
+  }
+ ]
+}

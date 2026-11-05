@@ -1,0 +1,201 @@
+{
+ "nota": "Extraído de sushipuuk.com el 17/10/2026. Solo se pudo leer la categoría que la página carga al abrir (Rollos de Lujo); el resto se carga con JavaScript y no es visible desde fuera.",
+ "negocio": {
+  "nombre": "Sushi Pu'uk",
+  "marca_en_redes": "Wrapisimo (@wrapisimo)",
+  "descripcion": "En SushiPuuk combinamos tus rollos favoritos con una selección de productos coreanos como ramen, bebidas y snacks para que disfrutes una experiencia diferente en cada visita.",
+  "slogan_inicio": "Pide como un experto",
+  "destacados_inicio": [
+   "Dorito cheese roll",
+   "Yakisoba Ebi",
+   "Torta y tacos de asado"
+  ],
+  "botones_inicio": [
+   "ORDENA AHORA",
+   "SEGUIR MI PEDIDO",
+   "Ver Menú"
+  ],
+  "texto_og": "Ordena tu sushi favorito en línea"
+ },
+ "navegacion": [
+  "Inicio",
+  "Menú",
+  "Lealtad",
+  "Sucursales"
+ ],
+ "secciones": {
+  "visitanos": {
+   "titulo": "Visítanos",
+   "texto": "En Sushi Pu'uk, estamos comprometidos con brindarte la mejor experiencia. Encuéntranos en Ticul, Yucatán. Siempre con la misma calidad y atención que nos caracteriza."
+  },
+  "redes": {
+   "titulo": "¡SÍGUENOS EN REDES!",
+   "texto": "Conéctate con nosotros para estar al tanto de promociones especiales y novedades."
+  },
+  "pie": [
+   "sushipuuk.com",
+   "política de privacidad (sin enlace real)"
+  ]
+ },
+ "sucursales": [
+  {
+   "nombre": "TICUL",
+   "direccion": "C. 24 entre 25 y 25A, 97860 Ticul, Yuc.",
+   "telefono": "997 973 4867",
+   "whatsapp": "https://wa.me/529979734867?text=Hola%20Sushi%20Pu%27uk",
+   "mapa": "https://maps.app.goo.gl/riruB5NmgN89eDdF7",
+   "coordenadas_aprox": {
+    "lat": 20.396,
+    "lon": -89.539
+   }
+  }
+ ],
+ "redes": {
+  "facebook": "https://www.facebook.com/wrapisimo",
+  "facebook_perfil": "https://www.facebook.com/profile.php?id=61557520363854",
+  "instagram": "https://www.instagram.com/wrapisimo",
+  "tiktok": "https://www.tiktok.com/@wrapisimo",
+  "google_maps_negocio": "https://maps.app.goo.gl/SZgJqUKuYYYDKS3M6"
+ },
+ "diseno": {
+  "color_principal": "#C8372D",
+  "color_fondo": "#EDE8E0",
+  "dorado": "#B8972A",
+  "verde": "#2D5F4F",
+  "negro": "#1A1A1A",
+  "orientacion_app": "vertical",
+  "modo_app": "standalone (se instala como app)"
+ },
+ "categorias_menu": [
+  "Todos",
+  "Promos",
+  "Rollos de Lujo",
+  "Entradas",
+  "Rollos Clásicos",
+  "Especialidades",
+  "Platos Fuertes",
+  "Snacks",
+  "Tortas, Tacos y Hamburguesas",
+  "Bebidas",
+  "Extras"
+ ],
+ "productos_visibles": [
+  {
+   "categoria": "Rollos de Lujo",
+   "nombre": "Pepin Roll",
+   "descripcion": "Por fuera: queso Philadelphia, pepino y togarashi. Por dentro: camarón capeado y piel de salmón frito.",
+   "precio": 150,
+   "foto": "https://yomenu.com.mx/api/assets?asset=9q82wsklogmiosovnanr.png"
+  },
+  {
+   "categoria": "Rollos de Lujo",
+   "nombre": "Tarti Roll",
+   "descripcion": "Por fuera: alga nori, crema tártara y ajonjolí negro. Por dentro: philadelphia, aguacate, camarón curtido, salmón y surimi.",
+   "precio": 150,
+   "foto": "https://yomenu.com.mx/api/assets?asset=f5u1le4t2zgvjjlx1b2l.png"
+  },
+  {
+   "categoria": "Rollos de Lujo",
+   "nombre": "Spicy Roll",
+   "descripcion": "Por fuera: queso manchego gratinado y pollo. Por dentro: philadelphia, aguacate, manzana capeada y salsa zake.",
+   "precio": 150,
+   "foto": "https://yomenu.com.mx/api/assets?asset=42yhwdx5bc4j1ex4ul6t.png"
+  },
+  {
+   "categoria": "Rollos de Lujo",
+   "nombre": "Chispita Roll",
+   "descripcion": "Por fuera: chispas tempura, salmón, salsa spicy. Por dentro: philadelphia, aguacate y surimi capeado.",
+   "precio": 150,
+   "foto": "https://yomenu.com.mx/api/assets?asset=2a636c7f0qnim8wfdebo.png"
+  },
+  {
+   "categoria": "Rollos de Lujo",
+   "nombre": "Kaki Roll",
+   "descripcion": "Por fuera: hoja de soya amarilla, salsa lucky y kakiage. Por dentro: philadelphia, camarón capeado y surimi.",
+   "precio": 150,
+   "foto": "https://yomenu.com.mx/api/assets?asset=oj2n8i5lxnayc1nhyu1p.png"
+  },
+  {
+   "categoria": "Rollos de Lujo",
+   "nombre": "Salmi Crunch Roll",
+   "descripcion": "Por fuera: queso philadelphia y salmón frito, salsa chipotle. Por dentro: queso gratinado, aguacate, kakiage.",
+   "precio": 150,
+   "foto": "https://yomenu.com.mx/api/assets?asset=3dcmorx9ul9wr1lqiybk.png"
+  }
+ ],
+ "imagenes_a_respaldar": [
+  {
+   "uso": "Logo (cabecera, favicon y secciones)",
+   "archivo_sugerido": "logo.jpg",
+   "url": "https://media.base44.com/images/public/69fc8d7adf7a59448d6aa758/c18ef6a4c_IMG_1722.jpg"
+  },
+  {
+   "uso": "Imagen principal del inicio (1)",
+   "archivo_sugerido": "hero-1.png",
+   "url": "https://media.base44.com/images/public/69fc8d7adf7a59448d6aa758/5e3e28a0c_CopiadePlaganextArchivosEditables1080x1080cuadro.png"
+  },
+  {
+   "uso": "Imagen del inicio (precarga 2)",
+   "archivo_sugerido": "hero-2.png",
+   "url": "https://media.base44.com/images/public/69fc8d7adf7a59448d6aa758/56e263532_5.png"
+  },
+  {
+   "uso": "Imagen del inicio (precarga 3)",
+   "archivo_sugerido": "hero-3.png",
+   "url": "https://media.base44.com/images/public/69fc8d7adf7a59448d6aa758/0ef7f2b23_CopiadePlaganextArchivosEditables1080x1080cuadro.png"
+  },
+  {
+   "uso": "Ícono de la app / imagen al compartir en redes",
+   "archivo_sugerido": "icono-app.png",
+   "url": "https://media.base44.com/images/public/69fc8d7adf7a59448d6aa758/0541e99da_CopiadePlaganextArchivosEditables1080x1080cuadro3.png"
+  },
+  {
+   "uso": "Foto de producto: Pepin Roll",
+   "archivo_sugerido": "pepin-roll.png",
+   "url": "https://yomenu.com.mx/api/assets?asset=9q82wsklogmiosovnanr.png"
+  },
+  {
+   "uso": "Foto de producto: Tarti Roll",
+   "archivo_sugerido": "tarti-roll.png",
+   "url": "https://yomenu.com.mx/api/assets?asset=f5u1le4t2zgvjjlx1b2l.png"
+  },
+  {
+   "uso": "Foto de producto: Spicy Roll",
+   "archivo_sugerido": "spicy-roll.png",
+   "url": "https://yomenu.com.mx/api/assets?asset=42yhwdx5bc4j1ex4ul6t.png"
+  },
+  {
+   "uso": "Foto de producto: Chispita Roll",
+   "archivo_sugerido": "chispita-roll.png",
+   "url": "https://yomenu.com.mx/api/assets?asset=2a636c7f0qnim8wfdebo.png"
+  },
+  {
+   "uso": "Foto de producto: Kaki Roll",
+   "archivo_sugerido": "kaki-roll.png",
+   "url": "https://yomenu.com.mx/api/assets?asset=oj2n8i5lxnayc1nhyu1p.png"
+  },
+  {
+   "uso": "Foto de producto: Salmi Crunch Roll",
+   "archivo_sugerido": "salmi-crunch-roll.png",
+   "url": "https://yomenu.com.mx/api/assets?asset=3dcmorx9ul9wr1lqiybk.png"
+  }
+ ],
+ "servicios_externos_de_los_que_depende": [
+  {
+   "servicio": "Base44",
+   "para": "alojar el sitio, la base de datos y las imágenes del logo/hero"
+  },
+  {
+   "servicio": "YoMenu (yomenu.com.mx)",
+   "para": "fotos del menú"
+  },
+  {
+   "servicio": "OpenStreetMap + Leaflet (unpkg.com)",
+   "para": "mapa de la sección Visítanos"
+  },
+  {
+   "servicio": "Meta Pixel (Facebook)",
+   "para": "medición de anuncios; ID 437175948562905"
+  }
+ ]
+}

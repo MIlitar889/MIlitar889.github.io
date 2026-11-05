@@ -1,0 +1,12 @@
+/* Pantalla de inicio de sesión y aviso de conexión */
+body.sin-sesion .app{display:none}
+.menu__item[hidden]{display:none}
+#login{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;background:#1F1F1F}
+#login[hidden]{display:none}
+#login-form{width:100%;max-width:360px;background:#fff;border-radius:16px;padding:26px 22px;display:flex;flex-direction:column;gap:8px}
+#login-form h1{margin:0;font-size:1.6rem}
+#login-form p{margin:0 0 6px;color:#6B7280}
+#login-form .campo{width:100%;margin:0 0 6px;box-sizing:border-box}
+#login-msg{min-height:1.3em;font-size:.9rem;color:#B91C1C;margin:4px 0 0!important}
+#red{position:fixed;top:0;left:0;right:0;z-index:90;background:#B91C1C;color:#fff;text-align:center;padding:8px 12px;font-size:.9rem}
+#red[hidden]{display:none}

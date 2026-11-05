@@ -1,0 +1,36 @@
+/* Estructura: menú lateral y área de contenido */
+/* ==========================================================
+   3. ESTRUCTURA: menú lateral + contenido
+   ========================================================== */
+.app { display: flex; min-height: 100vh; }
+
+.menu {
+  width: var(--ancho-menu);
+  flex-shrink: 0;
+  background: var(--negro);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 12px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.menu__marca { text-align: center; padding-bottom: 18px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.menu__marca strong { display: block; color: var(--rojo); font-size: 1.1rem; letter-spacing: .06em; }
+.menu__marca span { font-size: .72rem; opacity: .5; }
+.menu__lista { display: flex; flex-direction: column; gap: 2px; overflow-y: auto; flex: 1; }
+.menu__pie { border-top: 1px solid rgba(255,255,255,.08); padding-top: 8px; display: flex; flex-direction: column; gap: 2px; }
+
+.menu__item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 12px; border-radius: 10px;
+  font-weight: 700; font-size: .9rem; text-align: left; width: 100%;
+  transition: background .15s;
+}
+.menu__item:hover { background: rgba(255,255,255,.1); }
+.menu__item[aria-current="page"] { background: var(--rojo); }
+.menu__item svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+.contenido { flex: 1; min-width: 0; padding: 32px; max-width: 1240px; margin: 0 auto; }
+.boton-menu { display: none; }

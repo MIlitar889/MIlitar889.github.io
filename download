@@ -1,0 +1,5 @@
+# Datos personales y respaldos: nunca subir
+clientes-privados*
+*respaldo*
+*.bak
+.env
