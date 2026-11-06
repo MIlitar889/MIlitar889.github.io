@@ -6,84 +6,736 @@
 <meta name="theme-color" content="#1A1A1A">
 <title>Menú</title>
 <style>
-:root{--rojo:#C8372D;--dorado:#B8972A;--fondo:#EDE8E0;--negro:#1A1A1A;--borde:#DDD6CA;--gris:#6B7280;--tarj:#F4F0E9}
-*{box-sizing:border-box}html,body{margin:0}
-body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--fondo);color:var(--negro);line-height:1.4;padding-bottom:150px}
-button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
-button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--dorado);outline-offset:2px}
-.w{max-width:560px;margin:0 auto;padding:0 16px}
-h1,h2,h3{margin:0;font-weight:400}
+:root {
+  --rojo: #C8372D;
+  --dorado: #B8972A;
+  --fondo: #EDE8E0;
+  --negro: #1A1A1A;
+  --borde: #DDD6CA;
+  --gris: #6B7280;
+  --tarj: #F4F0E9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background: var(--fondo);
+  color: var(--negro);
+  line-height: 1.4;
+  padding-bottom: 150px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+.w {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+}
+
 /* hero */
-.hero{background:#111 center/cover;color:#fff;border-radius:0 0 34px 34px;padding:70px 0 22px;position:relative;overflow:hidden;min-height:330px;display:flex;align-items:flex-end}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.25) 70%,rgba(0,0,0,.55))}
-.hero .w{position:relative;width:100%}
-.hero h1{font-size:2.1rem;letter-spacing:.02em}.hero p{margin:6px 0 14px;opacity:.9;font-size:.92rem}
-.logo-top{position:absolute;top:16px;left:0;right:0;text-align:center;z-index:1;font-weight:800;letter-spacing:.12em;font-size:.8rem}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:12px 20px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.88rem}
-.rojo{background:var(--rojo);color:#fff}.suave{background:rgba(255,255,255,.18);color:#fff}.rosa{background:#E8A39E;color:#fff}
-.busca{display:flex;gap:10px;margin-top:16px}.busca input{flex:1;border:0;border-radius:99px;padding:14px 18px;font:inherit}
-.pin{width:50px;height:50px;border-radius:50%;background:#fff;color:var(--negro);font-size:1.2rem}
+.hero {
+  background: #111 center/cover;
+  color: #fff;
+  border-radius: 0 0 34px 34px;
+  padding: 70px 0 22px;
+  position: relative;
+  overflow: hidden;
+  min-height: 330px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.25) 70%,rgba(0,0,0,.55));
+}
+
+.hero .w {
+  position: relative;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: 2.1rem;
+  letter-spacing: .02em;
+}
+
+.hero p {
+  margin: 6px 0 14px;
+  opacity: .9;
+  font-size: .92rem;
+}
+
+.logo-top {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+  font-weight: 800;
+  letter-spacing: .12em;
+  font-size: .8rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: .88rem;
+}
+
+.rojo {
+  background: var(--rojo);
+  color: #fff;
+}
+
+.suave {
+  background: rgba(255,255,255,.18);
+  color: #fff;
+}
+
+.rosa {
+  background: #E8A39E;
+  color: #fff;
+}
+
+.busca {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.busca input {
+  flex: 1;
+  border: 0;
+  border-radius: 99px;
+  padding: 14px 18px;
+  font: inherit;
+}
+
+.pin {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--negro);
+  font-size: 1.2rem;
+}
+
 /* categorías */
-.tabs{display:flex;gap:6px;overflow-x:auto;margin:0 -16px;padding:14px 16px 0;border-bottom:3px solid #D6D0C6;scrollbar-width:none}
-.tab{white-space:nowrap;padding:10px 16px;color:var(--gris);border-radius:99px 99px 0 0;border:2px solid transparent}
-.tab[aria-selected="true"]{border-color:#9AA1AD;border-radius:99px;color:var(--negro);margin-bottom:6px}
+.tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  margin: 0 -16px;
+  padding: 14px 16px 0;
+  border-bottom: 3px solid #D6D0C6;
+  scrollbar-width: none;
+}
+
+.tab {
+  white-space: nowrap;
+  padding: 10px 16px;
+  color: var(--gris);
+  border-radius: 99px 99px 0 0;
+  border: 2px solid transparent;
+}
+
+.tab[aria-selected="true"] {
+  border-color: #9AA1AD;
+  border-radius: 99px;
+  color: var(--negro);
+  margin-bottom: 6px;
+}
+
 /* lista y cuadrícula */
-.fila{display:flex;gap:14px;padding:16px 0;text-align:left;width:100%;align-items:flex-start}
-.fila h3{font-size:1.35rem;letter-spacing:.02em}.fila p{margin:4px 0 6px;color:var(--gris);font-size:.88rem}
-.precio{color:var(--rojo);font-size:1.15rem}
-.foto{width:100px;height:120px;border-radius:16px;object-fit:cover;background:#D9D2C5;flex-shrink:0;display:grid;place-items:center;font-size:2rem}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
-.card{background:var(--tarj);border-radius:16px;overflow:hidden;text-align:left;position:relative}
-.card img,.card .foto{width:100%;height:112px;border-radius:0}
-.card .t{padding:8px 10px 10px}.card b{display:block;font-weight:400;font-size:.9rem;min-height:2.5em}
-.mas{position:absolute;right:8px;bottom:8px;width:32px;height:32px;border-radius:50%;background:var(--rojo);color:#fff;font-size:1.2rem;line-height:1}
-.q{display:flex;gap:8px;margin:14px 0}
+.fila {
+  display: flex;
+  gap: 14px;
+  padding: 16px 0;
+  text-align: left;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.fila h3 {
+  font-size: 1.35rem;
+  letter-spacing: .02em;
+}
+
+.fila p {
+  margin: 4px 0 6px;
+  color: var(--gris);
+  font-size: .88rem;
+}
+
+.precio {
+  color: var(--rojo);
+  font-size: 1.15rem;
+}
+
+.foto {
+  width: 100px;
+  height: 120px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: #D9D2C5;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.card {
+  background: var(--tarj);
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+  position: relative;
+}
+
+.card img,
+.card .foto {
+  width: 100%;
+  height: 112px;
+  border-radius: 0;
+}
+
+.card .t {
+  padding: 8px 10px 10px;
+}
+
+.card b {
+  display: block;
+  font-weight: 400;
+  font-size: .9rem;
+  min-height: 2.5em;
+}
+
+.mas {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--rojo);
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.q {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0;
+}
+
 /* tarjetas */
-.caja{background:var(--tarj);border-radius:18px;padding:16px;margin:12px 0}
-.caja h2{font-size:1.1rem;font-weight:700;margin-bottom:8px}
-.nota{color:var(--gris);font-size:.85rem}
-label{display:block;font-size:.78rem;font-weight:700;color:var(--gris);margin:12px 0 4px;text-transform:uppercase;letter-spacing:.03em}
-.campo{width:100%;padding:12px;border-radius:12px;border:1px solid var(--borde);font:inherit;background:#fff}
-.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:9px 14px;border-radius:99px;background:#fff;border:1px solid var(--borde);font-weight:700;font-size:.88rem}
-.chip[aria-pressed="true"]{background:var(--rojo);color:#fff;border-color:var(--rojo)}
-.cant{display:flex;align-items:center;gap:10px}.cant button{width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid var(--borde);font-weight:800}
+.caja {
+  background: var(--tarj);
+  border-radius: 18px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.caja h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.nota {
+  color: var(--gris);
+  font-size: .85rem;
+}
+
+label {
+  display: block;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--gris);
+  margin: 12px 0 4px;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+
+.campo {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--borde);
+  font: inherit;
+  background: #fff;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 9px 14px;
+  border-radius: 99px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  font-weight: 700;
+  font-size: .88rem;
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--rojo);
+  color: #fff;
+  border-color: var(--rojo);
+}
+
+.cant {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cant button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--borde);
+  font-weight: 800;
+}
+
 /* barra inferior */
-.nav{position:fixed;left:0;right:0;bottom:0;background:var(--fondo);border-radius:26px 26px 0 0;box-shadow:0 -4px 20px rgba(0,0,0,.08);display:flex;justify-content:space-around;padding:10px 8px calc(10px + env(safe-area-inset-bottom));z-index:20;max-width:560px;margin:0 auto}
-.nav button{display:grid;justify-items:center;gap:2px;padding:8px 18px;border-radius:18px;color:var(--gris);font-size:.78rem}.nav b{font-size:1.4rem;font-weight:400}
-.nav button[aria-current="page"]{background:var(--rojo);color:#fff}
-.carro{position:fixed;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));max-width:536px;margin:0 auto;z-index:19}
-.carro button{width:100%;display:flex;justify-content:space-between;background:var(--negro);color:#fff;border-radius:16px;padding:15px 18px;font-weight:800}
+.nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--fondo);
+  border-radius: 26px 26px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
+  z-index: 20;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.nav button {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 8px 18px;
+  border-radius: 18px;
+  color: var(--gris);
+  font-size: .78rem;
+}
+
+.nav b {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.nav button[aria-current="page"] {
+  background: var(--rojo);
+  color: #fff;
+}
+
+.carro {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(86px + env(safe-area-inset-bottom));
+  max-width: 536px;
+  margin: 0 auto;
+  z-index: 19;
+}
+
+.carro button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: var(--negro);
+  color: #fff;
+  border-radius: 16px;
+  padding: 15px 18px;
+  font-weight: 800;
+}
+
 /* hoja de producto / ventanas */
-.vel{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:40;display:flex;align-items:flex-end}
-.hoja{background:var(--fondo);width:100%;max-width:560px;margin:0 auto;border-radius:24px 24px 0 0;max-height:92vh;overflow-y:auto;padding:0 0 20px}
-.hoja img.gr{width:100%;height:220px;object-fit:cover}
-.hoja .in{padding:0 18px}
-fieldset{border:1px solid var(--borde);border-radius:14px;margin:12px 0;padding:6px 12px}legend{font-weight:800;padding:0 6px}
-.op{display:flex;gap:10px;align-items:center;padding:8px 0}
-.grande{display:flex;justify-content:center;width:100%;background:var(--rojo);color:#fff;border-radius:16px;padding:16px;font-weight:800;margin-top:14px}.grande:disabled{opacity:.4}
-.atras{background:#1A1A1A;color:#fff;border-radius:12px;padding:10px 16px;font-weight:700}
+.vel {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 40;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hoja {
+  background: var(--fondo);
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  border-radius: 24px 24px 0 0;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 0 0 20px;
+}
+
+.hoja img.gr {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.hoja .in {
+  padding: 0 18px;
+}
+
+fieldset {
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  margin: 12px 0;
+  padding: 6px 12px;
+}
+
+legend {
+  font-weight: 800;
+  padding: 0 6px;
+}
+
+.op {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.grande {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: var(--rojo);
+  color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  font-weight: 800;
+  margin-top: 14px;
+}
+
+.grande:disabled {
+  opacity: .4;
+}
+
+.atras {
+  background: #1A1A1A;
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 700;
+}
+
 /* lealtad */
-.tarj{border-radius:26px;padding:16px;color:var(--t);background:var(--f) center/cover;position:relative;overflow:hidden}
-.tarj::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}.tarj>*{position:relative}
-.sellos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;justify-items:center;margin:14px 0}
-.sello{width:56px;height:56px;border-radius:50%;border:2px dashed rgba(255,255,255,.55);display:grid;place-items:center;color:rgba(255,255,255,.7);font-size:1.1rem}
-.sello.on{background:var(--a);border:0;color:#111}.sello img{width:32px;height:32px;border-radius:50%;object-fit:cover}
-.prog{height:10px;background:rgba(255,255,255,.2);border-radius:99px;overflow:hidden;flex:1}.prog i{display:block;height:100%;background:var(--rojo)}
-.cod{background:#fff;border-radius:18px;padding:14px;text-align:center;margin-top:12px;color:#111}.cod svg{width:100%;height:70px}.cod code{letter-spacing:.2em;font-weight:700}
-.oscuro{background:#1A1A1A;color:#fff;border-radius:18px;padding:16px;margin:12px 0}
-.dos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tarj {
+  border-radius: 26px;
+  padding: 16px;
+  color: var(--t);
+  background: var(--f) center/cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarj::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+}
+
+.tarj>* {
+  position: relative;
+}
+
+.sellos {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+  justify-items: center;
+  margin: 14px 0;
+}
+
+.sello {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255,255,255,.55);
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,.7);
+  font-size: 1.1rem;
+}
+
+.sello.on {
+  background: var(--a);
+  border: 0;
+  color: #111;
+}
+
+.sello img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.prog {
+  height: 10px;
+  background: rgba(255,255,255,.2);
+  border-radius: 99px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.prog i {
+  display: block;
+  height: 100%;
+  background: var(--rojo);
+}
+
+.cod {
+  background: #fff;
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+  margin-top: 12px;
+  color: #111;
+}
+
+.cod svg {
+  width: 100%;
+  height: 70px;
+}
+
+.cod code {
+  letter-spacing: .2em;
+  font-weight: 700;
+}
+
+.oscuro {
+  background: #1A1A1A;
+  color: #fff;
+  border-radius: 18px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.dos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
 /* seguimiento */
-.estado{border-radius:22px;padding:20px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.estado b{font-size:1.6rem}.pasos{display:flex;background:var(--tarj);border-radius:18px;padding:16px 6px;margin:12px 0}
-.p{flex:1;text-align:center;position:relative;font-size:.7rem;color:var(--gris)}.p span{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;border:2px solid #D1D5DB;position:relative;z-index:1}
-.p::before{content:"";position:absolute;top:16px;left:-50%;width:100%;height:3px;background:#D1D5DB}.p:first-child::before{display:none}
-.p.h::before{background:#4CAF6A}.p.h span,.p.a span{background:#4CAF6A;border-color:#4CAF6A;color:#fff}.p.a{color:var(--negro);font-weight:700}
-.codigo{background:#1A1A1A;color:#fff;border-radius:18px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;border:2px solid var(--rojo)}
-.codigo b{font-size:2rem;letter-spacing:.04em}.verde{background:#4CD16B;color:#fff;border-radius:14px;padding:10px 16px;font-weight:700}
-.pie{background:#1E1A19;color:#fff;margin-top:30px;padding:26px 0;text-align:center}.pie h2{font-weight:300;letter-spacing:.06em}
-.redes{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}.redes a{padding:10px 16px;border:1px solid #444;border-radius:14px;color:#fff;text-decoration:none;font-size:.85rem}
-#impr{display:none}
-@media print{body>*:not(#impr){display:none!important}#impr{display:block;padding:20px;font-family:Georgia,serif}#impr h1{text-align:center}#impr h2{border-bottom:1px solid #999;margin:18px 0 6px}#impr p{margin:4px 0;display:flex;justify-content:space-between;gap:20px}}
+.estado {
+  border-radius: 22px;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.estado b {
+  font-size: 1.6rem;
+}
+
+.pasos {
+  display: flex;
+  background: var(--tarj);
+  border-radius: 18px;
+  padding: 16px 6px;
+  margin: 12px 0;
+}
+
+.p {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  font-size: .7rem;
+  color: var(--gris);
+}
+
+.p span {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #D1D5DB;
+  position: relative;
+  z-index: 1;
+}
+
+.p::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: -50%;
+  width: 100%;
+  height: 3px;
+  background: #D1D5DB;
+}
+
+.p:first-child::before {
+  display: none;
+}
+
+.p.h::before {
+  background: #4CAF6A;
+}
+
+.p.h span,
+.p.a span {
+  background: #4CAF6A;
+  border-color: #4CAF6A;
+  color: #fff;
+}
+
+.p.a {
+  color: var(--negro);
+  font-weight: 700;
+}
+
+.codigo {
+  background: #1A1A1A;
+  color: #fff;
+  border-radius: 18px;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid var(--rojo);
+}
+
+.codigo b {
+  font-size: 2rem;
+  letter-spacing: .04em;
+}
+
+.verde {
+  background: #4CD16B;
+  color: #fff;
+  border-radius: 14px;
+  padding: 10px 16px;
+  font-weight: 700;
+}
+
+.pie {
+  background: #1E1A19;
+  color: #fff;
+  margin-top: 30px;
+  padding: 26px 0;
+  text-align: center;
+}
+
+.pie h2 {
+  font-weight: 300;
+  letter-spacing: .06em;
+}
+
+.redes {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.redes a {
+  padding: 10px 16px;
+  border: 1px solid #444;
+  border-radius: 14px;
+  color: #fff;
+  text-decoration: none;
+  font-size: .85rem;
+}
+
+#impr {
+  display: none;
+}
+
+@media print {
+  body>*:not(#impr) {
+    display: none!important;
+  }
+  #impr {
+    display: block;
+    padding: 20px;
+    font-family: Georgia,serif;
+  }
+  #impr h1 {
+    text-align: center;
+  }
+  #impr h2 {
+    border-bottom: 1px solid #999;
+    margin: 18px 0 6px;
+  }
+  #impr p {
+    margin: 4px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+}
 </style>
 </head>
 <body>
@@ -94,278 +746,2011 @@ fieldset{border:1px solid var(--borde);border-radius:14px;margin:12px 0;padding:
    Lleva dentro una copia del menú que genera el panel. Si se abre junto al panel (mismo navegador y sitio) usa los datos
    en vivo: pedidos, cuentas del Club y seguimiento funcionan al instante. Si no, el pedido se manda por WhatsApp. */
 // Conexión con la base de datos (URL y llave publishable: públicas). Los pedidos se mandan con funciones seguras de Supabase.
-const NUBE={url:"https://xrrmszcamkgoxewugpzh.supabase.co",key:"sb_publishable_Ls-pMjp4EQ5huVPe7hNKGA_H6JZZt7D"};
-let SEGC=null,segBusy=false,segTick=0;
-let ultimoEstado=null;
-const SNAP={"generado":"28/10/2026, 5:50:37 a.m.","neg":{"n":"Sushi Pu'uk","sucursal":"Ticul","lema":"Sabor que contagia","tel":"9979734867","dir":"C. 24 entre 25 y 25A, 97860 Ticul, Yuc.","hor":"","maps":"https://maps.app.goo.gl/riruB5NmgN89eDdF7","fb":"https://www.facebook.com/profile.php?id=61557520363854","ig":"https://www.instagram.com","tt":"https://www.tiktok.com"},"menu":[{"e":"⭐","n":"Rollos de Lujo","p":[{"n":"Pepin Roll","c":150,"d":"Por fuera: queso Philadelphia, pepino y togarashi. Por dentro: camarón capeado y piel de salmón frito.","img":"assets/fotos/pepin-roll.png","on":true,"m":["Complementos"],"r":"https://yomenu.com.mx/api/assets?asset=9q82wsklogmiosovnanr.png"},{"n":"Tarti Roll","c":150,"d":"Por fuera: alga nori, crema tártara y ajonjolí negro. Por dentro: philadelphia, aguacate, camarón curtido, salmón y surimi.","img":"assets/fotos/tarti-roll.png","on":true,"m":["Complementos"],"r":"https://yomenu.com.mx/api/assets?asset=f5u1le4t2zgvjjlx1b2l.png"},{"n":"Spicy Roll","c":150,"d":"Por fuera: queso manchego gratinado y pollo. Por dentro: philadelphia, aguacate, manzana capeada y salsa zake.","img":"assets/fotos/spicy-roll.png","on":true,"m":["Complementos"],"r":"https://yomenu.com.mx/api/assets?asset=42yhwdx5bc4j1ex4ul6t.png"},{"n":"Chispita Roll","c":150,"d":"Por fuera: chispas tempura, salmón, salsa spicy. Por dentro: philadelphia, aguacate y surimi capeado.","img":"assets/fotos/chispita-roll.png","on":true,"m":["Complementos"],"r":"https://yomenu.com.mx/api/assets?asset=2a636c7f0qnim8wfdebo.png"},{"n":"Kaki Roll","c":150,"d":"Por fuera: hoja de soya amarilla, salsa lucky y kakiage. Por dentro: philadelphia, camarón capeado y surimi.","img":"assets/fotos/kaki-roll.png","on":true,"m":["Complementos"],"r":"https://yomenu.com.mx/api/assets?asset=oj2n8i5lxnayc1nhyu1p.png"},{"n":"Salmi Crunch Roll","c":150,"d":"Por fuera: queso philadelphia y salmón frito, salsa chipotle. Por dentro: queso gratinado, aguacate, kakiage.","img":"assets/fotos/salmi-crunch-roll.png","on":true,"m":["Complementos"],"r":"https://yomenu.com.mx/api/assets?asset=3dcmorx9ul9wr1lqiybk.png"}]},{"e":"🥗","n":"Entradas","p":[{"n":"Sushi Hot Dog","c":120,"d":"","img":"","on":true,"m":[]}]},{"e":"🥢","n":"Rollos Clásicos","p":[{"n":"Pu'uk Roll 🍤","c":140,"d":"Por fuera: Ajonjolí mixto. Por dentro: camarón, pepino, filadelfia y aguacate.","img":"","on":true,"m":[]},{"n":"Pu'uk Roll 🐔","c":110,"d":"Por fuera: Ajonjolí mixto. Por dentro: pollo, pepino, filadelfia y aguacate.","img":"","on":true,"m":[]},{"n":"Pu'uk Roll 🐄","c":120,"d":"Por fuera: Ajonjolí mixto. Por dentro: arrachera, pepino, filadelfia y aguacate.","img":"","on":true,"m":[]},{"n":"Pu'uk Roll Mar y Tierra","c":140,"d":"Por fuera: Ajonjolí mixto. Por dentro: arrachera, camarón empanizado, pepino, filadelfia y aguacate.","img":"","on":true,"m":[]}]},{"e":"🍣","n":"Especialidades","p":[{"n":"Dorito Cheese Roll","c":135,"d":"Por fuera: arroz empanizado con queso manchego y tocino. Por dentro: arrachera, doritos, filadelfia y aguacate hass.","img":"","on":true,"m":[]},{"n":"Chikin Roll","c":115,"d":"Por fuera: rollo empanizado. Por dentro: pollo, aguacate, pepino, filadelfia.","img":"","on":true,"m":[]},{"n":"Barbi Roll","c":135,"d":"Por fuera: rollo empanizado y salsa barbecue (BBQ). Por dentro: tocino, aguacate y zanahoria al vapor, filadelfia.","img":"","on":true,"m":[]},{"n":"Sushi Bus Roll","c":130,"d":"Por fuera: alga nori, tampico y sriracha. Por dentro: camarón empanizado, filadelfia, aguacate y pepino.","img":"","on":true,"m":[]},{"n":"Ebi Crunch Roll","c":140,"d":"Por fuera: rollo empanizado, queso manchego gratinado. Por dentro: camarón empanizado, filadelfia y aguacate.","img":"","on":true,"m":[]},{"n":"Pipiris Roll","c":135,"d":"Por fuera: láminas de fresa caramelizadas. Por dentro: arrachera, tocino, philadelphia.","img":"","on":true,"m":[]},{"n":"Ataulfo Roll","c":135,"d":"Por fuera: láminas de mango con gotas de anguila. Por dentro: alga, tocino y philadelphia.","img":"","on":true,"m":[]},{"n":"Lori Roll","c":135,"d":"Por fuera: aguacate con gotas de chipotle, sriracha y ajonjolí mixto. Por dentro: camarón empanizado, philadelphia y tampico.","img":"","on":true,"m":[]},{"n":"Flamin Roll","c":135,"d":"Por fuera: filadelfia, cheetos flamin hot triturado. Por dentro: camarón empanizado, aguacate y tampico.","img":"","on":true,"m":[]},{"n":"Masago Roll","c":140,"d":"Por fuera: tampico, camarón empanizado, gotas de chipotle, cubiertos de masago. Por dentro: filadelfia, pepino y aguacate.","img":"","on":true,"m":[]},{"n":"Tampico Roll","c":135,"d":"Por fuera: tampico. Por dentro: camarón natural, filadelfia, pepino y aguacate.","img":"","on":true,"m":[]},{"n":"Monky Roll","c":120,"d":"Por fuera: láminas de plátano frito. Por dentro: aguacate, philadelphia y surimi.","img":"","on":true,"m":[]},{"n":"Salmi Roll","c":150,"d":"Por fuera: salmón fresco. Por dentro: philadelphia, aguacate y pepino.","img":"","on":true,"m":[]},{"n":"Tempura Roll","c":120,"d":"Por fuera: verduras tempura. Por dentro: filadelfia, pepino y aguacate.","img":"","on":true,"m":[]},{"n":"Togarashi Cheese Roll","c":140,"d":"Por fuera: queso manchego gratinado, togarashi. Por dentro: arrachera, filadelfia y aguacate.","img":"","on":true,"m":[]},{"n":"Crispy Chicken Roll","c":125,"d":"Por fuera: rollo capeado. Por dentro: pollo empanizado, filadelfia y aguacate.","img":"","on":true,"m":[]},{"n":"Cocoyol Roll","c":125,"d":"Por fuera: coco, crema de coco, gotas de salsa anguila. Por dentro: pollo empanizado, filadelfia y manzana.","img":"","on":true,"m":[]},{"n":"Pulpi Roll","c":150,"d":"Por fuera: pulpo. Por dentro: philadelphia, surimi, pepino.","img":"","on":true,"m":[]},{"n":"Akira Roll","c":115,"d":"Por fuera: alga. Por dentro: verduras tempura, aguacate y philadelphia.","img":"","on":true,"m":[]}]},{"e":"🍜","n":"Platos Fuertes","p":[{"n":"Yakimeshi de Pollo","c":160,"d":"Arroz frito al estilo japonés, salteado con trozos de pollo jugoso, vegetales frescos como zanahoria, cebolla y chícharos, sazonado con salsa de soya y un toque de aceite de ajonjolí.","img":"","on":true,"m":[]},{"n":"Yakimeshi de Arrachera","c":160,"d":"Arroz frito al estilo japonés, salteado con trozos de arrachera, vegetales frescos como zanahoria, cebolla y chícharos, sazonado con salsa de soya y un toque de aceite de ajonjolí.","img":"","on":true,"m":[]},{"n":"Yakimeshi de Camarón","c":160,"d":"Arroz frito al estilo japonés, salteado con trozos de camarón, vegetales frescos como zanahoria, cebolla y chícharos, sazonado con salsa de soya y un toque de aceite de ajonjolí.","img":"","on":true,"m":[]},{"n":"Ramen de Pollo","c":150,"d":"Caldo suave y aromático de pollo, servido con fideos al dente, trozos de pechuga de pollo jugosa, cebollín fresco, huevo cocido y alga nori.","img":"","on":true,"m":[]},{"n":"Ramen de Camarón","c":180,"d":"Caldo transparente y sabroso de camarón, fideos al dente, camarones jugosos y frescos, cebolleta, huevo cocido y alga nori.","img":"","on":true,"m":[]},{"n":"Naruto Ramen","c":185,"d":"Caldo sabroso con un toque marino, fideos al dente, camarones y salmón fresco, acompañado de kamaboko, cebolleta, huevo cocido y alga nori.","img":"","on":true,"m":[]},{"n":"Tenpayaki","c":270,"d":"","img":"","on":true,"m":[]},{"n":"Sopa Miso","c":270,"d":"","img":"","on":true,"m":[]},{"n":"Yakisoba Ebi","c":270,"d":"","img":"","on":true,"m":[]},{"n":"Tepanyaki Mixto","c":270,"d":"","img":"","on":true,"m":[]},{"n":"Yakisoba Tepan","c":270,"d":"","img":"","on":true,"m":[]}]},{"e":"🍟","n":"Snacks","p":[{"n":"Dedos de Queso","c":85,"d":"Orden de 5 dedos de queso.","img":"","on":true,"m":[]}]},{"e":"🌮","n":"Tortas, Tacos y Hamburguesas","p":[{"n":"Burrita","c":25,"d":"","img":"","on":true,"m":[]}]},{"e":"🥤","n":"Bebidas","p":[{"n":"Iced Lattes","c":68,"d":"","img":"","on":true,"m":[]},{"n":"Cantabile Coreano","c":45,"d":"","img":"","on":true,"m":[]},{"n":"Jugo del Valle Naranja","c":20,"d":"600 ml.","img":"","on":true,"m":[]},{"n":"Arizona","c":25,"d":"","img":"","on":true,"m":[]},{"n":"Frapé Kit Kat / Frapé Capuccino","c":65,"d":"Deliciosa bebida helada y cremosa sabor Kit Kat elaborada con café de grano.","img":"","on":true,"m":[]}]},{"e":"➕","n":"Extras","p":[{"n":"Queso","c":15,"d":"Queso manchego.","img":"","on":true,"m":[]},{"n":"Empanizado","c":15,"d":"","img":"","on":true,"m":[]},{"n":"Tampico","c":15,"d":"","img":"","on":true,"m":[]},{"n":"Sriracha","c":15,"d":"","img":"","on":true,"m":[]}]}],"mods":[{"n":"Tipo de Torta","k":3,"o":[],"req":false},{"n":"Nuevo modificador","k":1,"o":[],"req":false},{"n":"Proteína a elegir","k":3,"o":[],"req":false},{"n":"¿Mixto o sencillo?","k":2,"o":[],"req":false},{"n":"Proteína","k":1,"o":[],"req":false},{"n":"Proteínas","k":1,"o":[],"req":false},{"n":"Presentación Agua Mineral","k":4,"o":[],"req":false},{"n":"Tipo de Café","k":4,"o":[],"req":false},{"n":"Sabor Jugo Bida 200ml","k":4,"o":[],"req":false},{"n":"Sabor Jugo Natural","k":12,"o":[],"req":false},{"n":"Tamaño Agua","k":2,"o":[],"req":false},{"n":"Sabor Cristal 600ml","k":8,"o":[],"req":false},{"n":"Sabor Cristal 300ml","k":4,"o":[],"req":false},{"n":"Tamaño Jugo de Temporada","k":2,"o":[],"req":false},{"n":"Sabor Jugo Natural Litro","k":4,"o":[],"req":false},{"n":"Sabor Fuze Té","k":4,"o":[],"req":false},{"n":"Presentación Refresco Embotellado","k":5,"o":[],"req":false},{"n":"Presentación Agua Purificada","k":6,"o":[],"req":false},{"n":"Tamaño Refresco","k":3,"o":[],"req":false},{"n":"Sabor del Jugo","k":8,"o":[],"req":false},{"n":"Tamaño Jugo Natural","k":2,"o":[],"req":false},{"n":"Tipo de Hamburguesa","k":2,"o":[],"req":false},{"n":"Proteína Gohan","k":5,"o":[],"req":false},{"n":"Complementos","k":4,"o":[],"req":false},{"n":"Proteína Kushiage","k":3,"o":[],"req":false},{"n":"Proteína Takoyaki","k":4,"o":[],"req":false},{"n":"Qué proteína quieres?","k":4,"o":[],"req":false},{"n":"Sabor Jugo Natural (Naturales)","k":12,"o":[],"req":false},{"n":"Presentación o tamaño","k":4,"o":[],"req":false},{"n":"Tamaño Agua (Agua)","k":2,"o":[],"req":false}],"prog":{"tipo":"sellos","nombre":"Club Sushi Pu'uk","bienv":"¡Bienvenido al Club! Acumula y gana recompensas deliciosas.","porVisita":1,"minimo":0,"meta":8,"pct":5,"ppd":1,"plata":10,"oro":25},"dis":{"logo":"https://media.base44.com/images/public/69fc8d7adf7a59448d6aa758/c18ef6a4c_IMG_1722.jpg","titulo":"Club Sushi Pu'uk","lema":"Acumula sellos por tus visitas y gana recompensas.","fuente":"Georgia, serif","fondo":"#1F1F1F","acento":"#B8972A","texto":"#F5F0E8","bg":"","icono":"⭐","iconoImg":""},"recomp":[]};
-const C128=["11011001100", "11001101100", "11001100110", "10010011000", "10010001100", "10001001100", "10011001000", "10011000100", "10001100100", "11001001000", "11001000100", "11000100100", "10110011100", "10011011100", "10011001110", "10111001100", "10011101100", "10011100110", "11001110010", "11001011100", "11001001110", "11011100100", "11001110100", "11101101110", "11101001100", "11100101100", "11100100110", "11101100100", "11100110100", "11100110010", "11011011000", "11011000110", "11000110110", "10100011000", "10001011000", "10001000110", "10110001000", "10001101000", "10001100010", "11010001000", "11000101000", "11000100010", "10110111000", "10110001110", "10001101110", "10111011000", "10111000110", "10001110110", "11101110110", "11010001110", "11000101110", "11011101000", "11011100010", "11011101110", "11101011000", "11101000110", "11100010110", "11101101000", "11101100010", "11100011010", "11101111010", "11001000010", "11110001010", "10100110000", "10100001100", "10010110000", "10010000110", "10000101100", "10000100110", "10110010000", "10110000100", "10011010000", "10011000010", "10000110100", "10000110010", "11000010010", "11001010000", "11110111010", "11000010100", "10001111010", "10100111100", "10010111100", "10010011110", "10111100100", "10011110100", "10011110010", "11110100100", "11110010100", "11110010010", "11011011110", "11011110110", "11110110110", "10101111000", "10100011110", "10001011110", "10111101000", "10111100010", "11110101000", "11110100010", "10111011110", "10111101110", "11101011110", "11110101110", "11010000100", "11010010000", "11010011100"];
-const KEY="sushipuuk-panel-v3",K_CTA="puuk-cuenta",K_PED="puuk-pedidos";
-const $=id=>document.getElementById(id);
-const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const $m=n=>"$"+Number(n).toLocaleString("es-MX",{minimumFractionDigits:2,maximumFractionDigits:2});
-const dig=s=>String(s||"").replace(/\D/g,"");
-const ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch(e){}return null;};
-const mesa=(new URLSearchParams(location.search).get("n")||"").replace(/\D/g,"").slice(0,2);
+const NUBE = {
+  url: "https://xrrmszcamkgoxewugpzh.supabase.co",
+  key: "sb_publishable_Ls-pMjp4EQ5huVPe7hNKGA_H6JZZt7D"
+};
+let SEGC = null, segBusy = false, segTick = 0, menuV = null, menuTick = 0, menuBusy = false;
+let ultimoEstado = null;
+let SNAP = {
+  "generado": "28/10/2026, 5:50:37 a.m.",
+  "neg": {
+    "n": "Sushi Pu'uk",
+    "sucursal": "Ticul",
+    "lema": "Sabor que contagia",
+    "tel": "9979734867",
+    "dir": "C. 24 entre 25 y 25A, 97860 Ticul, Yuc.",
+    "hor": "",
+    "maps": "https://maps.app.goo.gl/riruB5NmgN89eDdF7",
+    "fb": "https://www.facebook.com/wrapisimo",
+    "ig": "https://www.instagram.com/wrapisimo",
+    "tt": "https://www.tiktok.com/@wrapisimo"
+  },
+  "menu": [
+    {
+      "e": "⭐",
+      "n": "Rollos de Lujo",
+      "p": [
+        {
+          "n": "Pepin Roll",
+          "c": 150,
+          "d": "Por fuera: queso Philadelphia, pepino y togarashi. Por dentro: camarón capeado y piel de salmón frito.",
+          "img": "assets/fotos/pepin-roll.png",
+          "on": true,
+          "m": [
+            "Complementos"
+          ],
+          "r": "https://yomenu.com.mx/api/assets?asset=9q82wsklogmiosovnanr.png"
+        },
+        {
+          "n": "Tarti Roll",
+          "c": 150,
+          "d": "Por fuera: alga nori, crema tártara y ajonjolí negro. Por dentro: philadelphia, aguacate, camarón curtido, salmón y surimi.",
+          "img": "assets/fotos/tarti-roll.png",
+          "on": true,
+          "m": [
+            "Complementos"
+          ],
+          "r": "https://yomenu.com.mx/api/assets?asset=f5u1le4t2zgvjjlx1b2l.png"
+        },
+        {
+          "n": "Spicy Roll",
+          "c": 150,
+          "d": "Por fuera: queso manchego gratinado y pollo. Por dentro: philadelphia, aguacate, manzana capeada y salsa zake.",
+          "img": "assets/fotos/spicy-roll.png",
+          "on": true,
+          "m": [
+            "Complementos"
+          ],
+          "r": "https://yomenu.com.mx/api/assets?asset=42yhwdx5bc4j1ex4ul6t.png"
+        },
+        {
+          "n": "Chispita Roll",
+          "c": 150,
+          "d": "Por fuera: chispas tempura, salmón, salsa spicy. Por dentro: philadelphia, aguacate y surimi capeado.",
+          "img": "assets/fotos/chispita-roll.png",
+          "on": true,
+          "m": [
+            "Complementos"
+          ],
+          "r": "https://yomenu.com.mx/api/assets?asset=2a636c7f0qnim8wfdebo.png"
+        },
+        {
+          "n": "Kaki Roll",
+          "c": 150,
+          "d": "Por fuera: hoja de soya amarilla, salsa lucky y kakiage. Por dentro: philadelphia, camarón capeado y surimi.",
+          "img": "assets/fotos/kaki-roll.png",
+          "on": true,
+          "m": [
+            "Complementos"
+          ],
+          "r": "https://yomenu.com.mx/api/assets?asset=oj2n8i5lxnayc1nhyu1p.png"
+        },
+        {
+          "n": "Salmi Crunch Roll",
+          "c": 150,
+          "d": "Por fuera: queso philadelphia y salmón frito, salsa chipotle. Por dentro: queso gratinado, aguacate, kakiage.",
+          "img": "assets/fotos/salmi-crunch-roll.png",
+          "on": true,
+          "m": [
+            "Complementos"
+          ],
+          "r": "https://yomenu.com.mx/api/assets?asset=3dcmorx9ul9wr1lqiybk.png"
+        }
+      ]
+    },
+    {
+      "e": "🥗",
+      "n": "Entradas",
+      "p": [
+        {
+          "n": "Sushi Hot Dog",
+          "c": 120,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        }
+      ]
+    },
+    {
+      "e": "🥢",
+      "n": "Rollos Clásicos",
+      "p": [
+        {
+          "n": "Pu'uk Roll 🍤",
+          "c": 140,
+          "d": "Por fuera: Ajonjolí mixto. Por dentro: camarón, pepino, filadelfia y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Pu'uk Roll 🐔",
+          "c": 110,
+          "d": "Por fuera: Ajonjolí mixto. Por dentro: pollo, pepino, filadelfia y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Pu'uk Roll 🐄",
+          "c": 120,
+          "d": "Por fuera: Ajonjolí mixto. Por dentro: arrachera, pepino, filadelfia y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Pu'uk Roll Mar y Tierra",
+          "c": 140,
+          "d": "Por fuera: Ajonjolí mixto. Por dentro: arrachera, camarón empanizado, pepino, filadelfia y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        }
+      ]
+    },
+    {
+      "e": "🍣",
+      "n": "Especialidades",
+      "p": [
+        {
+          "n": "Dorito Cheese Roll",
+          "c": 135,
+          "d": "Por fuera: arroz empanizado con queso manchego y tocino. Por dentro: arrachera, doritos, filadelfia y aguacate hass.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Chikin Roll",
+          "c": 115,
+          "d": "Por fuera: rollo empanizado. Por dentro: pollo, aguacate, pepino, filadelfia.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Barbi Roll",
+          "c": 135,
+          "d": "Por fuera: rollo empanizado y salsa barbecue (BBQ). Por dentro: tocino, aguacate y zanahoria al vapor, filadelfia.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Sushi Bus Roll",
+          "c": 130,
+          "d": "Por fuera: alga nori, tampico y sriracha. Por dentro: camarón empanizado, filadelfia, aguacate y pepino.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Ebi Crunch Roll",
+          "c": 140,
+          "d": "Por fuera: rollo empanizado, queso manchego gratinado. Por dentro: camarón empanizado, filadelfia y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Pipiris Roll",
+          "c": 135,
+          "d": "Por fuera: láminas de fresa caramelizadas. Por dentro: arrachera, tocino, philadelphia.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Ataulfo Roll",
+          "c": 135,
+          "d": "Por fuera: láminas de mango con gotas de anguila. Por dentro: alga, tocino y philadelphia.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Lori Roll",
+          "c": 135,
+          "d": "Por fuera: aguacate con gotas de chipotle, sriracha y ajonjolí mixto. Por dentro: camarón empanizado, philadelphia y tampico.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Flamin Roll",
+          "c": 135,
+          "d": "Por fuera: filadelfia, cheetos flamin hot triturado. Por dentro: camarón empanizado, aguacate y tampico.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Masago Roll",
+          "c": 140,
+          "d": "Por fuera: tampico, camarón empanizado, gotas de chipotle, cubiertos de masago. Por dentro: filadelfia, pepino y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Tampico Roll",
+          "c": 135,
+          "d": "Por fuera: tampico. Por dentro: camarón natural, filadelfia, pepino y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Monky Roll",
+          "c": 120,
+          "d": "Por fuera: láminas de plátano frito. Por dentro: aguacate, philadelphia y surimi.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Salmi Roll",
+          "c": 150,
+          "d": "Por fuera: salmón fresco. Por dentro: philadelphia, aguacate y pepino.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Tempura Roll",
+          "c": 120,
+          "d": "Por fuera: verduras tempura. Por dentro: filadelfia, pepino y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Togarashi Cheese Roll",
+          "c": 140,
+          "d": "Por fuera: queso manchego gratinado, togarashi. Por dentro: arrachera, filadelfia y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Crispy Chicken Roll",
+          "c": 125,
+          "d": "Por fuera: rollo capeado. Por dentro: pollo empanizado, filadelfia y aguacate.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Cocoyol Roll",
+          "c": 125,
+          "d": "Por fuera: coco, crema de coco, gotas de salsa anguila. Por dentro: pollo empanizado, filadelfia y manzana.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Pulpi Roll",
+          "c": 150,
+          "d": "Por fuera: pulpo. Por dentro: philadelphia, surimi, pepino.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Akira Roll",
+          "c": 115,
+          "d": "Por fuera: alga. Por dentro: verduras tempura, aguacate y philadelphia.",
+          "img": "",
+          "on": true,
+          "m": []
+        }
+      ]
+    },
+    {
+      "e": "🍜",
+      "n": "Platos Fuertes",
+      "p": [
+        {
+          "n": "Yakimeshi de Pollo",
+          "c": 160,
+          "d": "Arroz frito al estilo japonés, salteado con trozos de pollo jugoso, vegetales frescos como zanahoria, cebolla y chícharos, sazonado con salsa de soya y un toque de aceite de ajonjolí.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Yakimeshi de Arrachera",
+          "c": 160,
+          "d": "Arroz frito al estilo japonés, salteado con trozos de arrachera, vegetales frescos como zanahoria, cebolla y chícharos, sazonado con salsa de soya y un toque de aceite de ajonjolí.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Yakimeshi de Camarón",
+          "c": 160,
+          "d": "Arroz frito al estilo japonés, salteado con trozos de camarón, vegetales frescos como zanahoria, cebolla y chícharos, sazonado con salsa de soya y un toque de aceite de ajonjolí.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Ramen de Pollo",
+          "c": 150,
+          "d": "Caldo suave y aromático de pollo, servido con fideos al dente, trozos de pechuga de pollo jugosa, cebollín fresco, huevo cocido y alga nori.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Ramen de Camarón",
+          "c": 180,
+          "d": "Caldo transparente y sabroso de camarón, fideos al dente, camarones jugosos y frescos, cebolleta, huevo cocido y alga nori.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Naruto Ramen",
+          "c": 185,
+          "d": "Caldo sabroso con un toque marino, fideos al dente, camarones y salmón fresco, acompañado de kamaboko, cebolleta, huevo cocido y alga nori.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Tenpayaki",
+          "c": 270,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Sopa Miso",
+          "c": 270,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Yakisoba Ebi",
+          "c": 270,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Tepanyaki Mixto",
+          "c": 270,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Yakisoba Tepan",
+          "c": 270,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        }
+      ]
+    },
+    {
+      "e": "🍟",
+      "n": "Snacks",
+      "p": [
+        {
+          "n": "Dedos de Queso",
+          "c": 85,
+          "d": "Orden de 5 dedos de queso.",
+          "img": "",
+          "on": true,
+          "m": []
+        }
+      ]
+    },
+    {
+      "e": "🌮",
+      "n": "Tortas, Tacos y Hamburguesas",
+      "p": [
+        {
+          "n": "Burrita",
+          "c": 25,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        }
+      ]
+    },
+    {
+      "e": "🥤",
+      "n": "Bebidas",
+      "p": [
+        {
+          "n": "Iced Lattes",
+          "c": 68,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Cantabile Coreano",
+          "c": 45,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Jugo del Valle Naranja",
+          "c": 20,
+          "d": "600 ml.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Arizona",
+          "c": 25,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Frapé Kit Kat / Frapé Capuccino",
+          "c": 65,
+          "d": "Deliciosa bebida helada y cremosa sabor Kit Kat elaborada con café de grano.",
+          "img": "",
+          "on": true,
+          "m": []
+        }
+      ]
+    },
+    {
+      "e": "➕",
+      "n": "Extras",
+      "p": [
+        {
+          "n": "Queso",
+          "c": 15,
+          "d": "Queso manchego.",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Empanizado",
+          "c": 15,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Tampico",
+          "c": 15,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        },
+        {
+          "n": "Sriracha",
+          "c": 15,
+          "d": "",
+          "img": "",
+          "on": true,
+          "m": []
+        }
+      ]
+    }
+  ],
+  "mods": [
+    {
+      "n": "Tipo de Torta",
+      "k": 3,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Nuevo modificador",
+      "k": 1,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Proteína a elegir",
+      "k": 3,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "¿Mixto o sencillo?",
+      "k": 2,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Proteína",
+      "k": 1,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Proteínas",
+      "k": 1,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Presentación Agua Mineral",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Tipo de Café",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Sabor Jugo Bida 200ml",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Sabor Jugo Natural",
+      "k": 12,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Tamaño Agua",
+      "k": 2,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Sabor Cristal 600ml",
+      "k": 8,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Sabor Cristal 300ml",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Tamaño Jugo de Temporada",
+      "k": 2,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Sabor Jugo Natural Litro",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Sabor Fuze Té",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Presentación Refresco Embotellado",
+      "k": 5,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Presentación Agua Purificada",
+      "k": 6,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Tamaño Refresco",
+      "k": 3,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Sabor del Jugo",
+      "k": 8,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Tamaño Jugo Natural",
+      "k": 2,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Tipo de Hamburguesa",
+      "k": 2,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Proteína Gohan",
+      "k": 5,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Complementos",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Proteína Kushiage",
+      "k": 3,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Proteína Takoyaki",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Qué proteína quieres?",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Sabor Jugo Natural (Naturales)",
+      "k": 12,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Presentación o tamaño",
+      "k": 4,
+      "o": [],
+      "req": false
+    },
+    {
+      "n": "Tamaño Agua (Agua)",
+      "k": 2,
+      "o": [],
+      "req": false
+    }
+  ],
+  "prog": {
+    "tipo": "sellos",
+    "nombre": "Club Sushi Pu'uk",
+    "bienv": "¡Bienvenido al Club! Acumula y gana recompensas deliciosas.",
+    "porVisita": 1,
+    "minimo": 0,
+    "meta": 8,
+    "pct": 5,
+    "ppd": 1,
+    "plata": 10,
+    "oro": 25
+  },
+  "dis": {
+    "logo": "https://media.base44.com/images/public/69fc8d7adf7a59448d6aa758/c18ef6a4c_IMG_1722.jpg",
+    "titulo": "Club Sushi Pu'uk",
+    "lema": "Acumula sellos por tus visitas y gana recompensas.",
+    "fuente": "Georgia, serif",
+    "fondo": "#1F1F1F",
+    "acento": "#B8972A",
+    "texto": "#F5F0E8",
+    "bg": "",
+    "icono": "⭐",
+    "iconoImg": ""
+  },
+  "recomp": []
+};
+const C128 = [
+  "11011001100",
+  "11001101100",
+  "11001100110",
+  "10010011000",
+  "10010001100",
+  "10001001100",
+  "10011001000",
+  "10011000100",
+  "10001100100",
+  "11001001000",
+  "11001000100",
+  "11000100100",
+  "10110011100",
+  "10011011100",
+  "10011001110",
+  "10111001100",
+  "10011101100",
+  "10011100110",
+  "11001110010",
+  "11001011100",
+  "11001001110",
+  "11011100100",
+  "11001110100",
+  "11101101110",
+  "11101001100",
+  "11100101100",
+  "11100100110",
+  "11101100100",
+  "11100110100",
+  "11100110010",
+  "11011011000",
+  "11011000110",
+  "11000110110",
+  "10100011000",
+  "10001011000",
+  "10001000110",
+  "10110001000",
+  "10001101000",
+  "10001100010",
+  "11010001000",
+  "11000101000",
+  "11000100010",
+  "10110111000",
+  "10110001110",
+  "10001101110",
+  "10111011000",
+  "10111000110",
+  "10001110110",
+  "11101110110",
+  "11010001110",
+  "11000101110",
+  "11011101000",
+  "11011100010",
+  "11011101110",
+  "11101011000",
+  "11101000110",
+  "11100010110",
+  "11101101000",
+  "11101100010",
+  "11100011010",
+  "11101111010",
+  "11001000010",
+  "11110001010",
+  "10100110000",
+  "10100001100",
+  "10010110000",
+  "10010000110",
+  "10000101100",
+  "10000100110",
+  "10110010000",
+  "10110000100",
+  "10011010000",
+  "10011000010",
+  "10000110100",
+  "10000110010",
+  "11000010010",
+  "11001010000",
+  "11110111010",
+  "11000010100",
+  "10001111010",
+  "10100111100",
+  "10010111100",
+  "10010011110",
+  "10111100100",
+  "10011110100",
+  "10011110010",
+  "11110100100",
+  "11110010100",
+  "11110010010",
+  "11011011110",
+  "11011110110",
+  "11110110110",
+  "10101111000",
+  "10100011110",
+  "10001011110",
+  "10111101000",
+  "10111100010",
+  "11110101000",
+  "11110100010",
+  "10111011110",
+  "10111101110",
+  "11101011110",
+  "11110101110",
+  "11010000100",
+  "11010010000",
+  "11010011100"
+];
+const KEY = "sushipuuk-panel-v3", K_CTA = "puuk-cuenta", K_PED = "puuk-pedidos";
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? "" : s).replace(
+  /[&<>"]/g,
+  c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
+);
+const $m = n => "$"
+  + Number(n).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const dig = s => String(s || "").replace(/\D/g, "");
+const ls = (k, v) => {
+  try {
+    if (v === undefined) return localStorage.getItem(k);
+    if (v === null) localStorage.removeItem(k);
+    else localStorage.setItem(k, v);
+  } catch (e) { }
+  return null;
+};
+const mesa = (new URLSearchParams(location.search).get("n") || "").replace(/\D/g, "").slice(0, 2);
 
 /* ---------- datos ---------- */
-let rawCache=null,dCache=null;
-function panel(){if(NUBE)return null;const r=ls(KEY);if(r!==rawCache){rawCache=r;try{const d=JSON.parse(r);dCache=d&&d.menu&&d.ordenes?d:null;}catch(e){dCache=null;}}return dCache;}
-function conv(r,vivo,generado){
-  const grp=n=>(r.mods||[]).find(g=>g.n===n);
-  const cats=(r.menu||[]).map(c=>({e:c.e,n:c.n,p:c.p.filter(p=>p.on&&p.c>0).map(p=>({n:p.n,c:p.c,d:p.d||"",img:p.img||p.r||"",promo:!!p.promo,dest:!!p.dest,
-    g:(p.m||[]).map(grp).filter(g=>g&&g.o&&g.o.length).map(g=>({n:g.n,req:!!g.req,o:g.o.map(o=>typeof o==="string"?{n:o,p:0}:{n:o.n,p:o.p||0})}))}))})).filter(c=>c.p.length);
-  return{vivo,generado,neg:r.neg||{},cats,prog:r.prog||{},dis:r.dis||{},recomp:(r.recomp||[]).filter(x=>x.activa!==false)};
+let rawCache = null, dCache = null;
+function panel() {
+  if (NUBE) return null;
+  const r = ls(KEY);
+  if (r !== rawCache) {
+    rawCache = r;
+    try {
+      const d = JSON.parse(r);
+      dCache = d && d.menu && d.ordenes ? d : null;
+    } catch (e) {
+      dCache = null;
+    }
+  }
+  return dCache;
 }
-function datos(){const d=panel();if(d)return conv(d,true);if(!SNAP)return null;const x=conv(SNAP,false,SNAP.generado);if(NUBE){x.vivo=true;x.nube=true;}return x;}
-const S={tab:"inicio",cat:"todos",q:"",carro:[],prod:null,sel:{},qty:1,nota:"",f:{nombre:"",tel:"",email:"",dir:"",nota:"",tipo:mesa?"mesa":"recoger",cuenta:false},reg:{nombre:"",tel:"",email:""},ent:{tel:"",code:""},seg:null,segq:{id:"",tel:""},snd:false,msg:""};
-const cuenta=()=>{try{return JSON.parse(ls(K_CTA)||"null");}catch(e){return null;}};
-const total=()=>S.carro.reduce((s,i)=>s+i.c*i.q,0),piezas=()=>S.carro.reduce((s,i)=>s+i.q,0);
-const todos=D=>D.cats.flatMap(c=>c.p);
-const cliente=()=>{const a=cuenta(),d=panel();return a&&d?d.clientes.find(c=>c.id===a.id&&c.code===a.code):null;};
+// Las fotos guardadas como ruta (assets/fotos/...) están en la carpeta del panel, no en la del menú.
+// Si hay copia en internet se usa esa; si no, se busca dentro de ../panel/
+const esRutaLocal = u => !!u && !/^(data:|https?:|\/\/)/.test(u);
+const urlPublica = u => esRutaLocal(u) ? "../panel/" + u : (u || "");
+const imagenProducto = p => esRutaLocal(p.img) ? (p.r || urlPublica(p.img)) : (p.img || p.r || "");
+function conv(r, vivo, generado) {
+  const grp = n => (r.mods || []).find(g => g.n === n);
+  const cats = (r.menu || []).map(
+    c => (
+      {
+        e: c.e,
+        n: c.n,
+        p: c.p.filter(p => p.on && p.c > 0).map(
+          p => (
+            {
+              n: p.n,
+              c: p.c,
+              d: p.d || "",
+              img: imagenProducto(p),
+              promo: !!p.promo,
+              dest: !!p.dest,
+              g: (p.m || []).map(grp).filter(g => g && g.o && g.o.length).map(
+                g => (
+                  {
+                    n: g.n,
+                    req: !!g.req,
+                    o: g.o.map(
+                      o => typeof o === "string" ? { n: o, p: 0 } : { n: o.n, p: o.p || 0 }
+                    )
+                  }
+                )
+              )
+            }
+          )
+        )
+      }
+    )
+  ).filter(c => c.p.length);
+  return {
+    vivo,
+    generado,
+    neg: r.neg || { },
+    cats,
+    prog: r.prog || { },
+    dis: Object.assign(
+      { },
+      r.dis || { },
+      { iconoImg: urlPublica((r.dis || { }).iconoImg), bg: urlPublica((r.dis || { }).bg) }
+    ),
+    recomp: (r.recomp || []).filter(x => x.activa !== false).map(
+      x => ({ ...x, img: urlPublica(x.img) })
+    )
+  };
+}
+function datos() {
+  const d = panel();
+  if (d) return conv(d, true);
+  if (!SNAP) return null;
+  const x = conv(SNAP, false, SNAP.generado);
+  if (NUBE) {
+    x.vivo = true;
+    x.nube = true;
+  }
+  return x;
+}
+const S = {
+  tab: "inicio",
+  cat: "todos",
+  q: "",
+  carro: [],
+  prod: null,
+  sel: { },
+  qty: 1,
+  nota: "",
+  f: {
+    nombre: "",
+    tel: "",
+    email: "",
+    dir: "",
+    nota: "",
+    tipo: mesa ? "mesa" : "recoger",
+    cuenta: false
+  },
+  reg: { nombre: "", tel: "", email: "" },
+  ent: { tel: "", code: "" },
+  seg: null,
+  segq: { id: "", tel: "" },
+  snd: false,
+  msg: ""
+};
+const cuenta = () => {
+  try {
+    return JSON.parse(ls(K_CTA) || "null");
+  } catch (e) {
+    return null;
+  }
+};
+const total = () => S.carro.reduce((s, i) => s + i.c * i.q, 0),
+  piezas = () => S.carro.reduce((s, i) => s + i.q, 0);
+const todos = D => D.cats.flatMap(c => c.p);
+const cliente = () => {
+  const a = cuenta(), d = panel();
+  return a && d ? d.clientes.find(c => c.id === a.id && c.code === a.code) : null;
+};
 
 /* ---------- código de barras (Code 128-B) ---------- */
-function barras(txt){
-  const v=[104];for(const ch of txt)v.push(ch.charCodeAt(0)-32);
-  let s=104;for(let i=1;i<v.length;i++)s+=v[i]*i;v.push(s%103);
-  const bits=v.map(x=>C128[x]).join("")+"1100011101011";
-  let x=0,r="";while(x<bits.length){if(bits[x]==="1"){let n=x;while(bits[n]==="1")n++;r+=`<rect x="${x+10}" y="0" width="${n-x}" height="40"/>`;x=n;}else x++;}
-  return `<svg viewBox="0 0 ${bits.length+20} 40" preserveAspectRatio="none" role="img" aria-label="Código de barras ${esc(txt)}" fill="#111">${r}</svg>`;
+function barras(txt) {
+  const v = [104];
+  for (const ch of txt) v.push(ch.charCodeAt(0) - 32);
+  let s = 104;
+  for (let i = 1; i < v.length; i++) s += v[i] * i;
+  v.push(s % 103);
+  const bits = v.map(x => C128[x]).join("") + "1100011101011";
+  let x = 0, r = "";
+  while (x < bits.length) {
+    if (bits[x] === "1") {
+      let n = x;
+      while (bits[n] === "1") n++;
+      r += `<rect x="${x+10}" y="0" width="${n-x}" height="40"/>`;
+      x = n;
+    } else x++;
+  }
+  return `<svg viewBox="0 0 ${bits.length + 20} 40" preserveAspectRatio="none" role="img"
+      aria-label="Código de barras ${esc(txt)}" fill="#111">${r}</svg>`;
 }
-const ABC="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-function codigoNuevo(d){let c;do{c="PUUK-"+Array.from({length:8},()=>ABC[Math.floor(Math.random()*ABC.length)]).join("");}while(d.clientes.some(x=>x.code===c));return c;}
+const ABC = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+function codigoNuevo(d) {
+  let c;
+  do {
+    c = "PUUK-"
+      + Array.from({ length: 8 }, () => ABC[Math.floor(Math.random() * ABC.length)]).join("");
+  } while (d.clientes.some(x => x.code === c));
+  return c;
+}
 
 /* ---------- piezas ---------- */
-const nivelDe=(c,P)=>c.vis>=(P.oro||25)?"Oro":c.vis>=(P.plata||10)?"Plata":"Bronce";
-const NIVC={Bronce:"#CD7F32",Plata:"#9CA3AF",Oro:"#D4AF37"};
-const foto=(p,cl)=>p.img?`<img class="${cl||"foto"}" src="${esc(p.img)}" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;${cl||"foto"}&quot;>🍣</div>'">`:`<div class="${cl||"foto"}">🍣</div>`;
-const navBar=()=>`<nav class="nav">${[["inicio","🏠","Inicio"],["menu","🍴","menú"],["lealtad","♡","Lealtad"],["suc","📍","Sucursales"]].map(([k,i,t])=>`<button data-act="tab" data-v="${k}" ${S.tab===k?'aria-current="page"':""}><b>${i}</b>${t}</button>`).join("")}</nav>`
-  +(S.carro.length&&!["carro","seg"].includes(S.tab)?`<div class="carro"><button data-act="carro"><span>Ver mi pedido (${piezas()})</span><span>${$m(total())}</span></button></div>`:"");
-const tabsCat=D=>`<div class="tabs" role="tablist"><button class="tab" role="tab" data-act="cat" data-v="todos" aria-selected="${!S.q&&S.cat==="todos"}">Todos</button>${D.cats.some(c=>c.p.some(p=>p.promo))?`<button class="tab" role="tab" data-act="cat" data-v="promo" aria-selected="${!S.q&&S.cat==="promo"}">Promos</button>`:""}${D.cats.map((c,i)=>`<button class="tab" role="tab" data-act="cat" data-v="${i}" aria-selected="${!S.q&&S.cat===i}">${esc(c.n)}</button>`).join("")}</div>`;
-function lista(D){
-  const q=S.q.trim().toLowerCase();
-  if(q)return todos(D).filter(p=>(p.n+" "+p.d).toLowerCase().includes(q));
-  if(S.cat==="todos")return todos(D);if(S.cat==="promo")return todos(D).filter(p=>p.promo);
-  return(D.cats[S.cat]||D.cats[0]).p;
+const nivelDe = (c, P) => c.vis >= (P.oro || 25)
+  ? "Oro"
+  : c.vis >= (P.plata || 10)
+  ? "Plata"
+  : "Bronce";
+const NIVC = { Bronce: "#CD7F32", Plata: "#9CA3AF", Oro: "#D4AF37" };
+const foto = (p, cl) => p.img
+  ? `<img class="${cl || "foto"}" src="${esc(p.img)}" alt="" loading="lazy"
+      onerror="this.outerHTML='<div class=&quot;${cl || "foto"}&quot;>🍣</div>'">`
+  : `<div class="${cl||"foto"}">🍣</div>`;
+const navBar = () => `<nav class="nav">${[
+  ["inicio", "🏠", "Inicio"],
+  ["menu", "🍴", "menú"],
+  ["lealtad", "♡", "Lealtad"],
+  ["suc", "📍", "Sucursales"]
+].map(
+  ([k, i, t]) => `<button data-act="tab" data-v="${k}" ${S.tab === k ? 'aria-current="page"' : ""}><b>${i}</b>${t}</button>`
+).join("")}</nav>`
+  + (
+    S.carro.length && !["carro", "seg"].includes(S.tab)
+      ? `<div class="carro"><button data-act="carro"><span>Ver mi pedido (${piezas()})</span><span>${$m(total())}</span></button></div>`
+      : ""
+  );
+const tabsCat = D => `<div class="tabs" role="tablist"><button class="tab" role="tab" data-act="cat"
+    data-v="todos" aria-selected="${!S.q && S.cat === "todos"}">Todos</button>${D.cats.some(c => c.p.some(p => p.promo))
+  ? `<button class="tab" role="tab" data-act="cat" data-v="promo" aria-selected="${!S.q
+    && S.cat === "promo"}">Promos</button>`
+  : ""}${D.cats.map(
+  (c, i) => `<button class="tab" role="tab" data-act="cat" data-v="${i}" aria-selected="${!S.q
+    && S.cat === i}">${esc(c.n)}</button>`
+).join("")}</div>`;
+function lista(D) {
+  const q = S.q.trim().toLowerCase();
+  if (q) return todos(D).filter(p => (p.n + " " + p.d).toLowerCase().includes(q));
+  if (S.cat === "todos") return todos(D);
+  if (S.cat === "promo") return todos(D).filter(p => p.promo);
+  return (D.cats[S.cat] || D.cats[0]).p;
 }
-function pie(D){const N=D.neg,wa=dig(N.tel);return `<footer class="pie"><div class="w"><div style="font-size:1.6rem">🍣</div><h2>¡SÍGUENOS EN <span style="color:var(--rojo)">REDES</span>!</h2><p class="nota" style="color:#aaa">Conéctate con nosotros para estar al tanto de promociones especiales y novedades.</p><div class="redes">${N.fb?`<a href="${esc(N.fb)}" target="_blank" rel="noopener">Facebook</a>`:""}${N.ig?`<a href="${esc(N.ig)}" target="_blank" rel="noopener">Instagram</a>`:""}${N.tt?`<a href="${esc(N.tt)}" target="_blank" rel="noopener">TikTok</a>`:""}${wa?`<a href="https://wa.me/${wa.length===10?"52"+wa:wa}" target="_blank" rel="noopener">WhatsApp</a>`:""}</div></div></footer>`;}
+function pie(D) {
+  const N = D.neg, wa = dig(N.tel);
+  return `<footer class="pie"><div class="w"><div style="font-size:1.6rem">🍣</div><h2>¡SÍGUENOS EN <span
+      style="color:var(--rojo)">REDES</span>!</h2><p class="nota" style="color:#aaa">Conéctate con nosotros para estar al tanto de promociones especiales y novedades.</p><div
+      class="redes">${N.fb
+    ? `<a href="${esc(N.fb)}" target="_blank" rel="noopener">Facebook</a>`
+    : ""}${N.ig ? `<a href="${esc(N.ig)}" target="_blank" rel="noopener">Instagram</a>` : ""}${N.tt
+    ? `<a href="${esc(N.tt)}" target="_blank" rel="noopener">TikTok</a>`
+    : ""}${wa
+    ? `<a href="https://wa.me/${wa.length === 10 ? "52" + wa : wa}" target="_blank" rel="noopener">WhatsApp</a>`
+    : ""}</div></div></footer>`;
+}
 
 /* ---------- pantallas ---------- */
-function vInicio(D){
-  const H=todos(D).find(p=>p.dest&&p.img)||todos(D).find(p=>p.img)||todos(D)[0],L=lista(D);
-  return `<header class="hero" style="${H&&H.img?`background-image:url('${esc(H.img)}')`:""}"><div class="logo-top">${esc((D.neg.n||"").toUpperCase())}${D.neg.lema?`<div style="font-weight:400;font-size:.6rem;letter-spacing:.2em">${esc(D.neg.lema.toUpperCase())}</div>`:""}</div><div class="w"><h1>${esc(H?H.n:D.neg.n||"Menú")}</h1><p>${esc(H?H.d:"")}</p>${mesa?`<p><b>Mesa ${esc(mesa)}</b></p>`:""}<div><button class="btn rojo" data-act="tab" data-v="menu">Ordena ahora</button></div><div style="margin-top:10px"><button class="btn suave" data-act="seguir">📦 Seguir mi pedido</button></div><div class="busca"><input id="q" placeholder="Buscar productos…" value="${esc(S.q)}" autocomplete="off" aria-label="Buscar productos"><button class="pin" data-act="tab" data-v="suc" aria-label="Sucursales">📍</button></div></div></header>`
-   +`<main class="w">${tabsCat(D)}${L.length?L.map(p=>`<button class="fila" data-act="prod" data-n="${esc(p.n)}"><span style="flex:1"><h3>${esc(p.n)}</h3><p>${esc(p.d)}</p><span class="precio">${$m(p.c)}</span></span>${foto(p)}</button>`).join(""):`<p class="nota" style="text-align:center;padding:30px">No encontramos nada con eso.</p>`}</main>${pie(D)}`;
+function vInicio(D) {
+  const H = todos(D).find(p => p.dest && p.img) || todos(D).find(p => p.img) || todos(D)[0],
+    L = lista(D);
+  return `<header class="hero" style="${H && H.img ? `background-image:url('${esc(H.img)}')` : ""}"><div
+      class="logo-top">${esc((D.neg.n || "").toUpperCase())}${D.neg.lema
+    ? `<div style="font-weight:400;font-size:.6rem;letter-spacing:.2em">${esc(D.neg.lema.toUpperCase())}</div>`
+    : ""}</div><div class="w"><h1>${esc(H ? H.n : D.neg.n || "Menú")}</h1><p>${esc(H ? H.d : "")}</p>${mesa
+    ? `<p><b>Mesa ${esc(mesa)}</b></p>`
+    : ""}<div><button class="btn rojo" data-act="tab" data-v="menu">Ordena ahora</button></div><div
+      style="margin-top:10px"><button class="btn suave" data-act="seguir">📦 Seguir mi pedido</button></div><div
+      class="busca"><input id="q" placeholder="Buscar productos…" value="${esc(S.q)}"
+      autocomplete="off" aria-label="Buscar productos"><button class="pin" data-act="tab"
+      data-v="suc" aria-label="Sucursales">📍</button></div></div></header>`
+    + `<main class="w">${tabsCat(D)}${L.length
+      ? L.map(
+        p => `<button class="fila" data-act="prod" data-n="${esc(p.n)}"><span style="flex:1"><h3>${esc(p.n)}</h3><p>${esc(p.d)}</p><span
+            class="precio">${$m(p.c)}</span></span>${foto(p)}</button>`
+      ).join("")
+      : `<p class="nota" style="text-align:center;padding:30px">No encontramos nada con eso.</p>`}</main>${pie(D)}`;
 }
-function vMenu(D){
-  const L=lista(D);
-  return `<main class="w"><div class="q" style="padding-top:20px"><button class="btn rojo" data-act="carro">Ordena ahora</button><button class="btn rosa" data-act="descargar">⬇ Descargar menú</button></div>${tabsCat(D)}<div class="grid">${L.map(p=>`<div class="card"><button data-act="prod" data-n="${esc(p.n)}" style="width:100%;text-align:left">${foto(p,"foto")}<div class="t"><b>${esc(p.n)}</b><span class="precio">${$m(p.c)}</span></div></button><button class="mas" data-act="add" data-n="${esc(p.n)}" aria-label="Agregar ${esc(p.n)}">+</button></div>`).join("")}</div>${L.length?"":`<p class="nota" style="text-align:center">Sin resultados.</p>`}</main>${pie(D)}`;
+function vMenu(D) {
+  const L = lista(D);
+  return `<main class="w"><div class="q" style="padding-top:20px"><button class="btn rojo"
+      data-act="carro">Ordena ahora</button><button class="btn rosa" data-act="descargar">⬇ Descargar menú</button></div>${tabsCat(D)}<div
+      class="grid">${L.map(
+    p => `<div class="card"><button data-act="prod" data-n="${esc(p.n)}"
+        style="width:100%;text-align:left">${foto(p, "foto")}<div class="t"><b>${esc(p.n)}</b><span
+        class="precio">${$m(p.c)}</span></div></button><button class="mas" data-act="add" data-n="${esc(p.n)}"
+        aria-label="Agregar ${esc(p.n)}">+</button></div>`
+  ).join("")}</div>${L.length ? "" : `<p class="nota" style="text-align:center">Sin resultados.</p>`}</main>${pie(D)}`;
 }
-function vSuc(D){
-  const N=D.neg,wa=dig(N.tel),maps=N.maps||("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent((N.dir||"")+" "+(N.sucursal||"")));
-  return `<main class="w" style="padding-top:34px;text-align:center"><div style="font-size:2.4rem">🍣</div><h1 style="letter-spacing:.14em;margin:6px 0">VISÍTANOS</h1><div style="width:50px;height:3px;background:var(--rojo);margin:10px auto"></div><p class="nota" style="font-size:.95rem">En ${esc(N.n||"")}, estamos comprometidos con brindarte la mejor experiencia.${N.sucursal?` Encuéntranos en ${esc(N.sucursal)}.`:""} Siempre con la misma calidad y atención que nos caracteriza.</p>`
-   +`<div class="caja" style="text-align:left;border-left:4px solid var(--rojo)"><h2 style="letter-spacing:.1em;font-weight:400">${esc((N.sucursal||N.n||"").toUpperCase())}</h2><p style="margin:6px 0"><a href="${esc(maps)}" target="_blank" rel="noopener" style="color:inherit">${esc(N.dir||"")}</a></p>${wa?`<p style="color:var(--rojo);font-weight:700;margin:6px 0">${esc(N.tel)}</p>`:""}${N.hor?`<p class="nota">Horario: ${esc(N.hor)}</p>`:""}<div class="chips" style="margin-top:10px"><a class="btn rojo" href="${esc(maps)}" target="_blank" rel="noopener" style="text-decoration:none">➤ Cómo llegar</a>${wa?`<a class="btn" style="background:#5DD57A;color:#fff;text-decoration:none" href="https://wa.me/${wa.length===10?"52"+wa:wa}" target="_blank" rel="noopener">📞 WhatsApp</a>`:""}</div></div></main>${pie(D)}`;
+function vSuc(D) {
+  const N = D.neg,
+    wa = dig(N.tel),
+    maps = N.maps
+      || (
+        "https://www.google.com/maps/search/?api=1&query="
+          + encodeURIComponent((N.dir || "") + " " + (N.sucursal || ""))
+      );
+  return `<main class="w" style="padding-top:34px;text-align:center"><div style="font-size:2.4rem">🍣</div><h1
+      style="letter-spacing:.14em;margin:6px 0">VISÍTANOS</h1><div
+      style="width:50px;height:3px;background:var(--rojo);margin:10px auto"></div><p class="nota"
+      style="font-size:.95rem">En ${esc(N.n || "")}, estamos comprometidos con brindarte la mejor experiencia.${N.sucursal
+    ? ` Encuéntranos en ${esc(N.sucursal)}.`
+    : ""} Siempre con la misma calidad y atención que nos caracteriza.</p>`
+    + `<div class="caja" style="text-align:left;border-left:4px solid var(--rojo)"><h2
+        style="letter-spacing:.1em;font-weight:400">${esc((N.sucursal || N.n || "").toUpperCase())}</h2><p
+        style="margin:6px 0"><a href="${esc(maps)}" target="_blank" rel="noopener"
+        style="color:inherit">${esc(N.dir || "")}</a></p>${wa
+      ? `<p style="color:var(--rojo);font-weight:700;margin:6px 0">${esc(N.tel)}</p>`
+      : ""}${N.hor ? `<p class="nota">Horario: ${esc(N.hor)}</p>` : ""}<div class="chips"
+        style="margin-top:10px"><a class="btn rojo" href="${esc(maps)}" target="_blank"
+        rel="noopener" style="text-decoration:none">➤ Cómo llegar</a>${wa
+      ? `<a class="btn" style="background:#5DD57A;color:#fff;text-decoration:none"
+          href="https://wa.me/${wa.length === 10 ? "52" + wa : wa}" target="_blank" rel="noopener">📞 WhatsApp</a>`
+      : ""}</div></div></main>${pie(D)}`;
 }
-function tarjetaClub(D,c){
-  const P=D.prog,d=D.dis,nv=nivelDe(c,P),meta=P.meta||8,falta=Math.max(0,meta-c.bal),ic=d.iconoImg?`<img src="${esc(d.iconoImg)}" alt="">`:esc(d.icono||"⭐");
-  const cuerpo=(P.tipo||"sellos")==="sellos"?`<div class="sellos">${Array.from({length:meta},(_,i)=>`<div class="sello ${i<c.bal?"on":""}">${i<c.bal?ic:i+1}</div>`).join("")}</div>`:`<p style="text-align:center;font-size:2.2rem;margin:16px 0">${P.tipo==="monedero"?$m(c.bal):c.bal+" pts"}</p>`;
-  return `<div class="tarj" style="--f:${d.bg?`url('${esc(d.bg)}')`:esc(d.fondo||"#1F1F1F")};--a:${esc(d.acento||"#B8972A")};--t:${esc(d.texto||"#F5F0E8")};font-family:${esc(d.fuente||"system-ui")}"><div style="display:flex;gap:12px;align-items:center">${d.logo?`<img src="${esc(d.logo)}" alt="" style="width:56px;height:56px;border-radius:12px;object-fit:cover">`:""}<b style="flex:1;font-size:1.2rem">${esc(d.titulo||P.nombre||"Club")}</b><span style="background:${NIVC[nv]};color:#fff;padding:6px 14px;border-radius:99px;font-weight:700">★ ${nv}</span></div><p style="text-align:center;font-weight:800;letter-spacing:.14em;font-size:1.3rem;margin:16px 0 0">TUS ${(P.tipo||"sellos")==="sellos"?"SELLOS":P.tipo==="puntos"?"PUNTOS":"SALDO"}</p><p style="text-align:center;margin:0;font-size:.8rem;opacity:.85">${(P.tipo||"sellos")==="sellos"?`Faltan ${falta} sellos para tu recompensa`:esc(P.bienv||"")}</p>${cuerpo}<div style="display:flex;gap:12px;align-items:center"><div class="prog"><i style="width:${Math.min(100,c.bal/meta*100)}%"></i></div><span>${Math.min(c.bal,meta)}/${meta}</span><span style="font-size:1.4rem">🎁</span></div><div class="cod">${barras(c.code)}<code>${esc(c.code)}</code></div></div>`;
+function tarjetaClub(D, c) {
+  const P = D.prog,
+    d = D.dis,
+    nv = nivelDe(c, P),
+    meta = P.meta || 8,
+    falta = Math.max(0, meta - c.bal),
+    ic = d.iconoImg ? `<img src="${esc(d.iconoImg)}" alt="">` : esc(d.icono || "⭐");
+  const cuerpo = (P.tipo || "sellos") === "sellos"
+    ? `<div class="sellos">${Array.from(
+      { length: meta },
+      (_, i) => `<div class="sello ${i<c.bal?"on":""}">${i<c.bal?ic:i+1}</div>`
+    ).join("")}</div>`
+    : `<p style="text-align:center;font-size:2.2rem;margin:16px 0">${P.tipo === "monedero"
+      ? $m(c.bal)
+      : c.bal + " pts"}</p>`;
+  return `<div class="tarj" style="--f:${d.bg ? `url('${esc(d.bg)}')` : esc(d.fondo || "#1F1F1F")};--a:${esc(d.acento || "#B8972A")};--t:${esc(d.texto || "#F5F0E8")};font-family:${esc(d.fuente || "system-ui")}"><div
+      style="display:flex;gap:12px;align-items:center">${d.logo
+    ? `<img src="${esc(d.logo)}" alt=""
+        style="width:56px;height:56px;border-radius:12px;object-fit:cover">`
+    : ""}<b style="flex:1;font-size:1.2rem">${esc(d.titulo || P.nombre || "Club")}</b><span
+      style="background:${NIVC[nv]};color:#fff;padding:6px 14px;border-radius:99px;font-weight:700">★ ${nv}</span></div><p
+      style="text-align:center;font-weight:800;letter-spacing:.14em;font-size:1.3rem;margin:16px 0 0">TUS ${(P.tipo || "sellos") === "sellos"
+    ? "SELLOS"
+    : P.tipo === "puntos"
+    ? "PUNTOS"
+    : "SALDO"}</p><p style="text-align:center;margin:0;font-size:.8rem;opacity:.85">${(P.tipo || "sellos") === "sellos"
+    ? `Faltan ${falta} sellos para tu recompensa`
+    : esc(P.bienv || "")}</p>${cuerpo}<div style="display:flex;gap:12px;align-items:center"><div
+      class="prog"><i style="width:${Math.min(100, c.bal / meta * 100)}%"></i></div><span>${Math.min(c.bal, meta)}/${meta}</span><span
+      style="font-size:1.4rem">🎁</span></div><div class="cod">${barras(c.code)}<code>${esc(c.code)}</code></div></div>`;
 }
-function vLealtad(D){
-  const P=D.prog,c=cliente(),nombre=esc(P.nombre||"Club");
-  if(c){
-    const sig=D.recomp.filter(r=>r.costo>c.bal).sort((a,b)=>a.costo-b.costo)[0]||D.recomp.find(r=>r.costo<=c.bal),listos=D.recomp.filter(r=>r.costo<=c.bal);
-    const ped=(panel().ordenes||[]).filter(o=>o.cliente===c.id).sort((a,b)=>b.ts-a.ts).slice(0,5);
-    return `<main class="w" style="padding-top:20px"><div style="display:flex;justify-content:space-between;align-items:center"><h1 style="font-size:2rem;letter-spacing:.04em">${esc(c.n.split(" ")[0])} 🐟</h1><button data-act="salir" style="color:var(--rojo);font-weight:600">Cerrar sesión ›</button></div>${tarjetaClub(D,c)}`
-     +(listos.length?`<div class="oscuro" style="border:1px solid #2E7D4F"><b>🎉 ¡Ya puedes canjear!</b>${listos.map(r=>`<p style="margin:6px 0">${esc(r.n)} — díselo a quien te atienda y muestra tu código.</p>`).join("")}</div>`:"")
-     +`<div class="oscuro"><div class="nota" style="color:var(--dorado);font-weight:700;letter-spacing:.1em">🎁 PRÓXIMA RECOMPENSA</div>${sig?(sig.tipo==="sorpresa"&&sig.costo>c.bal?`<p style="margin:8px 0;filter:blur(5px)">${esc(sig.n)}</p><span style="color:#F87171">🔒 Sorpresa</span>`:`<p style="margin:8px 0;font-size:1.1rem">${esc(sig.n)}</p><span class="nota" style="color:#bbb">${esc(sig.desc||"")} · a los ${sig.costo} sellos</span>`):`<p class="nota" style="color:#bbb">Pronto habrá nuevas recompensas.</p>`}<p class="nota" style="color:#bbb;margin:10px 0 0">Visita #${c.vis+1} · ${nivelDe(c,P)}</p></div>`
-     +`<div class="dos"><div class="oscuro" style="text-align:center;margin:0"><div class="nota" style="color:#bbb">Sellos</div><b style="font-size:2rem">${c.bal}</b><span class="nota" style="color:#bbb"> /${P.meta||8}</span></div><div class="oscuro" style="text-align:center;margin:0"><div class="nota" style="color:#bbb">Total histórico</div><b style="font-size:2rem">${c.tot||0}</b></div></div>`
-     +`<div class="caja"><h2>Tus pedidos</h2>${ped.length?ped.map(o=>`<button class="fila" style="padding:10px 0;align-items:center" data-act="ver" data-id="${o.id}"><span style="flex:1"><b>#${o.id}</b> <span class="nota">${esc(o.fecha)}</span></span><span>${$m(o.total)}</span><span class="nota">${(EST[o.estado]||[""])[0]}</span></button>`).join(""):`<p class="nota">Todavía no tienes pedidos con tu cuenta.</p>`}</div></main>`;
+function vLealtad(D) {
+  const P = D.prog, c = cliente(), nombre = esc(P.nombre || "Club");
+  if (c) {
+    const sig = D.recomp.filter(r => r.costo > c.bal).sort((a, b) => a.costo - b.costo)[0]
+      || D.recomp.find(r => r.costo <= c.bal),
+      listos = D.recomp.filter(r => r.costo <= c.bal);
+    const ped = (panel().ordenes || []).filter(o => o.cliente === c.id).sort((a, b) => b.ts - a.ts).slice(0, 5);
+    return `<main class="w" style="padding-top:20px"><div
+        style="display:flex;justify-content:space-between;align-items:center"><h1
+        style="font-size:2rem;letter-spacing:.04em">${esc(c.n.split(" ")[0])} 🐟</h1><button
+        data-act="salir" style="color:var(--rojo);font-weight:600">Cerrar sesión ›</button></div>${tarjetaClub(D, c)}`
+      + (
+        listos.length
+          ? `<div class="oscuro" style="border:1px solid #2E7D4F"><b>🎉 ¡Ya puedes canjear!</b>${listos.map(
+            r => `<p style="margin:6px 0">${esc(r.n)} — díselo a quien te atienda y muestra tu código.</p>`
+          ).join("")}</div>`
+          : ""
+      )
+      + `<div class="oscuro"><div class="nota"
+          style="color:var(--dorado);font-weight:700;letter-spacing:.1em">🎁 PRÓXIMA RECOMPENSA</div>${sig
+        ? (
+          sig.tipo === "sorpresa" && sig.costo > c.bal
+            ? `<p style="margin:8px 0;filter:blur(5px)">${esc(sig.n)}</p><span style="color:#F87171">🔒 Sorpresa</span>`
+            : `<p style="margin:8px 0;font-size:1.1rem">${esc(sig.n)}</p><span class="nota"
+                style="color:#bbb">${esc(sig.desc || "")} · a los ${sig.costo} sellos</span>`
+        )
+        : `<p class="nota" style="color:#bbb">Pronto habrá nuevas recompensas.</p>`}<p class="nota"
+          style="color:#bbb;margin:10px 0 0">Visita #${c.vis + 1} · ${nivelDe(c, P)}</p></div>`
+      + `<div class="dos"><div class="oscuro" style="text-align:center;margin:0"><div class="nota"
+          style="color:#bbb">Sellos</div><b style="font-size:2rem">${c.bal}</b><span class="nota"
+          style="color:#bbb"> /${P.meta || 8}</span></div><div class="oscuro"
+          style="text-align:center;margin:0"><div class="nota" style="color:#bbb">Total histórico</div><b
+          style="font-size:2rem">${c.tot || 0}</b></div></div>`
+      + `<div class="caja"><h2>Tus pedidos</h2>${ped.length
+        ? ped.map(
+          o => `<button class="fila" style="padding:10px 0;align-items:center" data-act="ver"
+              data-id="${o.id}"><span style="flex:1"><b>#${o.id}</b> <span class="nota">${esc(o.fecha)}</span></span><span>${$m(o.total)}</span><span
+              class="nota">${(EST[o.estado] || [""])[0]}</span></button>`
+        ).join("")
+        : `<p class="nota">Todavía no tienes pedidos con tu cuenta.</p>`}</div></main>`;
   }
-  const rec=D.recomp.length?D.recomp.map(r=>`<div class="fila" style="padding:8px 0;align-items:center">${r.img?`<img class="foto" style="width:44px;height:44px" src="${esc(r.img)}" alt="">`:`<span style="font-size:1.6rem">🎁</span>`}<span style="flex:1"><b>${esc(r.n)}</b><br><span class="nota">${esc(r.desc||"")} · ${r.costo} sellos</span></span></div>`).join(""):`<p class="nota">Muy pronto: recompensas del Club.</p>`;
-  return `<main class="w" style="padding-top:24px"><h1 style="font-size:1.8rem">⭐ ${nombre}</h1><p class="nota">${esc(P.bienv||"Acumula sellos con cada pedido y gana recompensas.")}</p><div class="caja"><h2>Qué ganas</h2><p class="nota" style="margin:0 0 6px">Cada pedido entregado suma ${P.porVisita||1} sello${(P.porVisita||1)>1?"s":""}${P.minimo?` (compras desde ${$m(P.minimo)})`:""}. Con ${P.meta||8} sellos completas tu tarjeta.</p>${rec}</div>`
-   +(D.vivo&&!D.nube?`<div class="caja"><h2>Únete al Club</h2><label>Tu nombre *</label><input class="campo" data-r="nombre" value="${esc(S.reg.nombre)}" maxlength="40" autocomplete="name"><label>Teléfono *</label><input class="campo" data-r="tel" value="${esc(S.reg.tel)}" inputmode="tel" maxlength="15" autocomplete="tel"><label>Correo (opcional)</label><input class="campo" data-r="email" value="${esc(S.reg.email)}" type="email" autocomplete="email"><button class="grande" data-act="registrar">Crear mi cuenta y unirme</button>${S.msg?`<p class="nota" style="color:var(--rojo)">${esc(S.msg)}</p>`:""}</div>`
-     +`<div class="caja"><h2>¿Ya tienes cuenta?</h2><label>Teléfono</label><input class="campo" data-e="tel" value="${esc(S.ent.tel)}" inputmode="tel" maxlength="15"><label>Tu código (PUUK-…)</label><input class="campo" data-e="code" value="${esc(S.ent.code)}" maxlength="14" autocapitalize="characters"><button class="grande" style="background:var(--negro)" data-act="entrar">Entrar</button></div>`
-    :`<div class="caja"><h2>Crear cuenta</h2><p class="nota">El registro en línea se activa cuando el restaurante conecte su sistema. Mientras tanto, pide tu tarjeta del Club en tu próxima visita.</p></div>`)+`</main>${pie(D)}`;
+  const rec = D.recomp.length
+    ? D.recomp.map(
+      r => `<div class="fila" style="padding:8px 0;align-items:center">${r.img
+        ? `<img class="foto" style="width:44px;height:44px" src="${esc(r.img)}" alt="">`
+        : `<span style="font-size:1.6rem">🎁</span>`}<span style="flex:1"><b>${esc(r.n)}</b><br><span
+          class="nota">${esc(r.desc || "")} · ${r.costo} sellos</span></span></div>`
+    ).join("")
+    : `<p class="nota">Muy pronto: recompensas del Club.</p>`;
+  return `<main class="w" style="padding-top:24px"><h1 style="font-size:1.8rem">⭐ ${nombre}</h1><p
+      class="nota">${esc(P.bienv || "Acumula sellos con cada pedido y gana recompensas.")}</p><div
+      class="caja"><h2>Qué ganas</h2><p class="nota" style="margin:0 0 6px">Cada pedido entregado suma ${P.porVisita
+    || 1} sello${(P.porVisita || 1) > 1 ? "s" : ""}${P.minimo
+    ? ` (compras desde ${$m(P.minimo)})`
+    : ""}. Con ${P.meta || 8} sellos completas tu tarjeta.</p>${rec}</div>`
+    + (
+      D.vivo && !D.nube
+        ? `<div class="caja"><h2>Únete al Club</h2><label>Tu nombre *</label><input class="campo"
+            data-r="nombre" value="${esc(S.reg.nombre)}" maxlength="40" autocomplete="name"><label>Teléfono *</label><input
+            class="campo" data-r="tel" value="${esc(S.reg.tel)}" inputmode="tel" maxlength="15"
+            autocomplete="tel"><label>Correo (opcional)</label><input class="campo" data-r="email"
+            value="${esc(S.reg.email)}" type="email" autocomplete="email"><button class="grande"
+            data-act="registrar">Crear mi cuenta y unirme</button>${S.msg
+          ? `<p class="nota" style="color:var(--rojo)">${esc(S.msg)}</p>`
+          : ""}</div>` + `<div class="caja"><h2>¿Ya tienes cuenta?</h2><label>Teléfono</label><input
+            class="campo" data-e="tel" value="${esc(S.ent.tel)}" inputmode="tel" maxlength="15"><label>Tu código (PUUK-…)</label><input
+            class="campo" data-e="code" value="${esc(S.ent.code)}" maxlength="14"
+            autocapitalize="characters"><button class="grande" style="background:var(--negro)"
+            data-act="entrar">Entrar</button></div>`
+        : `<div class="caja"><h2>Crear cuenta</h2><p class="nota">El registro en línea se activa cuando el restaurante conecte su sistema. Mientras tanto, pide tu tarjeta del Club en tu próxima visita.</p></div>`
+    )
+    + `</main>${pie(D)}`;
 }
 
 /* ---------- seguimiento ---------- */
-const EST={pending:["Recibido","Recibimos tu pedido","#E0A526"],confirmed:["Confirmado","Tu pedido fue confirmado","#3B82F6"],preparing:["Preparando","Estamos preparando tu pedido","#F97316"],ready:["Listo","¡Tu pedido está listo!","#22C55E"],delivered:["Entregado","¡Entregado! Gracias por tu preferencia","#4CAF6A"],cancelled:["Cancelado","Tu pedido fue cancelado","#B91C1C"]};
-const hace=ms=>{const m=Math.max(0,Math.floor(ms/60000));return m>=60?`${Math.floor(m/60)}h ${m%60}m`:`${m} min`;};
-const misPedidos=()=>{try{return JSON.parse(ls(K_PED)||"[]");}catch(e){return[];}};
-function pedidoSeg(){if(NUBE){const s=S.seg;return s&&SEGC&&SEGC.id==s.id?SEGC:null;}const d=panel(),s=S.seg;if(!d||!s)return null;const o=d.ordenes.find(x=>x.id===s.id);return o&&(dig(o.tel)===dig(s.tel)||(d.clientes.find(c=>c.id===o.cliente)||{}).t===s.tel)?o:null;}
-function vSeg(D){
-  const o=pedidoSeg(),N=D.neg,wa=dig(N.tel);
-  const barra=`<div class="w" style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--borde)"><button class="atras" data-act="tab" data-v="inicio">← Regresar</button><b>Mi Pedido</b><button class="chip" data-act="compartir">Compartir</button></div>`;
-  if(!D.vivo)return barra+`<main class="w"><div class="caja"><h2>Seguimiento</h2><p class="nota">El seguimiento en vivo se activa cuando el restaurante conecte su sistema. Mientras tanto escríbenos por WhatsApp para saber cómo va tu pedido.</p>${wa?`<a class="grande" style="text-decoration:none" href="https://wa.me/${wa.length===10?"52"+wa:wa}" target="_blank" rel="noopener">Escribir por WhatsApp</a>`:""}</div></main>`;
-  if(!o&&D.nube&&S.seg)return barra+`<main class="w"><div class="caja"><p class="nota">Buscando tu pedido…</p></div></main>`;
-  if(!o){const mp=misPedidos();
-    return barra+`<main class="w"><div class="caja"><h2>Buscar mi pedido</h2>${mp.length?`<p class="nota">En este teléfono:</p>${mp.map(p=>`<button class="fila" style="padding:10px 0;align-items:center" data-act="ver" data-id="${p.id}" data-tel="${esc(p.tel)}"><b style="flex:1">Pedido #${p.id}</b><span class="nota">${new Date(p.ts).toLocaleString("es-MX")}</span></button>`).join("")}`:""}<label>Código de pedido (#)</label><input class="campo" data-s="id" value="${esc(S.segq.id)}" inputmode="numeric"><label>Teléfono con el que pediste</label><input class="campo" data-s="tel" value="${esc(S.segq.tel)}" inputmode="tel"><button class="grande" data-act="buscar">Ver mi pedido</button>${S.msg?`<p class="nota" style="color:var(--rojo)">${esc(S.msg)}</p>`:""}</div></main>`;}
-  const e=EST[o.estado],pasos=["Recibido","Confirmado","Preparando",o.tipo==="domicilio"?"Listo para entregar":"Listo para recoger",o.tipo==="domicilio"?"Entregado":"Recogido"],claves=["pending","confirmed","preparing","ready","delivered"],ix=claves.indexOf(o.estado);
-  const ref=o.estado==="delivered"?(o.te&&o.te.delivered)||Date.now():Date.now();
-  return barra+`<main class="w"><button class="chip" data-act="snd" style="width:100%;margin:12px 0;padding:14px;background:#1A1A1A;color:#fff;border:2px solid var(--dorado)">${S.snd?"🔔 Sonido de notificación activado":"🔔 Activar sonido de notificación"}</button>`
-   +`<div class="estado" style="background:${e[2]}"><div><b>${o.estado==="delivered"?"¡Entregado!":e[0]}</b><div>${e[1]}</div></div><div style="text-align:right;font-size:.8rem">${o.estado==="delivered"||o.estado==="cancelled"?"hace":"tiempo estimado"}<br><b style="font-size:1.2rem">${o.estado==="delivered"||o.estado==="cancelled"?hace(Date.now()-ref):(o.tiempoEst||30)+" min"}</b>${o.estado!=="delivered"&&o.estado!=="cancelled"?`<br>llevas ${hace(Date.now()-o.ts)}`:""}</div></div>`
-   +(o.estado==="cancelled"?`<p class="caja" style="color:#B91C1C">${o.motivo?esc(o.motivo):"El restaurante canceló tu pedido. Escríbenos si tienes dudas."}</p>`:`<div class="pasos">${pasos.map((t,i)=>`<div class="p ${i<ix?"h":i===ix?"a":""}"><span>${i<=ix?"✓":i+1}</span><div>${t}</div></div>`).join("")}</div>`)
-   +`<div class="codigo"><div><small style="color:var(--dorado);letter-spacing:.1em">CÓDIGO DE PEDIDO</small><br><b>#${o.id}</b></div>${wa?`<a class="verde" style="text-decoration:none;text-align:center" href="https://wa.me/${wa.length===10?"52"+wa:wa}?text=${encodeURIComponent("Hola, necesito ayuda con mi pedido #"+o.id)}" target="_blank" rel="noopener">📞<br>Soporte</a>`:""}</div>`
-   +`<div class="caja" style="padding:0;overflow:hidden;margin-top:14px"><div style="background:#1A1A1A;color:#fff;padding:14px 18px;font-weight:700;letter-spacing:.06em">🛍 TU PEDIDO</div><div style="padding:6px 18px">${o.items.map(i=>`<div class="fila" style="padding:12px 0;align-items:center;border-bottom:1px solid var(--borde)"><span style="flex:1"><b style="color:var(--rojo)">${i.q}×</b> ${esc(i.n)}${[(i.opc||[]).join(", "),i.nota].filter(Boolean).length?`<br><span class="nota">${esc([(i.opc||[]).join(", "),i.nota].filter(Boolean).join(" · "))}</span>`:""}</span><b>${$m(i.c*i.q)}</b></div>`).join("")}<div class="fila" style="align-items:center"><b style="flex:1;letter-spacing:.08em">TOTAL</b><b class="precio" style="font-size:1.4rem">${$m(o.total)}</b></div></div></div></main>`;
+const EST = {
+  pending: ["Recibido", "Recibimos tu pedido", "#E0A526"],
+  confirmed: ["Confirmado", "Tu pedido fue confirmado", "#3B82F6"],
+  preparing: ["Preparando", "Estamos preparando tu pedido", "#F97316"],
+  ready: ["Listo", "¡Tu pedido está listo!", "#22C55E"],
+  delivered: ["Entregado", "¡Entregado! Gracias por tu preferencia", "#4CAF6A"],
+  cancelled: ["Cancelado", "Tu pedido fue cancelado", "#B91C1C"]
+};
+const hace = ms => {
+  const m = Math.max(0, Math.floor(ms / 60000));
+  return m >= 60 ? `${Math.floor(m/60)}h ${m%60}m` : `${m} min`;
+};
+const misPedidos = () => {
+  try {
+    return JSON.parse(ls(K_PED) || "[]");
+  } catch (e) {
+    return [];
+  }
+};
+function pedidoSeg() {
+  if (NUBE) {
+    const s = S.seg;
+    return s && SEGC && SEGC.id == s.id ? SEGC : null;
+  }
+  const d = panel(), s = S.seg;
+  if (!d || !s) return null;
+  const o = d.ordenes.find(x => x.id === s.id);
+  return o && (
+    dig(o.tel) === dig(s.tel) || (d.clientes.find(c => c.id === o.cliente) || { }).t === s.tel
+  )
+    ? o
+    : null;
+}
+function vSeg(D) {
+  const o = pedidoSeg(), N = D.neg, wa = dig(N.tel);
+  const barra = `<div class="w"
+      style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--borde)"><button
+      class="atras" data-act="tab" data-v="inicio">← Regresar</button><b>Mi Pedido</b><button
+      class="chip" data-act="compartir">Compartir</button></div>`;
+  if (!D.vivo) return barra
+    + `<main class="w"><div class="caja"><h2>Seguimiento</h2><p class="nota">El seguimiento en vivo se activa cuando el restaurante conecte su sistema. Mientras tanto escríbenos por WhatsApp para saber cómo va tu pedido.</p>${wa
+      ? `<a class="grande" style="text-decoration:none" href="https://wa.me/${wa.length === 10
+        ? "52" + wa
+        : wa}" target="_blank" rel="noopener">Escribir por WhatsApp</a>`
+      : ""}</div></main>`;
+  if (!o && D.nube && S.seg) return barra
+    + `<main class="w"><div class="caja"><p class="nota">Buscando tu pedido…</p></div></main>`;
+  if (!o) {
+    const mp = misPedidos();
+    return barra
+      + `<main class="w"><div class="caja"><h2>Buscar mi pedido</h2>${mp.length
+        ? `<p class="nota">En este teléfono:</p>${mp.map(
+          p => `<button class="fila" style="padding:10px 0;align-items:center" data-act="ver"
+              data-id="${p.id}" data-tel="${esc(p.tel)}"><b style="flex:1">Pedido #${p.id}</b><span
+              class="nota">${new Date(p.ts).toLocaleString("es-MX")}</span></button>`
+        ).join("")}`
+        : ""}<label>Código de pedido (#)</label><input class="campo" data-s="id" value="${esc(S.segq.id)}"
+          inputmode="numeric"><label>Teléfono con el que pediste</label><input class="campo"
+          data-s="tel" value="${esc(S.segq.tel)}" inputmode="tel"><button class="grande"
+          data-act="buscar">Ver mi pedido</button>${S.msg
+        ? `<p class="nota" style="color:var(--rojo)">${esc(S.msg)}</p>`
+        : ""}</div></main>`;
+  }
+  const e = EST[o.estado],
+    pasos = [
+      "Recibido",
+      "Confirmado",
+      "Preparando",
+      o.tipo === "domicilio" ? "Listo para entregar" : "Listo para recoger",
+      o.tipo === "domicilio" ? "Entregado" : "Recogido"
+    ],
+    claves = ["pending", "confirmed", "preparing", "ready", "delivered"],
+    ix = claves.indexOf(o.estado);
+  const ref = o.estado === "delivered" ? (o.te && o.te.delivered) || Date.now() : Date.now();
+  return barra
+    + `<main class="w"><button class="chip" data-act="snd"
+        style="width:100%;margin:12px 0;padding:14px;background:#1A1A1A;color:#fff;border:2px solid var(--dorado)">${S.snd
+      ? "🔔 Sonido de notificación activado"
+      : "🔔 Activar sonido de notificación"}</button>`
+    + `<div class="estado" style="background:${e[2]}"><div><b>${o.estado === "delivered"
+      ? "¡Entregado!"
+      : e[0]}</b><div>${e[1]}</div></div><div style="text-align:right;font-size:.8rem">${o.estado === "delivered" || o.estado === "cancelled"
+      ? "hace"
+      : "tiempo estimado"}<br><b style="font-size:1.2rem">${o.estado === "delivered" || o.estado === "cancelled"
+      ? hace(Date.now() - ref)
+      : (o.tiempoEst || 30) + " min"}</b>${o.estado !== "delivered" && o.estado !== "cancelled"
+      ? `<br>llevas ${hace(Date.now()-o.ts)}`
+      : ""}</div></div>`
+    + (
+      o.estado === "cancelled"
+        ? `<p class="caja" style="color:#B91C1C">${o.motivo
+          ? esc(o.motivo)
+          : "El restaurante canceló tu pedido. Escríbenos si tienes dudas."}</p>`
+        : `<div class="pasos">${pasos.map(
+          (t, i) => `<div class="p ${i < ix ? "h" : i === ix ? "a" : ""}"><span>${i <= ix
+            ? "✓"
+            : i + 1}</span><div>${t}</div></div>`
+        ).join("")}</div>`
+    )
+    + `<div class="codigo"><div><small style="color:var(--dorado);letter-spacing:.1em">CÓDIGO DE PEDIDO</small><br><b>#${o.id}</b></div>${wa
+      ? `<a class="verde" style="text-decoration:none;text-align:center" href="https://wa.me/${wa.length === 10
+        ? "52" + wa
+        : wa}?text=${encodeURIComponent("Hola, necesito ayuda con mi pedido #" + o.id)}"
+          target="_blank" rel="noopener">📞<br>Soporte</a>`
+      : ""}</div>`
+    + `<div class="caja" style="padding:0;overflow:hidden;margin-top:14px"><div
+        style="background:#1A1A1A;color:#fff;padding:14px 18px;font-weight:700;letter-spacing:.06em">🛍 TU PEDIDO</div><div
+        style="padding:6px 18px">${o.items.map(
+      i => `<div class="fila"
+          style="padding:12px 0;align-items:center;border-bottom:1px solid var(--borde)"><span
+          style="flex:1"><b style="color:var(--rojo)">${i.q}×</b> ${esc(i.n)}${[(i.opc || []).join(", "), i.nota].filter(Boolean).length
+        ? `<br><span class="nota">${esc(
+          [(i.opc || []).join(", "), i.nota].filter(Boolean).join(" · ")
+        )}</span>`
+        : ""}</span><b>${$m(i.c * i.q)}</b></div>`
+    ).join("")}<div class="fila" style="align-items:center"><b style="flex:1;letter-spacing:.08em">TOTAL</b><b
+        class="precio" style="font-size:1.4rem">${$m(o.total)}</b></div></div></div></main>`;
 }
 
 /* ---------- carrito y hoja de producto ---------- */
-function vCarro(D){
-  const f=S.f,cta=cliente(),dom=f.tipo==="domicilio";
-  const tipos=mesa?`<p><b>En mesa ${esc(mesa)}</b></p>`:`<div class="chips">${[["recoger","Pasar a recoger"],["domicilio","A domicilio"]].map(([k,t])=>`<button class="chip" data-act="tipo" data-v="${k}" aria-pressed="${f.tipo===k}">${t}</button>`).join("")}</div>`;
-  return `<div class="w" style="padding-top:14px"><button class="atras" data-act="tab" data-v="menu">← Seguir pidiendo</button></div><main class="w">`
-   +`<section class="caja"><h2>Tu pedido</h2>`+(S.carro.length?S.carro.map((i,x)=>`<div class="fila" style="flex-wrap:wrap;align-items:center;padding:10px 0;border-top:1px solid var(--borde)"><span style="flex:1"><b>${esc(i.n)}</b>${(i.opc||[]).length?`<br><span class="nota">${esc(i.opc.join(", "))}</span>`:""}<br><span class="nota">${$m(i.c)} c/u</span></span><span class="cant"><button data-act="cmenos" data-i="${x}" aria-label="Quitar uno">−</button><b>${i.q}</b><button data-act="cmas" data-i="${x}" aria-label="Agregar uno">+</button></span><input class="campo" data-ni="${x}" value="${esc(i.nota||"")}" placeholder="Nota para este producto (ej. con alga, empanizado…)" maxlength="80" style="margin-top:6px"></div>`).join("")+`<div class="fila" style="align-items:center"><b style="flex:1">Total</b><b class="precio" style="font-size:1.4rem">${$m(total())}</b></div>`:`<p class="nota">Tu pedido está vacío.</p>`)+`</section>`
-   +`<section class="caja"><h2>Tus datos</h2>${cta?`<p class="nota">✅ Pedirás con tu cuenta del Club (${esc(cta.code)}): ganas sellos con este pedido.</p>`:""}<label>Tu nombre *</label><input class="campo" data-f="nombre" value="${esc(f.nombre)}" maxlength="40" autocomplete="name" required><label>Teléfono * (10 dígitos)</label><input class="campo" data-f="tel" value="${esc(f.tel)}" inputmode="tel" maxlength="15" autocomplete="tel" required>${tipos}${dom?`<label>Dirección de entrega *</label><textarea class="campo" data-f="dir" rows="2" maxlength="140">${esc(f.dir)}</textarea>`:""}<label>Algo más que debamos saber (opcional)</label><textarea class="campo" data-f="nota" rows="2" maxlength="140">${esc(f.nota)}</textarea>`
-   +(D.vivo&&!D.nube&&!cta?`<label class="op" style="text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--negro)"><input type="checkbox" data-fc="1" ${f.cuenta?"checked":""}> Crear mi cuenta y unirme al Club (sumo sellos con cada pedido)</label>`:"")+`</section>`
-   +`<p class="nota">${D.vivo?"Tu pedido llega directo a la cocina y podrás seguirlo en tiempo real.":"Se abrirá WhatsApp con tu pedido listo para enviar."} El pago se hace al recibir tu pedido.</p>${S.msg?`<p class="nota" style="color:var(--rojo);font-weight:700">${esc(S.msg)}</p>`:""}<button class="grande" data-act="enviar" ${S.carro.length?"":"disabled"}>${D.vivo?"Enviar pedido a la cocina":"Enviar pedido por WhatsApp"} · ${$m(total())}</button></main>`;
+function vCarro(D) {
+  const f = S.f, cta = cliente(), dom = f.tipo === "domicilio";
+  const tipos = mesa
+    ? `<p><b>En mesa ${esc(mesa)}</b></p>`
+    : `<div class="chips">${[["recoger", "Pasar a recoger"], ["domicilio", "A domicilio"]].map(
+      ([k, t]) => `<button class="chip" data-act="tipo" data-v="${k}" aria-pressed="${f.tipo === k}">${t}</button>`
+    ).join("")}</div>`;
+  return `<div class="w" style="padding-top:14px"><button class="atras" data-act="tab" data-v="menu">← Seguir pidiendo</button></div><main
+      class="w">`
+    + `<section class="caja"><h2>Tu pedido</h2>`
+    + (
+      S.carro.length
+        ? S.carro.map(
+          (i, x) => `<div class="fila"
+              style="flex-wrap:wrap;align-items:center;padding:10px 0;border-top:1px solid var(--borde)"><span
+              style="flex:1"><b>${esc(i.n)}</b>${(i.opc || []).length
+            ? `<br><span class="nota">${esc(i.opc.join(", "))}</span>`
+            : ""}<br><span class="nota">${$m(i.c)} c/u</span></span><span class="cant"><button
+              data-act="cmenos" data-i="${x}" aria-label="Quitar uno">−</button><b>${i.q}</b><button
+              data-act="cmas" data-i="${x}" aria-label="Agregar uno">+</button></span><input
+              class="campo" data-ni="${x}" value="${esc(i.nota || "")}"
+              placeholder="Nota para este producto (ej. con alga, empanizado…)" maxlength="80"
+              style="margin-top:6px"></div>`
+        ).join("") + `<div class="fila" style="align-items:center"><b style="flex:1">Total</b><b
+            class="precio" style="font-size:1.4rem">${$m(total())}</b></div>`
+        : `<p class="nota">Tu pedido está vacío.</p>`
+    )
+    + `</section>`
+    + `<section class="caja"><h2>Tus datos</h2>${cta
+      ? `<p class="nota">✅ Pedirás con tu cuenta del Club (${esc(cta.code)}): ganas sellos con este pedido.</p>`
+      : ""}<label>Tu nombre *</label><input class="campo" data-f="nombre" value="${esc(f.nombre)}"
+        maxlength="40" autocomplete="name" required><label>Teléfono * (10 dígitos)</label><input
+        class="campo" data-f="tel" value="${esc(f.tel)}" inputmode="tel" maxlength="15"
+        autocomplete="tel" required>${tipos}${dom
+      ? `<label>Dirección de entrega *</label><textarea class="campo" data-f="dir" rows="2"
+          maxlength="140">${esc(f.dir)}</textarea>`
+      : ""}<label>Algo más que debamos saber (opcional)</label><textarea class="campo" data-f="nota"
+        rows="2" maxlength="140">${esc(f.nota)}</textarea>`
+    + (
+      D.vivo && !D.nube && !cta
+        ? `<label class="op"
+            style="text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--negro)"><input
+            type="checkbox" data-fc="1" ${f.cuenta ? "checked" : ""}> Crear mi cuenta y unirme al Club (sumo sellos con cada pedido)</label>`
+        : ""
+    )
+    + `</section>`
+    + `<p class="nota">${D.vivo
+      ? "Tu pedido llega directo a la cocina y podrás seguirlo en tiempo real."
+      : "Se abrirá WhatsApp con tu pedido listo para enviar."} El pago se hace al recibir tu pedido.</p>${S.msg
+      ? `<p class="nota" style="color:var(--rojo);font-weight:700">${esc(S.msg)}</p>`
+      : ""}<button class="grande" data-act="enviar" ${S.carro.length ? "" : "disabled"}>${D.vivo
+      ? "Enviar pedido a la cocina"
+      : "Enviar pedido por WhatsApp"} · ${$m(total())}</button></main>`;
 }
-function hojaProducto(D){
-  const p=todos(D).find(x=>x.n===S.prod);if(!p)return"";
-  const ex=p.g.reduce((s,g)=>{const i=S.sel[g.n];return s+(i!=null&&g.o[i]?g.o[i].p:0);},0);
-  return `<div class="vel" data-act="cerrar"><div class="hoja" data-stop="1">${p.img?`<img class="gr" src="${esc(p.img)}" alt="">`:""}<div class="in"><h1 style="font-size:1.7rem;margin-top:14px">${esc(p.n)}</h1><p class="nota">${esc(p.d)}</p>${p.g.map(g=>`<fieldset><legend>${esc(g.n)}${g.req?" *":""}</legend>${g.o.map((o,i)=>`<label class="op" style="text-transform:none;letter-spacing:0;font-size:1rem;color:var(--negro);margin:0"><input type="radio" name="${esc(g.n)}" data-g="${esc(g.n)}" value="${i}" ${S.sel[g.n]===i?"checked":""}> <span style="flex:1">${esc(o.n)}</span>${o.p?`<span class="nota">+${$m(o.p)}</span>`:""}</label>`).join("")}${g.req?"":`<label class="op" style="text-transform:none;font-size:1rem;color:var(--negro);margin:0"><input type="radio" name="${esc(g.n)}" data-g="${esc(g.n)}" value="" ${S.sel[g.n]==null?"checked":""}> Sin elegir</label>`}</fieldset>`).join("")}<label>Nota para este producto (opcional)</label><input class="campo" data-pn="1" value="${esc(S.nota)}" placeholder="Ej. con alga, empanizado…" maxlength="80"><div class="cant" style="justify-content:center;margin:14px 0"><button data-act="pmenos" aria-label="Menos">−</button><b style="font-size:1.4rem">${S.qty}</b><button data-act="pmas" aria-label="Más">+</button></div><button class="grande" data-act="agregar">Agregar al pedido · ${$m((p.c+ex)*S.qty)}</button><button class="chip" style="width:100%;margin-top:10px;padding:12px" data-act="cerrar">Cancelar</button></div></div></div>`;
+function hojaProducto(D) {
+  const p = todos(D).find(x => x.n === S.prod);
+  if (!p) return "";
+  const ex = p.g.reduce((s, g) => {
+    const i = S.sel[g.n];
+    return s + (i != null && g.o[i] ? g.o[i].p : 0);
+  }, 0);
+  return `<div class="vel" data-act="cerrar"><div class="hoja" data-stop="1">${p.img
+    ? `<img class="gr" src="${esc(p.img)}" alt="">`
+    : ""}<div class="in"><h1 style="font-size:1.7rem;margin-top:14px">${esc(p.n)}</h1><p
+      class="nota">${esc(p.d)}</p>${p.g.map(
+    g => `<fieldset><legend>${esc(g.n)}${g.req ? " *" : ""}</legend>${g.o.map(
+      (o, i) => `<label class="op"
+          style="text-transform:none;letter-spacing:0;font-size:1rem;color:var(--negro);margin:0"><input
+          type="radio" name="${esc(g.n)}" data-g="${esc(g.n)}" value="${i}" ${S.sel[g.n] === i
+        ? "checked"
+        : ""}> <span style="flex:1">${esc(o.n)}</span>${o.p
+        ? `<span class="nota">+${$m(o.p)}</span>`
+        : ""}</label>`
+    ).join("")}${g.req
+      ? ""
+      : `<label class="op" style="text-transform:none;font-size:1rem;color:var(--negro);margin:0"><input
+          type="radio" name="${esc(g.n)}" data-g="${esc(g.n)}" value="" ${S.sel[g.n] == null
+        ? "checked"
+        : ""}> Sin elegir</label>`}</fieldset>`
+  ).join("")}<label>Nota para este producto (opcional)</label><input class="campo" data-pn="1"
+      value="${esc(S.nota)}" placeholder="Ej. con alga, empanizado…" maxlength="80"><div
+      class="cant" style="justify-content:center;margin:14px 0"><button data-act="pmenos"
+      aria-label="Menos">−</button><b style="font-size:1.4rem">${S.qty}</b><button data-act="pmas"
+      aria-label="Más">+</button></div><button class="grande" data-act="agregar">Agregar al pedido · ${$m((p.c + ex) * S.qty)}</button><button
+      class="chip" style="width:100%;margin-top:10px;padding:12px" data-act="cerrar">Cancelar</button></div></div></div>`;
 }
 
 /* ---------- dibujar ---------- */
-function render(){
-  const D=datos(),a=document.activeElement,id=a&&(a.id||a.dataset&&Object.keys(a.dataset).map(k=>"data-"+k.replace(/[A-Z]/g,m=>"-"+m.toLowerCase())+'="'+a.dataset[k]+'"')[0]),ss=a&&a.selectionStart;
-  if(!D||!D.cats.length){$("app").innerHTML=`<div class="w"><p class="nota" style="text-align:center;padding:60px 0">El menú no está disponible por ahora.</p></div>`;return;}
-  document.title="Menú · "+(D.neg.n||"");
-  const cuerpo={inicio:vInicio,menu:vMenu,lealtad:vLealtad,suc:vSuc,seg:vSeg,carro:vCarro}[S.tab](D);
-  $("app").innerHTML=cuerpo+(S.tab==="seg"||S.tab==="carro"?"":navBar())+(S.prod?hojaProducto(D):"");
-  if(id){const e=$(id)||document.querySelector("["+id+"]");if(e&&e.focus){e.focus();try{e.setSelectionRange(ss,ss);}catch(x){}}}
+function render() {
+  const D = datos(),
+    a = document.activeElement,
+    id = a
+      && (
+        a.id
+          || a.dataset
+          && Object.keys(a.dataset).map(
+            k => "data-"
+              + k.replace(/[A-Z]/g, m => "-" + m.toLowerCase())
+              + '="'
+              + a.dataset[k]
+              + '"'
+          )[0]
+      ),
+    ss = a && a.selectionStart;
+  if (!D || !D.cats.length) {
+    $("app").innerHTML = `<div class="w"><p class="nota" style="text-align:center;padding:60px 0">El menú no está disponible por ahora.</p></div>`;
+    return;
+  }
+  document.title = "Menú · " + (D.neg.n || "");
+  const cuerpo = {
+    inicio: vInicio,
+    menu: vMenu,
+    lealtad: vLealtad,
+    suc: vSuc,
+    seg: vSeg,
+    carro: vCarro
+  }[S.tab](D);
+  $("app").innerHTML = cuerpo
+    + (S.tab === "seg" || S.tab === "carro" ? "" : navBar())
+    + (S.prod ? hojaProducto(D) : "");
+  if (id) {
+    const e = $(id) || document.querySelector("[" + id + "]");
+    if (e && e.focus) {
+      e.focus();
+      try {
+        e.setSelectionRange(ss, ss);
+      } catch (x) { }
+    }
+  }
   // seguimiento: recuerda el estado que el cliente ya vio, para avisarle (y sonar) solo cuando cambie
-  if(S.tab==="seg"){if(ultimoEstado===null){const o=pedidoSeg();if(o)ultimoEstado=o.estado+"|"+o.tiempoEst;}}else ultimoEstado=null;
-  if(NUBE&&S.tab==="seg"&&S.seg&&!SEGC&&!segBusy)refrescarSeg();
+  if (S.tab === "seg") {
+    if (ultimoEstado === null) {
+      const o = pedidoSeg();
+      if (o) ultimoEstado = o.estado + "|" + o.tiempoEst;
+    }
+  } else ultimoEstado = null;
+  if (NUBE && S.tab === "seg" && S.seg && !SEGC && !segBusy) refrescarSeg();
 }
 
 /* ---------- acciones ---------- */
-function agregarLinea(p,opc,ex,q,nota){const k=opc.join("|"),l=S.carro.find(i=>i.n===p.n&&(i.opc||[]).join("|")===k&&!i.nota&&!nota);if(l)l.q+=q;else S.carro.push({n:p.n,c:p.c+ex,q,nota:nota||"",opc});}
-function abrir(n,D){const p=todos(D).find(x=>x.n===n);S.prod=n;S.sel={};S.qty=1;S.nota="";p.g.forEach(g=>{if(g.req)S.sel[g.n]=0;});}
-const acc={
- tab:b=>{S.tab=b.dataset.v;S.q="";S.msg="";window.scrollTo(0,0);},
- cat:b=>{S.cat=b.dataset.v==="todos"||b.dataset.v==="promo"?b.dataset.v:+b.dataset.v;S.q="";},
- prod:(b,D)=>abrir(b.dataset.n,D),
- add:(b,D)=>{const p=todos(D).find(x=>x.n===b.dataset.n);if(p.g.length)abrir(p.n,D);else agregarLinea(p,[],0,1,"");},
- cerrar:()=>{S.prod=null;},
- pmas:()=>{S.qty++;},pmenos:()=>{if(S.qty>1)S.qty--;},
- agregar:(b,D)=>{const p=todos(D).find(x=>x.n===S.prod);if(!p)return;const opc=[];let ex=0;p.g.forEach(g=>{const i=S.sel[g.n];if(i!=null&&g.o[i]){opc.push(g.o[i].n);ex+=g.o[i].p;}});agregarLinea(p,opc,ex,S.qty,S.nota.trim());S.prod=null;},
- carro:()=>{S.tab="carro";window.scrollTo(0,0);},
- cmas:b=>{S.carro[+b.dataset.i].q++;},
- cmenos:b=>{const i=+b.dataset.i;S.carro[i].q--;if(S.carro[i].q<1)S.carro.splice(i,1);if(!S.carro.length)S.tab="menu";},
- tipo:b=>{S.f.tipo=b.dataset.v;},
- descargar:(b,D)=>{$("impr").innerHTML=`<h1>${esc(D.neg.n||"Menú")}</h1>`+D.cats.map(c=>`<h2>${esc(c.e)} ${esc(c.n)}</h2>`+c.p.map(p=>`<p><span><b>${esc(p.n)}</b>${p.d?` — ${esc(p.d)}`:""}</span><b>${$m(p.c)}</b></p>`).join("")).join("");setTimeout(()=>window.print(),50);},
- seguir:()=>{const mp=misPedidos();SEGC=null;ultimoEstado=null;S.tab="seg";S.msg="";S.seg=mp.length?{id:mp[0].id,tel:mp[0].tel}:null;window.scrollTo(0,0);},
- ver:b=>{const mp=misPedidos().find(p=>String(p.id)===b.dataset.id);S.seg={id:+b.dataset.id,tel:b.dataset.tel||(mp&&mp.tel)||(cliente()||{}).t||""};SEGC=null;ultimoEstado=null;S.tab="seg";S.msg="";window.scrollTo(0,0);},
- buscar:()=>{ultimoEstado=null;SEGC=null;const id=+S.segq.id;S.seg={id,tel:S.segq.tel};if(NUBE){S.msg="";return;}if(!pedidoSeg()){S.seg=null;S.msg="No encontramos ese pedido. Revisa el número y el teléfono.";}else S.msg="";},
- snd:()=>{S.snd=!S.snd;if(S.snd)pitar();},
- compartir:()=>{const o=pedidoSeg(),t=o?`Mi pedido #${o.id} en ${(datos().neg||{}).n||"el restaurante"}`:"Mi pedido";if(navigator.share)navigator.share({title:t,text:t,url:location.href.split("?")[0]}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t+" — "+location.href.split("?")[0]);},
- registrar:()=>{
-  const r=S.reg,tel=dig(r.tel);S.msg="";
-  if(!r.nombre.trim()||tel.length<10){S.msg="Escribe tu nombre y un teléfono de 10 dígitos.";return;}
-  const res=registrarCuenta({nombre:r.nombre.trim(),tel,email:r.email.trim()});
-  if(res.error)S.msg=res.error;else{ls(K_CTA,JSON.stringify({id:res.c.id,code:res.c.code}));S.reg={nombre:"",tel:"",email:""};}
- },
- entrar:()=>{const d=panel(),tel=dig(S.ent.tel),code=S.ent.code.trim().toUpperCase();S.msg="";
-  const c=d&&d.clientes.find(x=>dig(x.t)===tel&&x.code===code);
-  if(!c){S.msg="No coincide el teléfono con el código.";return;}ls(K_CTA,JSON.stringify({id:c.id,code:c.code}));S.ent={tel:"",code:""};},
- salir:()=>{ls(K_CTA,null);},
- enviar:(b,D)=>enviar(D)
-};
-function registrarCuenta(f){
-  const d=panel();if(!d)return{error:"No hay conexión con el restaurante."};
-  let c=d.clientes.find(x=>dig(x.t)===f.tel);
-  if(c&&c.m&&c.code)return{error:"Ese teléfono ya tiene cuenta. Entra con tu código (te lo da el restaurante) en “¿Ya tienes cuenta?”."};
-  const h=new Date(),hoy=h.getFullYear()+"-"+String(h.getMonth()+1).padStart(2,"0")+"-"+String(h.getDate()).padStart(2,"0");
-  if(!c){c={id:f.tel,n:f.nombre,t:f.tel,e:f.email,hp:0,ht:0,m:true,bal:0,vis:0,tot:0,desde:hoy};d.clientes.push(c);}
-  else{c.m=true;if(f.email)c.e=f.email;}
-  if(!c.code)c.code=codigoNuevo(d);
-  d.act=d.act||[];d.act.unshift({f:h.toLocaleString("es-MX"),t:`${c.n} se unió al Club desde el menú de clientes`});d.act=d.act.slice(0,30);
-  ls(KEY,JSON.stringify(d));return{c};
+function agregarLinea(p, opc, ex, q, nota) {
+  const k = opc.join("|"),
+    l = S.carro.find(i => i.n === p.n && (i.opc || []).join("|") === k && !i.nota && !nota);
+  if (l) l.q += q;
+  else S.carro.push({ n: p.n, c: p.c + ex, q, nota: nota || "", opc });
 }
-async function llamar(fn,args){
-  const r=await fetch(NUBE.url+"/rest/v1/rpc/"+fn,{method:"POST",headers:{"Content-Type":"application/json",apikey:NUBE.key,Authorization:"Bearer "+NUBE.key},body:JSON.stringify(args)});
-  const t=await r.text();let j=null;try{j=JSON.parse(t);}catch(e){}
-  if(!r.ok)throw new Error((j&&j.message)||"Error "+r.status);
+function abrir(n, D) {
+  const p = todos(D).find(x => x.n === n);
+  S.prod = n;
+  S.sel = { };
+  S.qty = 1;
+  S.nota = "";
+  p.g.forEach(g => {
+    if (g.req) S.sel[g.n] = 0;
+  });
+}
+const acc = {
+  tab: b => {
+    S.tab = b.dataset.v;
+    S.q = "";
+    S.msg = "";
+    window.scrollTo(0, 0);
+  },
+  cat: b => {
+    S.cat = b.dataset.v === "todos" || b.dataset.v === "promo" ? b.dataset.v : +b.dataset.v;
+    S.q = "";
+  },
+  prod: (b, D) => abrir(b.dataset.n, D),
+  add: (b, D) => {
+    const p = todos(D).find(x => x.n === b.dataset.n);
+    if (p.g.length) abrir(p.n, D);
+    else agregarLinea(p, [], 0, 1, "");
+  },
+  cerrar: () => {
+    S.prod = null;
+  },
+  pmas: () => {
+    S.qty++;
+  },
+  pmenos: () => {
+    if (S.qty > 1) S.qty--;
+  },
+  agregar: (b, D) => {
+    const p = todos(D).find(x => x.n === S.prod);
+    if (!p) return;
+    const opc = [];
+    let ex = 0;
+    p.g.forEach(g => {
+      const i = S.sel[g.n];
+      if (i != null && g.o[i]) {
+        opc.push(g.o[i].n);
+        ex += g.o[i].p;
+      }
+    });
+    agregarLinea(p, opc, ex, S.qty, S.nota.trim());
+    S.prod = null;
+  },
+  carro: () => {
+    S.tab = "carro";
+    window.scrollTo(0, 0);
+  },
+  cmas: b => {
+    S.carro[+b.dataset.i].q++;
+  },
+  cmenos: b => {
+    const i = +b.dataset.i;
+    S.carro[i].q--;
+    if (S.carro[i].q < 1) S.carro.splice(i, 1);
+    if (!S.carro.length) S.tab = "menu";
+  },
+  tipo: b => {
+    S.f.tipo = b.dataset.v;
+  },
+  descargar: (b, D) => {
+    $("impr").innerHTML = `<h1>${esc(D.neg.n||"Menú")}</h1>`
+      + D.cats.map(
+        c => `<h2>${esc(c.e)} ${esc(c.n)}</h2>`
+          + c.p.map(
+            p => `<p><span><b>${esc(p.n)}</b>${p.d?` — ${esc(p.d)}`:""}</span><b>${$m(p.c)}</b></p>`
+          ).join("")
+      ).join("");
+    setTimeout(() => window.print(), 50);
+  },
+  seguir: () => {
+    const mp = misPedidos();
+    SEGC = null;
+    ultimoEstado = null;
+    S.tab = "seg";
+    S.msg = "";
+    S.seg = mp.length ? { id: mp[0].id, tel: mp[0].tel } : null;
+    window.scrollTo(0, 0);
+  },
+  ver: b => {
+    const mp = misPedidos().find(p => String(p.id) === b.dataset.id);
+    S.seg = {
+      id: +b.dataset.id,
+      tel: b.dataset.tel || (mp && mp.tel) || (cliente() || { }).t || ""
+    };
+    SEGC = null;
+    ultimoEstado = null;
+    S.tab = "seg";
+    S.msg = "";
+    window.scrollTo(0, 0);
+  },
+  buscar: () => {
+    ultimoEstado = null;
+    SEGC = null;
+    const id = +S.segq.id;
+    S.seg = { id, tel: S.segq.tel };
+    if (NUBE) {
+      S.msg = "";
+      return;
+    }
+    if (!pedidoSeg()) {
+      S.seg = null;
+      S.msg = "No encontramos ese pedido. Revisa el número y el teléfono.";
+    } else S.msg = "";
+  },
+  snd: () => {
+    S.snd = !S.snd;
+    if (S.snd) pitar();
+  },
+  compartir: () => {
+    const o = pedidoSeg(),
+      t = o ? `Mi pedido #${o.id} en ${(datos().neg||{}).n||"el restaurante"}` : "Mi pedido";
+    if (navigator.share) navigator.share({ title: t, text: t, url: location.href.split("?")[0] }).catch (() => { });
+    else if (navigator.clipboard) navigator.clipboard.writeText(
+      t + " — " + location.href.split("?")[0]
+    );
+  },
+  registrar: () => {
+    const r = S.reg, tel = dig(r.tel);
+    S.msg = "";
+    if (!r.nombre.trim() || tel.length < 10) {
+      S.msg = "Escribe tu nombre y un teléfono de 10 dígitos.";
+      return;
+    }
+    const res = registrarCuenta({ nombre: r.nombre.trim(), tel, email: r.email.trim() });
+    if (res.error) S.msg = res.error;
+    else {
+      ls(K_CTA, JSON.stringify({ id: res.c.id, code: res.c.code }));
+      S.reg = { nombre: "", tel: "", email: "" };
+    }
+  },
+  entrar: () => {
+    const d = panel(), tel = dig(S.ent.tel), code = S.ent.code.trim().toUpperCase();
+    S.msg = "";
+    const c = d && d.clientes.find(x => dig(x.t) === tel && x.code === code);
+    if (!c) {
+      S.msg = "No coincide el teléfono con el código.";
+      return;
+    }
+    ls(K_CTA, JSON.stringify({ id: c.id, code: c.code }));
+    S.ent = { tel: "", code: "" };
+  },
+  salir: () => {
+    ls(K_CTA, null);
+  },
+  enviar: (b, D) => enviar(D)
+};
+function registrarCuenta(f) {
+  const d = panel();
+  if (!d) return { error: "No hay conexión con el restaurante." };
+  let c = d.clientes.find(x => dig(x.t) === f.tel);
+  if (c && c.m && c.code) return {
+    error: "Ese teléfono ya tiene cuenta. Entra con tu código (te lo da el restaurante) en “¿Ya tienes cuenta?”."
+  };
+  const h = new Date(),
+    hoy = h.getFullYear()
+      + "-"
+      + String(h.getMonth() + 1).padStart(2, "0")
+      + "-"
+      + String(h.getDate()).padStart(2, "0");
+  if (!c) {
+    c = {
+      id: f.tel,
+      n: f.nombre,
+      t: f.tel,
+      e: f.email,
+      hp: 0,
+      ht: 0,
+      m: true,
+      bal: 0,
+      vis: 0,
+      tot: 0,
+      desde: hoy
+    };
+    d.clientes.push(c);
+  } else {
+    c.m = true;
+    if (f.email) c.e = f.email;
+  }
+  if (!c.code) c.code = codigoNuevo(d);
+  d.act = d.act || [];
+  d.act.unshift(
+    { f: h.toLocaleString("es-MX"), t: `${c.n} se unió al Club desde el menú de clientes` }
+  );
+  d.act = d.act.slice(0, 30);
+  ls(KEY, JSON.stringify(d));
+  return { c };
+}
+async function llamar(fn, args) {
+  const r = await fetch(
+    NUBE.url + "/rest/v1/rpc/" + fn,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: NUBE.key,
+        Authorization: "Bearer " + NUBE.key
+      },
+      body: JSON.stringify(args)
+    }
+  );
+  const t = await r.text();
+  let j = null;
+  try {
+    j = JSON.parse(t);
+  } catch (e) { }
+  if (!r.ok) throw new Error((j && j.message) || "Error " + r.status);
   return j;
 }
-async function refrescarSeg(){
-  if(segBusy||!S.seg)return;segBusy=true;
-  try{
-    const o=await llamar("ver_pedido_cliente",{p_id:+S.seg.id,p_tel:dig(S.seg.tel)});
-    if(!o){S.seg=null;SEGC=null;S.msg="No encontramos ese pedido. Revisa el número y el teléfono.";}
-    else{const k=o.estado+"|"+o.tiempoEst;SEGC=o;if(k!==ultimoEstado){if(ultimoEstado!==null&&S.snd)pitar();ultimoEstado=k;}}
-  }catch(e){if(!SEGC){S.seg=null;S.msg="No se pudo consultar el pedido. Revisa tu conexión.";}}
-  segBusy=false;render();
+// Menú en vivo: pide a la base el menú real cuando cambió en el panel (productos, precios, disponibilidad)
+async function cargarMenu() {
+  if (menuBusy) return;
+  menuBusy = true;
+  try {
+    const v = await llamar("menu_version", { });
+    if (v && v !== menuV) {
+      const m = await llamar("menu_publico", { });
+      if (m && m.menu) {
+        const b = SNAP || { };
+        SNAP = {
+          generado: m.v,
+          neg: m.neg || b.neg,
+          menu: m.menu,
+          mods: m.mods || b.mods,
+          prog: m.prog || b.prog,
+          dis: m.dis || b.dis,
+          recomp: m.recomp || b.recomp
+        };
+        menuV = m.v;
+        const ok = new Set(todos(datos()).map(p => p.n)), n0 = S.carro.length;
+        S.carro = S.carro.filter(i => ok.has(i.n));
+        if (S.carro.length < n0) S.msg = "Quitamos de tu carrito productos que ya no están disponibles.";
+        if (
+          !S.prod && !(document.activeElement && document.activeElement.matches("input,textarea"))
+        ) render();
+      }
+    }
+  } catch (e) {
+    console.warn("Menú en vivo: no se pudo actualizar", e);
+  }
+  menuBusy = false;
 }
-async function enviarNube(D,f,tel){
-  if(S.enviando)return;S.enviando=true;S.msg="";render();
-  try{
-    const r=await llamar("crear_pedido_cliente",{p:{nombre:f.nombre.trim(),tel,tipo:mesa?"mesa":f.tipo,mesa:mesa||"",dir:f.dir.trim(),nota:f.nota.trim(),
-      items:S.carro.map(i=>({n:i.n,q:i.q,nota:(i.nota||"").trim(),opc:i.opc||[]}))}});
-    const mp=misPedidos();mp.unshift({id:r.id,tel,ts:r.ts});ls(K_PED,JSON.stringify(mp.slice(0,20)));
-    S.carro=[];SEGC=null;ultimoEstado=null;S.seg={id:r.id,tel};S.tab="seg";window.scrollTo(0,0);
-  }catch(e){S.msg=e instanceof TypeError?"No se pudo enviar. Revisa tu conexión o escríbenos por WhatsApp.":(e.message||"No se pudo enviar el pedido.");}
-  S.enviando=false;render();
+async function refrescarSeg() {
+  if (segBusy || !S.seg) return;
+  segBusy = true;
+  try {
+    const o = await llamar("ver_pedido_cliente", { p_id: +S.seg.id, p_tel: dig(S.seg.tel) });
+    if (!o) {
+      S.seg = null;
+      SEGC = null;
+      S.msg = "No encontramos ese pedido. Revisa el número y el teléfono.";
+    } else {
+      const k = o.estado + "|" + o.tiempoEst;
+      SEGC = o;
+      if (k !== ultimoEstado) {
+        if (ultimoEstado !== null && S.snd) pitar();
+        ultimoEstado = k;
+      }
+    }
+  } catch (e) {
+    if (!SEGC) {
+      S.seg = null;
+      S.msg = "No se pudo consultar el pedido. Revisa tu conexión.";
+    }
+  }
+  segBusy = false;
+  render();
 }
-function enviar(D){
-  const f=S.f,tel=dig(f.tel);S.msg="";
-  if(!S.carro.length)return;
-  if(!f.nombre.trim()){S.msg="Escribe tu nombre.";return;}
-  if(tel.length<10){S.msg="Escribe tu teléfono de 10 dígitos.";return;}
-  if(f.tipo==="domicilio"&&!f.dir.trim()){S.msg="Escribe la dirección de entrega.";return;}
-  if(NUBE){enviarNube(D,f,tel);return;}
-  if(D.vivo){
-    let d=panel(),cta=cliente();
-    if(!cta&&f.cuenta){const r=registrarCuenta({nombre:f.nombre.trim(),tel,email:f.email||""});if(r.error){S.msg=r.error;return;}cta=r.c;ls(K_CTA,JSON.stringify({id:cta.id,code:cta.code}));d=panel();}
-    const h=new Date(),fecha=h.getFullYear()+"-"+String(h.getMonth()+1).padStart(2,"0")+"-"+String(h.getDate()).padStart(2,"0"),hora=h.toTimeString().slice(0,5);
-    d.seq=(d.seq||100)+1;
-    let cid=cta?cta.id:"mostrador";
-    if(!cta){const ex=d.clientes.find(x=>dig(x.t)===tel);if(ex)cid=ex.id;}
-    const o={id:d.seq,fecha,hora,ts:Date.now(),items:S.carro.map(i=>({n:i.n,c:i.c,q:i.q,nota:(i.nota||"").trim(),opc:i.opc||[]})),total:total(),metodo:"efectivo",tipo:mesa?"mesa":f.tipo,mesa:mesa||"",estado:"pending",cliente:cid,origen:"cliente",nombreCliente:f.nombre.trim(),tel,tiempoEst:30,
-      nota:`${f.tipo==="domicilio"?"Entrega a: "+f.dir.trim()+" · ":""}${f.nota.trim()?f.nota.trim()+" · ":""}Pago por definir`};
+async function enviarNube(D, f, tel) {
+  if (S.enviando) return;
+  S.enviando = true;
+  S.msg = "";
+  render();
+  try {
+    const r = await llamar(
+      "crear_pedido_cliente",
+      {
+        p: {
+          nombre: f.nombre.trim(),
+          tel,
+          tipo: mesa ? "mesa" : f.tipo,
+          mesa: mesa || "",
+          dir: f.dir.trim(),
+          nota: f.nota.trim(),
+          items: S.carro.map(
+            i => ({ n: i.n, q: i.q, nota: (i.nota || "").trim(), opc: i.opc || [] })
+          )
+        }
+      }
+    );
+    const mp = misPedidos();
+    mp.unshift({ id: r.id, tel, ts: r.ts });
+    ls(K_PED, JSON.stringify(mp.slice(0, 20)));
+    S.carro = [];
+    SEGC = null;
+    ultimoEstado = null;
+    S.seg = { id: r.id, tel };
+    S.tab = "seg";
+    window.scrollTo(0, 0);
+  } catch (e) {
+    S.msg = e instanceof TypeError
+      ? "No se pudo enviar. Revisa tu conexión o escríbenos por WhatsApp."
+      : (e.message || "No se pudo enviar el pedido.");
+    menuV = null;
+    cargarMenu();
+  }
+  S.enviando = false;
+  render();
+}
+function enviar(D) {
+  const f = S.f, tel = dig(f.tel);
+  S.msg = "";
+  if (!S.carro.length) return;
+  if (!f.nombre.trim()) {
+    S.msg = "Escribe tu nombre.";
+    return;
+  }
+  if (tel.length < 10) {
+    S.msg = "Escribe tu teléfono de 10 dígitos.";
+    return;
+  }
+  if (f.tipo === "domicilio" && !f.dir.trim()) {
+    S.msg = "Escribe la dirección de entrega.";
+    return;
+  }
+  if (NUBE) {
+    enviarNube(D, f, tel);
+    return;
+  }
+  if (D.vivo) {
+    let d = panel(), cta = cliente();
+    if (!cta && f.cuenta) {
+      const r = registrarCuenta({ nombre: f.nombre.trim(), tel, email: f.email || "" });
+      if (r.error) {
+        S.msg = r.error;
+        return;
+      }
+      cta = r.c;
+      ls(K_CTA, JSON.stringify({ id: cta.id, code: cta.code }));
+      d = panel();
+    }
+    const h = new Date(),
+      fecha = h.getFullYear()
+        + "-"
+        + String(h.getMonth() + 1).padStart(2, "0")
+        + "-"
+        + String(h.getDate()).padStart(2, "0"),
+      hora = h.toTimeString().slice(0, 5);
+    d.seq = (d.seq || 100) + 1;
+    let cid = cta ? cta.id : "mostrador";
+    if (!cta) {
+      const ex = d.clientes.find(x => dig(x.t) === tel);
+      if (ex) cid = ex.id;
+    }
+    const o = {
+      id: d.seq,
+      fecha,
+      hora,
+      ts: Date.now(),
+      items: S.carro.map(
+        i => ({ n: i.n, c: i.c, q: i.q, nota: (i.nota || "").trim(), opc: i.opc || [] })
+      ),
+      total: total(),
+      metodo: "efectivo",
+      tipo: mesa ? "mesa" : f.tipo,
+      mesa: mesa || "",
+      estado: "pending",
+      cliente: cid,
+      origen: "cliente",
+      nombreCliente: f.nombre.trim(),
+      tel,
+      tiempoEst: 30,
+      nota: `${f.tipo === "domicilio" ? "Entrega a: " + f.dir.trim() + " · " : ""}${f.nota.trim()
+        ? f.nota.trim() + " · "
+        : ""}Pago por definir`
+    };
     d.ordenes.push(o);
-    d.chat=d.chat||[];d.chat.push({id:(d.chat.length?d.chat[d.chat.length-1].id:0)+1,f:hora,de:"Cliente",t:`📱 Nuevo pedido #${o.id}${mesa?" (Mesa "+mesa+")":""} de ${o.nombreCliente}`,sis:true});d.chat=d.chat.slice(-200);
-    d.act=d.act||[];d.act.unshift({f:h.toLocaleString("es-MX"),t:`Pedido #${o.id} recibido desde el menú de clientes`});d.act=d.act.slice(0,30);
-    ls(KEY,JSON.stringify(d));
-    const mp=misPedidos();mp.unshift({id:o.id,tel,ts:o.ts});ls(K_PED,JSON.stringify(mp.slice(0,20)));
-    S.carro=[];S.seg={id:o.id,tel};S.tab="seg";window.scrollTo(0,0);
-  }else{
-    const N=D.neg,num=dig(N.tel);
-    const texto=`Hola, quiero hacer un pedido en ${N.n||"el restaurante"}:\n\n`+S.carro.map(i=>`• ${i.q} x ${i.n}${[(i.opc||[]).join(", "),i.nota].filter(Boolean).length?" ("+[(i.opc||[]).join(", "),i.nota].filter(Boolean).join(" · ")+")":""} — ${$m(i.c*i.q)}`).join("\n")+`\n\nTotal: ${$m(total())}\nNombre: ${f.nombre.trim()}\nTeléfono: ${tel}\n`+(mesa?`Mesa: ${mesa}\n`:`Tipo: ${f.tipo==="domicilio"?"A domicilio":"Paso a recoger"}\n`)+(f.tipo==="domicilio"?`Dirección: ${f.dir.trim()}\n`:"")+(f.nota.trim()?`Nota: ${f.nota.trim()}\n`:"");
-    S.carro=[];S.tab="inicio";
-    if(num)window.open("https://wa.me/"+(num.length===10?"52"+num:num)+"?text="+encodeURIComponent(texto),"_blank");else alert("Aún no hay WhatsApp configurado. Muestra este pedido en el local:\n\n"+texto);
+    d.chat = d.chat || [];
+    d.chat.push(
+      {
+        id: (d.chat.length ? d.chat[d.chat.length - 1].id : 0) + 1,
+        f: hora,
+        de: "Cliente",
+        t: `📱 Nuevo pedido #${o.id}${mesa?" (Mesa "+mesa+")":""} de ${o.nombreCliente}`,
+        sis: true
+      }
+    );
+    d.chat = d.chat.slice(-200);
+    d.act = d.act || [];
+    d.act.unshift(
+      { f: h.toLocaleString("es-MX"), t: `Pedido #${o.id} recibido desde el menú de clientes` }
+    );
+    d.act = d.act.slice(0, 30);
+    ls(KEY, JSON.stringify(d));
+    const mp = misPedidos();
+    mp.unshift({ id: o.id, tel, ts: o.ts });
+    ls(K_PED, JSON.stringify(mp.slice(0, 20)));
+    S.carro = [];
+    S.seg = { id: o.id, tel };
+    S.tab = "seg";
+    window.scrollTo(0, 0);
+  } else {
+    const N = D.neg, num = dig(N.tel);
+    const texto = `Hola, quiero hacer un pedido en ${N.n||"el restaurante"}:\n\n`
+      + S.carro.map(
+        i => `• ${i.q} x ${i.n}${[(i.opc || []).join(", "), i.nota].filter(Boolean).length
+          ? " (" + [(i.opc || []).join(", "), i.nota].filter(Boolean).join(" · ") + ")"
+          : ""} — ${$m(i.c * i.q)}`
+      ).join("\n")
+      + `\n\nTotal: ${$m(total())}\nNombre: ${f.nombre.trim()}\nTeléfono: ${tel}\n`
+      + (
+        mesa ? `Mesa: ${mesa}\n` : `Tipo: ${f.tipo==="domicilio"?"A domicilio":"Paso a recoger"}\n`
+      )
+      + (f.tipo === "domicilio" ? `Dirección: ${f.dir.trim()}\n` : "")
+      + (f.nota.trim() ? `Nota: ${f.nota.trim()}\n` : "");
+    S.carro = [];
+    S.tab = "inicio";
+    if (num) window.open(
+      "https://wa.me/"
+        + (num.length === 10 ? "52" + num : num)
+        + "?text="
+        + encodeURIComponent(texto),
+      "_blank"
+    );
+    else alert("Aún no hay WhatsApp configurado. Muestra este pedido en el local:\n\n" + texto);
   }
 }
-function pitar(){try{const c=new(window.AudioContext||window.webkitAudioContext)(),g=c.createGain();g.connect(c.destination);[880,1175].forEach((f,i)=>{const o=c.createOscillator(),t=c.currentTime+i*.2;o.frequency.value=f;o.connect(g);g.gain.setValueAtTime(.3,t);o.start(t);o.stop(t+.15);});}catch(e){}}
+function pitar() {
+  try {
+    const c = new (window.AudioContext || window.webkitAudioContext)(), g = c.createGain();
+    g.connect(c.destination);
+    [880, 1175].forEach((f, i) => {
+      const o = c.createOscillator(), t = c.currentTime + i *.2;
+      o.frequency.value = f;
+      o.connect(g);
+      g.gain.setValueAtTime(.3, t);
+      o.start(t);
+      o.stop(t +.15);
+    });
+  } catch (e) { }
+}
 
-document.addEventListener("click",e=>{
-  if(e.target.closest("[data-stop]")&&!e.target.closest("[data-act]"))return;
-  const b=e.target.closest("[data-act]");if(!b||!acc[b.dataset.act])return;
-  if(b.dataset.act==="cerrar"&&b.classList.contains("vel")&&e.target.closest(".hoja")&&e.target.closest(".hoja")!==null&&!e.target.closest("[data-act='cerrar'].chip"))return;
-  acc[b.dataset.act](b,datos());render();
+document.addEventListener("click", e => {
+  if (e.target.closest("[data-stop]") && !e.target.closest("[data-act]")) return;
+  const b = e.target.closest("[data-act]");
+  if (!b || !acc[b.dataset.act]) return;
+  if (
+    b.dataset.act === "cerrar"
+      && b.classList.contains("vel")
+      && e.target.closest(".hoja")
+      && e.target.closest(".hoja") !== null
+      && !e.target.closest("[data-act='cerrar'].chip")
+  ) return;
+  acc[b.dataset.act](b, datos());
+  render();
 });
-document.addEventListener("input",e=>{
-  const t=e.target;
-  if(t.id==="q"){S.q=t.value;render();}
-  else if(t.dataset.ni!==undefined){S.carro[+t.dataset.ni].nota=t.value;}
-  else if(t.dataset.f){S.f[t.dataset.f]=t.value;}
-  else if(t.dataset.r){S.reg[t.dataset.r]=t.value;}
-  else if(t.dataset.e){S.ent[t.dataset.e]=t.value;}
-  else if(t.dataset.s){S.segq[t.dataset.s]=t.value;}
-  else if(t.dataset.pn){S.nota=t.value;}
+document.addEventListener("input", e => {
+  const t = e.target;
+  if (t.id === "q") {
+    S.q = t.value;
+    render();
+  } else if (t.dataset.ni !== undefined) {
+    S.carro[+t.dataset.ni].nota = t.value;
+  } else if (t.dataset.f) {
+    S.f[t.dataset.f] = t.value;
+  } else if (t.dataset.r) {
+    S.reg[t.dataset.r] = t.value;
+  } else if (t.dataset.e) {
+    S.ent[t.dataset.e] = t.value;
+  } else if (t.dataset.s) {
+    S.segq[t.dataset.s] = t.value;
+  } else if (t.dataset.pn) {
+    S.nota = t.value;
+  }
 });
-document.addEventListener("change",e=>{
-  const t=e.target;
-  if(t.dataset.g){S.sel[t.dataset.g]=t.value===""?null:+t.value;render();}
-  else if(t.dataset.fc){S.f.cuenta=t.checked;}
+document.addEventListener("change", e => {
+  const t = e.target;
+  if (t.dataset.g) {
+    S.sel[t.dataset.g] = t.value === "" ? null : +t.value;
+    render();
+  } else if (t.dataset.fc) {
+    S.f.cuenta = t.checked;
+  }
 });
 // Tiempo real: revisa el panel cada 2 s y avisa si cambió el estado del pedido que sigues
-setInterval(()=>{
-  if(NUBE){if(S.tab==="seg"&&S.seg&&++segTick%2===0)refrescarSeg();return;}
-  const antes=rawCache;panel();
-  if(S.tab==="seg"){const o=pedidoSeg(),k=o?o.estado+"|"+o.tiempoEst:null;if(k!==ultimoEstado){if(ultimoEstado!==null&&S.snd)pitar();ultimoEstado=k;render();}else if(o)render();}
-  else if(rawCache!==antes&&!S.prod&&S.tab!=="carro"&&!document.activeElement.matches("input,textarea"))render();
-},2000);
-window.addEventListener("storage",e=>{if(e.key===KEY&&!S.prod&&!(document.activeElement&&document.activeElement.matches("input,textarea")))render();});
+setInterval(() => {
+  if (NUBE) {
+    if (!document.hidden) cargarMenu();
+    if (S.tab === "seg" && S.seg &&++segTick % 2 === 0) refrescarSeg();
+    return;
+  }
+  const antes = rawCache;
+  panel();
+  if (S.tab === "seg") {
+    const o = pedidoSeg(), k = o ? o.estado + "|" + o.tiempoEst : null;
+    if (k !== ultimoEstado) {
+      if (ultimoEstado !== null && S.snd) pitar();
+      ultimoEstado = k;
+      render();
+    } else if (o) render();
+  } else if (
+    rawCache !== antes
+      && !S.prod
+      && S.tab !== "carro"
+      && !document.activeElement.matches("input,textarea")
+  ) render();
+}, 2000);
+if (NUBE) {
+  cargarMenu();
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) cargarMenu();
+  });
+}
+window.addEventListener("storage", e => {
+  if (
+    e.key === KEY
+      && !S.prod
+      && !(document.activeElement && document.activeElement.matches("input,textarea"))
+  ) render();
+});
 render();
 </script>
 </body>

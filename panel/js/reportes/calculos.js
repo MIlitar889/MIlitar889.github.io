@@ -3,7 +3,10 @@
    ========================================================== */
 function filtrar(periodo) {
   const { desde, hasta } = rangoDe(periodo);
-  return ORDENES.filter(o => { const f = aFecha(o.fecha); return f >= desde && f <= hasta && o.estado !== "cancelled"; });
+  return ORDENES.filter(o => {
+    const f = aFecha(o.fecha);
+    return f >= desde && f <= hasta && o.estado !== "cancelled";
+  });
 }
 
 function resumen(lista) {
@@ -12,7 +15,7 @@ function resumen(lista) {
     total,
     ordenes: lista.length,
     ticket: lista.length ? total / lista.length : 0,
-    clientes: new Set(lista.map(o => o.cliente).filter(c => c && c !== "mostrador")).size,
+    clientes: new Set(lista.map(o => o.cliente).filter(c => c && c !== "mostrador")).size
   };
 }
 
@@ -36,7 +39,9 @@ function serieVentas(lista, periodo) {
 }
 
 function contar(lista, campo, sumar = false) {
-  const r = {};
-  lista.forEach(o => { r[o[campo]] = (r[o[campo]] || 0) + (sumar ? o.total : 1); });
+  const r = { };
+  lista.forEach(o => {
+    r[o[campo]] = (r[o[campo]] || 0) + (sumar ? o.total : 1);
+  });
   return r;
 }

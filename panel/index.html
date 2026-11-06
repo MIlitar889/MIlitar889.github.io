@@ -65,7 +65,22 @@
       <div id="grafica-estados"></div>
     </article>
 
-  </section><section id="v-caja" data-vista hidden></section><section id="v-pedidos" data-vista hidden></section><section id="v-cocina" data-vista hidden></section><section id="v-chat" data-vista hidden></section><section id="v-meseros" data-vista hidden></section><section id="v-dueno" data-vista hidden></section><section id="v-clientes" data-vista hidden></section><section id="v-lealtad" data-vista hidden></section><section id="v-estadisticas" data-vista hidden></section><section id="v-impresora" data-vista hidden></section><section id="v-mesas" data-vista hidden></section><section id="v-promos" data-vista hidden></section><section id="v-menu" data-vista hidden></section><section id="v-config" data-vista hidden></section><dialog id="dlg"><pre id="dlg-t"></pre><button class="chip" onclick="this.closest('dialog').close()">Cerrar</button></dialog><dialog id="dlg-opc"><h2 id="opc-t"></h2><div id="opc-body"></div><div class="periodo__botones" style="margin-top:12px"><button class="btn-rojo" data-act="opc-ok">Agregar</button><button class="chip" data-act="opc-no">Cancelar</button></div></dialog><dialog id="dlg-plato"><h2>Agregar platillo</h2><label>Nombre</label><input class="campo" id="pl-n" maxlength="60"><label>Categoría</label><select class="campo" id="pl-cat"></select><label>Precio</label><input class="campo" id="pl-c" type="number" min="0" step="0.5"><label>Descripción</label><textarea class="campo" id="pl-d" rows="3" maxlength="300"></textarea><label>Foto</label><div class="fila" style="padding:0"><span id="pl-prev"></span><label class="btn-verde" style="margin:0;cursor:pointer">⬆ Elegir foto<input type="file" accept="image/*" hidden data-plimg="1"></label></div><label class="fila" style="padding:8px 0;gap:6px"><input type="checkbox" id="pl-promo"> Mostrar también en Promos</label><div class="periodo__botones" style="margin-top:12px"><button class="btn-rojo" data-act="plato-ok">Guardar platillo</button><button class="chip" data-act="plato-no">Cancelar</button></div></dialog><dialog id="dlg-can"><h2 id="can-t">Cancelar pedido</h2><label>Motivo (le avisa a la caja)</label><textarea class="campo" id="can-m" rows="3" placeholder="Ej. no hay camarón"></textarea><div class="periodo__botones"><button class="btn-rojo" data-act="can-ok">Cancelar pedido</button><button class="chip" data-act="can-cerrar">Volver</button></div></dialog></main>
+  </section>
+  <section id="v-caja" data-vista hidden></section>
+  <section id="v-pedidos" data-vista hidden></section>
+  <section id="v-cocina" data-vista hidden></section>
+  <section id="v-chat" data-vista hidden></section>
+  <section id="v-meseros" data-vista hidden></section>
+  <section id="v-dueno" data-vista hidden></section>
+  <section id="v-clientes" data-vista hidden></section>
+  <section id="v-lealtad" data-vista hidden></section>
+  <section id="v-estadisticas" data-vista hidden></section>
+  <section id="v-impresora" data-vista hidden></section>
+  <section id="v-mesas" data-vista hidden></section>
+  <section id="v-promos" data-vista hidden></section>
+  <section id="v-menu" data-vista hidden></section>
+  <section id="v-menucli" data-vista hidden></section>
+  <section id="v-config" data-vista hidden></section><dialog id="dlg"><pre id="dlg-t"></pre><button class="chip" onclick="this.closest('dialog').close()">Cerrar</button></dialog><dialog id="dlg-opc"><h2 id="opc-t"></h2><div id="opc-body"></div><div class="periodo__botones" style="margin-top:12px"><button class="btn-rojo" data-act="opc-ok">Agregar</button><button class="chip" data-act="opc-no">Cancelar</button></div></dialog><dialog id="dlg-plato"><h2>Agregar platillo</h2><label>Nombre</label><input class="campo" id="pl-n" maxlength="60"><label>Categoría</label><select class="campo" id="pl-cat"></select><label>Precio</label><input class="campo" id="pl-c" type="number" min="0" step="0.5"><label>Descripción</label><textarea class="campo" id="pl-d" rows="3" maxlength="300"></textarea><label>Foto</label><div class="fila" style="padding:0"><span id="pl-prev"></span><label class="btn-verde" style="margin:0;cursor:pointer">⬆ Elegir foto<input type="file" accept="image/*" hidden data-plimg="1"></label></div><label class="fila" style="padding:8px 0;gap:6px"><input type="checkbox" id="pl-promo"> Mostrar también en Promos</label><div class="periodo__botones" style="margin-top:12px"><button class="btn-rojo" data-act="plato-ok">Guardar platillo</button><button class="chip" data-act="plato-no">Cancelar</button></div></dialog><dialog id="dlg-can"><h2 id="can-t">Cancelar pedido</h2><label>Motivo (le avisa a la caja)</label><textarea class="campo" id="can-m" rows="3" placeholder="Ej. no hay camarón"></textarea><div class="periodo__botones"><button class="btn-rojo" data-act="can-ok">Cancelar pedido</button><button class="chip" data-act="can-cerrar">Volver</button></div></dialog></main>
 </div>
 
 <!-- Los archivos se cargan en este orden: cada uno usa lo definido por los anteriores -->
@@ -102,6 +117,7 @@
 <script src="js/vistas/mesas.js"></script>
 <script src="js/vistas/promos.js"></script>
 <script src="js/vistas/menu.js"></script>
+<script src="js/vistas/menucli.js"></script>
 <script src="js/vistas/config.js"></script>
 <script src="js/app/navegacion.js"></script>
 <script src="js/app/acciones.js"></script>
